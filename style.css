@@ -1,0 +1,33 @@
+body{
+	background-color: black;
+}
+.content{
+	background-color: blue;
+	width: 850px;
+	margin-right: auto;
+	margin-left: auto;
+}
+li{
+	display: inline;
+	list-style-type: none;
+}
+form{
+	text-align: center;
+}
+
+.submit{
+	margin-right: 400px;
+	margin-left: 400px;
+}
+h1{
+	text-align: center;
+}
+h4{
+	text-align: center;
+}
+.information{
+	background-color: blue;
+	width: 850px;
+	margin-right: auto;
+	margin-left: auto;
+}
