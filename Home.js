@@ -10,7 +10,7 @@ $("#submit").click(function(event){
  	alert("Level not selected");
  }
  else{
- var url = "index.html";
+ var url = "PlayerDesign.html";
 $(location).attr('href',url);
 }
 });
