@@ -2,11 +2,17 @@ body{
 	background-color: black;
 }
 .content{
-	background-color: beige;
+	background-color: #FFECC8;
 	width: 850px;
 	margin-right: auto;
 	margin-left: auto;
 }
+
+div {
+	border-radius: 15px;
+	padding-left: 5px;
+}
+
 li{
 	display: inline;
 	list-style-type: none;
@@ -22,11 +28,22 @@ form{
 h1{
 	text-align: center;
 }
+
+h2 {
+	padding-left: 5px;
+}
+
 h4{
 	text-align: center;
 }
+
+p {
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
 .information{
-	background-color: beige;
+	background-color: #FFECC8;
 	width: 850px;
 	margin-right: auto;
 	margin-left: auto;

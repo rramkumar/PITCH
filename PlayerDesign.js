@@ -3,7 +3,9 @@ var audio2 = new Audio("Clarinet.mp3");
 var audio3 = new Audio("Trumpet.mp3");
 var audio4 = new Audio("Trombone.mp3");
 var audio5 = new Audio("Tuba.mp3");
-var audio1Muted=false; //vars record whether a track is to be muted independent of muting by the master control in the audio tag
+
+//vars record whether each track is to be muted independent of muting by the master control in the audio tag
+var audio1Muted=false;
 var audio2Muted=false;
 var audio3Muted=false;
 var audio4Muted=false;
@@ -17,7 +19,9 @@ $(document).ready(function() {
 	audio4.load();
 	audio5.load();
 		
-
+	//play all Audio objects when the master audio element is played
+	//this starts all of them to avoid future startup costs, then pauses them as fast as possible
+	//then it schedules the concurrent setting all of them to the master's current time, and then schedules their concurrent playing
 	$("#audio0").on('play', function(event) {
 		audio1.play();
 		audio2.play();
@@ -38,6 +42,7 @@ $(document).ready(function() {
 		setTimeout(function(){audio1.play();audio2.play();audio3.play();audio4.play();audio5.play();}, 100);
 	});
 
+	//pause all Audio objects when the master audio element is paused
 	$("#audio0").on('pause', function(event) {
 		audio1.pause();
 		audio2.pause();
@@ -46,6 +51,8 @@ $(document).ready(function() {
 		audio5.pause();
 	});
 
+	//when the master audio element is clicked on, check for muted/unmuted state
+	//(there's no onmuted event for it, so we used onmouseup)
 	$("#audio0").on('mouseup', function(event) {
 		setTimeout(function(){
 			if (audio0.muted) {
@@ -69,8 +76,9 @@ $(document).ready(function() {
 			}}, null);
 	});
 
+	//when the master audio element's volume is changed, it controls all the volumes together
 	$("#audio0").on('volumechange', function(event) {
-		volume1.value = audio0.volume;
+		volume1.value = audio0.volume; // why do these work without being JQuery wrapped?....volume1 is the id of the input element
 		volume2.value = audio0.volume;
 		volume3.value = audio0.volume;
 		volume4.value = audio0.volume;
@@ -82,22 +90,24 @@ $(document).ready(function() {
 		audio5.volume = $("#volume5").val();
 	});
 
-	$("#volume1").on('change', function(event) {
+	//when the mouse is moved on volume sliders, change the volume property of the audio object
+	$("#volume1").mousemove(function(event) {
 		audio1.volume = $("#volume1").val();
 	});
-	$("#volume2").on('change', function(event) {
+	$("#volume2").mousemove(function(event) {
 		audio2.volume = $("#volume2").val();
 	});
-	$("#volume3").on('change', function(event) {
+	$("#volume3").mousemove(function(event) {
 		audio3.volume = $("#volume3").val();
 	});
-	$("#volume4").on('change', function(event) {
+	$("#volume4").mousemove(function(event) {
 		audio4.volume = $("#volume4").val();
 	});
-	$("#volume5").on('change', function(event) {
+	$("#volume5").mousemove(function(event) {
 		audio5.volume = $("#volume5").val();
 	});
 
+	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
 	$("#mute1").on('click', function(event) {
 		if (audio1.muted) {
 			audio1.muted=false;
@@ -156,6 +166,7 @@ $(document).ready(function() {
 
 });
 
+//edit val of button for when the master audio element's mute is clicked to unmute
 function redrawMuteButtons() {
 	if (audio1.muted) {
 		$("#mute1").val("Unmute");
