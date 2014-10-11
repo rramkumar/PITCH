@@ -1,8 +1,11 @@
-var audio1 = new Audio("Flute.mp3");
-var audio2 = new Audio("Clarinet.mp3");
-var audio3 = new Audio("Trumpet.mp3");
-var audio4 = new Audio("Trombone.mp3");
-var audio5 = new Audio("Tuba.mp3");
+var audio0;
+var audio1;
+var audio2;
+var audio3;
+var audio4;
+var audio5;
+
+var musicRelativePath = "assets/music/";
 
 //vars record whether each track is to be muted independent of muting by the master control in the audio tag
 var audio1Muted=false;
@@ -11,8 +14,60 @@ var audio3Muted=false;
 var audio4Muted=false;
 var audio5Muted=false;
 
+
 $(document).ready(function() {
-	var audio0 = document.getElementById("audio0"); // the silent track that serves as the master, from which other audio tracks are set
+	createAudios("dannyBoy", 1, "0");
+
+	hangInteractions();
+	
+
+});
+
+//edit val of button for when the master audio element's mute is clicked to unmute
+function redrawMuteButtons() {
+	if (audio1.muted) {
+		$("#mute1").val("Unmute");
+	} else {
+		$("#mute1").val("Mute");
+	}
+	if (audio2.muted) {
+		$("#mute2").val("Unmute");
+	} else {
+		$("#mute2").val("Mute");
+	}
+	if (audio3.muted) {
+		$("#mute3").val("Unmute");
+	} else {
+		$("#mute3").val("Mute");
+	}
+	if (audio4.muted) {
+		$("#mute4").val("Unmute");
+	} else {
+		$("#mute4").val("Mute");
+	}
+	if (audio5.muted) {
+		$("#mute5").val("Unmute");
+	} else {
+		$("#mute5").val("Mute");
+	}
+}
+
+function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
+	//randomize how many/which tracks will be out of tune, and which direction
+	
+
+	//inject the silent file source for this song
+	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
+
+	audio0 = document.getElementById("audio0");
+	audio1 = new Audio(musicRelativePath + songName + "1" + degreeOutOfTune1 + ".mp3");
+	audio2 = new Audio(musicRelativePath + songName + "2" + degreeOutOfTune2 + ".mp3");
+	audio3 = new Audio(musicRelativePath + songName + "3" + degreeOutOfTune3 + ".mp3");
+	audio4 = new Audio(musicRelativePath + songName + "4" + degreeOutOfTune4 + ".mp3");
+	audio5 = new Audio(musicRelativePath + songName + "5" + degreeOutOfTune5 + ".mp3");
+}
+
+function hangInteractions() {
 	audio1.load();
 	audio2.load();
 	audio3.load();
@@ -163,36 +218,6 @@ $(document).ready(function() {
 			$("#mute5").val("Unmute");
 		}
 	});
-
-});
-
-//edit val of button for when the master audio element's mute is clicked to unmute
-function redrawMuteButtons() {
-	if (audio1.muted) {
-		$("#mute1").val("Unmute");
-	} else {
-		$("#mute1").val("Mute");
-	}
-	if (audio2.muted) {
-		$("#mute2").val("Unmute");
-	} else {
-		$("#mute2").val("Mute");
-	}
-	if (audio3.muted) {
-		$("#mute3").val("Unmute");
-	} else {
-		$("#mute3").val("Mute");
-	}
-	if (audio4.muted) {
-		$("#mute4").val("Unmute");
-	} else {
-		$("#mute4").val("Mute");
-	}
-	if (audio5.muted) {
-		$("#mute5").val("Unmute");
-	} else {
-		$("#mute5").val("Mute");
-	}
 }
 
 /*
