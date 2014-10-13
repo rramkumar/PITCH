@@ -13,3 +13,7 @@ body {
 input {
 	padding-top: 5px;
 }
+.choices li{
+	display: inline;
+	list-style-type: none;
+}

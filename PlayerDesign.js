@@ -13,13 +13,40 @@ var audio2Muted=false;
 var audio3Muted=false;
 var audio4Muted=false;
 var audio5Muted=false;
+var tones;
 
 
 $(document).ready(function() {
-	createAudios("dannyBoy", 1, "0");
+
+
+	tones=createAudios("dannyBoy", 1, 1);
 
 	hangInteractions();
-	
+
+
+$("#submit").click(function(event){
+ var checked=(($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
+ if(checked==false)
+ {	
+ 	alert("Song Not Selected");
+}else{
+	var correct=true;
+	for(var i=0; i<tones.length; i++){
+		var temp1=tones[i];
+		var temp3=i+1;
+		var temp4="tone" + temp3.toString();
+		var temp2=($('input[name="'+temp4+'"]:checked').val());
+		if(temp1!=temp2){
+			correct=false;
+		}
+	}
+	if(correct){
+		alert("You win!");
+	}else{
+		alert("try again");
+	}
+}
+});
 
 });
 
@@ -54,10 +81,52 @@ function redrawMuteButtons() {
 
 function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	//randomize how many/which tracks will be out of tune, and which direction
-	
-
+	var tones=[0,0,0,0,0];
+	var degreeOutOfTune1="0";
+	var degreeOutOfTune2="0";
+	var degreeOutOfTune3="0";
+	var degreeOutOfTune4="0";
+	var degreeOutOfTune5="0";
+	var level=0;
 	//inject the silent file source for this song
 	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
+	//Calculates which instrument
+	var random= Math.random()*5;
+    random=Math.floor(random);
+    random=random+1;
+    //Chooses degree
+    var degree=Math.random()*2;
+    degree=Math.floor(degree);
+    switch(degree){
+    	case 0: 
+    		level="-1";
+    		break;
+    	case 1:
+    		level="1";
+    		break;
+    }
+	switch(random){
+		case 1:
+			degreeOutOfTune1=level;
+			tones[0]=level;
+			break;
+		case 2:
+			degreeOutOfTune2=level;
+			tones[1]=level;
+			break;
+		case 3:
+			degreeOutOfTune3=level;
+			tones[2]=level;
+			break;
+		case 4:
+			degreeOutOfTune4=level;
+			tones[3]=level;
+			break;
+		case 5:
+			degreeOutOfTune5=level;
+			tones[4]=level;
+			break;
+	}
 
 	audio0 = document.getElementById("audio0");
 	audio1 = new Audio(musicRelativePath + songName + "1" + degreeOutOfTune1 + ".mp3");
@@ -65,6 +134,7 @@ function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	audio3 = new Audio(musicRelativePath + songName + "3" + degreeOutOfTune3 + ".mp3");
 	audio4 = new Audio(musicRelativePath + songName + "4" + degreeOutOfTune4 + ".mp3");
 	audio5 = new Audio(musicRelativePath + songName + "5" + degreeOutOfTune5 + ".mp3");
+	return tones;
 }
 
 function hangInteractions() {
