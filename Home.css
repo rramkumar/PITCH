@@ -1,11 +1,17 @@
 body{
-	background-color: black;
+	background-color: #56A0D3;
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 .content{
-	background-color: #FFECC8;
+	/*background-color: #FFECC8;*/
+	background-color: #FFFFFF;
+
 	width: 850px;
 	margin-right: auto;
 	margin-left: auto;
+}
+.button{
+
 }
 
 div {
@@ -21,9 +27,10 @@ form{
 	text-align: center;
 }
 
-.submit{
+#submit{
 	margin-right: 400px;
 	margin-left: 400px;
+	margin-bottom: 10px;
 }
 h1{
 	text-align: center;
@@ -43,7 +50,8 @@ p {
 }
 
 .information{
-	background-color: #FFECC8;
+	/*background-color: #FFECC8;*/
+	background-color: #FFFFFF;
 	width: 850px;
 	margin-right: auto;
 	margin-left: auto;

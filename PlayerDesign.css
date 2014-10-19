@@ -1,9 +1,9 @@
 body {
-	background: #DDDDDD;
+  background: #DDDDDD;
 }
 
 #audio0 {
-	width: 50vw;
+  width: 50vw;
 }
 
 .volumeSlider {
@@ -11,11 +11,11 @@ body {
 }
 
 input {
-	padding-top: 5px;
+  padding-top: 5px;
 }
 .choices li{
-	display: inline;
-	list-style-type: none;
+  display: inline;
+  list-style-type: none;
 }
 input[type="range"] {
   -webkit-appearance: none;
