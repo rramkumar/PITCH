@@ -17,6 +17,7 @@ var tones;
 
 
 $(document).ready(function() {
+	
 
 
 	tones=createAudios("dannyBoy", 1, 1);
@@ -24,11 +25,11 @@ $(document).ready(function() {
 	hangInteractions();
 
 
-$("#submit").click(function(event){
+$("#quizSubmit").click(function(event){
  var checked=(($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
  if(checked==false)
  {	
- 	alert("Song Not Selected");
+ 	alert("Answer Not Selected");
 }else{
 	var correct=true;
 	for(var i=0; i<tones.length; i++){
@@ -168,7 +169,7 @@ function hangInteractions() {
 	});
 
 	//pause all Audio objects when the master audio element is paused
-	$("#audio0").on('pause', function(event) {
+	$("#audio0").on("pause", function(event) {
 		audio1.pause();
 		audio2.pause();
 		audio3.pause();
@@ -178,7 +179,8 @@ function hangInteractions() {
 
 	//when the master audio element is clicked on, check for muted/unmuted state
 	//(there's no onmuted event for it, so we used onmouseup)
-	$("#audio0").on('mouseup', function(event) {
+	$("#audio0").on("mouseup", function(event) {
+		console.log("#audio0 onmouseup");
 		setTimeout(function(){
 			if (audio0.muted) {
 				audio1.muted=true;
