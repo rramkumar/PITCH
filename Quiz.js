@@ -20,7 +20,7 @@ $(document).ready(function() {
 	
 
 
-	tones=createAudios("dannyBoy", 1, 1);
+	tones=createAudios("dannyboy", 1, 1);
 
 	hangInteractions();
 
