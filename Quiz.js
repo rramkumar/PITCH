@@ -31,6 +31,7 @@ $("#quizSubmit").click(function(event){
  {	
  	alert("Answer Not Selected");
 }else{
+	
 	var correct=true;
 	for(var i=0; i<tones.length; i++){
 		var temp1=tones[i];
@@ -90,7 +91,7 @@ function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	var degreeOutOfTune5="0";
 	var level=0;
 	//inject the silent file source for this song
-	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
+	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	//Calculates which instrument
 	var random= Math.random()*5;
     random=Math.floor(random);
@@ -130,11 +131,11 @@ function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	}
 
 	audio0 = document.getElementById("audio0");
-	audio1 = new Audio(musicRelativePath + songName + "1" + degreeOutOfTune1 + ".mp3");
-	audio2 = new Audio(musicRelativePath + songName + "2" + degreeOutOfTune2 + ".mp3");
-	audio3 = new Audio(musicRelativePath + songName + "3" + degreeOutOfTune3 + ".mp3");
-	audio4 = new Audio(musicRelativePath + songName + "4" + degreeOutOfTune4 + ".mp3");
-	audio5 = new Audio(musicRelativePath + songName + "5" + degreeOutOfTune5 + ".mp3");
+	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + degreeOutOfTune1 + ".mp3");
+	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + degreeOutOfTune2 + ".mp3");
+	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + degreeOutOfTune3 + ".mp3");
+	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + degreeOutOfTune4 + ".mp3");
+	audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + degreeOutOfTune5 + ".mp3");
 	return tones;
 }
 

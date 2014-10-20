@@ -13,6 +13,9 @@ $(document).ready(function(){
 			$("#homeDiv").attr("divIsVisible", "false");
 			$("#quizDiv").attr("divIsVisible", "true");
 			$("#sandboxDiv").attr("divIsVisible", "false");
+			var names=($('input[name=song]:checked').val())
+			alert(names);
+			tones=createAudios(names, 1, 1);
 		}
 	});
 
