@@ -9,8 +9,7 @@ div[divIsVisible="false"] {
 }
 
 div {
-  border-radius: 15px;
-  padding-left: 5px;
+  
 }
 
 .content{
@@ -19,6 +18,9 @@ div {
   width: 850px;
   margin-right: auto;
   margin-left: auto;
+
+  border-radius: 15px;
+  padding-left: 5px;
 }
 
 li{
@@ -56,7 +58,7 @@ p {
 
 /*headerDiv elements*/
 #headerDiv {
-  width:200px;
+  width:150px;
   margin-left: auto;
   margin-right: auto;
 }
