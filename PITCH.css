@@ -13,7 +13,7 @@ div {
 }
 
 .content{
-  background-color: #FFF1D8;
+  background-color: #FFFCF7;
 
   width: 850px;
   margin-right: auto;
@@ -50,10 +50,12 @@ p {
 }
 
 .information{
-  background-color: #FFF1D8;
+  background-color: #FFFCF7;
   width: 850px;
   margin-right: auto;
   margin-left: auto;
+  border-radius: 15px;
+  padding-left: 5px;
 }
 
 /*headerDiv elements*/
