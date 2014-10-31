@@ -206,11 +206,11 @@ function hangInteractions() {
 
 	//when the master audio element's volume is changed, it controls all the volumes together
 	$("#audio0").on('volumechange', function(event) {
-		volume1.value = audio0.volume; // why do these work without being JQuery wrapped?....volume1 is the id of the input element
-		volume2.value = audio0.volume;
-		volume3.value = audio0.volume;
-		volume4.value = audio0.volume;
-		volume5.value = audio0.volume;
+		$("#volume1").val(audio0.volume);
+		$("#volume2").val(audio0.volume);
+		$("#volume3").val(audio0.volume);
+		$("#volume4").val(audio0.volume);
+		$("#volume5").val(audio0.volume);
 		audio1.volume = $("#volume1").val();
 		audio2.volume = $("#volume2").val();
 		audio3.volume = $("#volume3").val();

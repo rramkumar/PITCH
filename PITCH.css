@@ -40,7 +40,7 @@ h2 {
   padding-left: 5px;
 }
 
-h4{
+#pageSubtitle{
   text-align: center;
 }
 
@@ -85,13 +85,19 @@ form{
 
 
 
-/*playerDiv elements*/
-#audio0 {
-  width: 50vw;
+/*quizDiv elements*/
+
+#quizDiv > .content {
+  width:1000px;
 }
 
-.volumeSlider {
+#audio0 {
+  width: 70%;
+}
 
+.choices {
+  float:right;
+  padding-right:30%;
 }
 
 input {

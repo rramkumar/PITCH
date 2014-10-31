@@ -22,6 +22,11 @@ $(document).ready(function(){
 
 function showDiv(which) {
 	if (which=="home") {
+		//reset homepage options
+		$(".songSelectRadio").removeAttr("checked");
+		$(".levelSelectRadio").removeAttr("checked");
+
+		//do the move
 		$("#homeDiv").attr("divIsVisible", "true");
 		$("#quizDiv").attr("divIsVisible", "false");
 		$("#sandboxDiv").attr("divIsVisible", "false");
@@ -30,14 +35,42 @@ function showDiv(which) {
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "true");
 		$("#sandboxDiv").attr("divIsVisible", "false");
+
+		//reset quiz answers
+		$("#tone1inTune").prop("checked", true);
+		$("#tone2inTune").prop("checked", true);
+		$("#tone3inTune").prop("checked", true);
+		$("#tone4inTune").prop("checked", true);
+		$("#tone5inTune").prop("checked", true);
 	}
 	if (which=="sandbox") {
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "false");
 		$("#sandboxDiv").attr("divIsVisible", "true");
 	}
+
+	audio0.pause();
+	audio0.currentTime=0;
+
+	//reset custom player
+
+	
+	//volumes
+	volume1.value=1;
+	volume2.value=1;
+	volume3.value=1;
+	volume4.value=1;
+	volume5.value=1;
+
+	//mute button
+	audio1.muted=false;
+	audio2.muted=false;
+	audio3.muted=false;
+	audio4.muted=false;
+	audio5.muted=false;
+	$("#mute1").val("Mute");
+	$("#mute2").val("Mute");
+	$("#mute3").val("Mute");
+	$("#mute4").val("Mute");
+	$("#mute5").val("Mute");
 }
-// function that does this parametrically
-// $("#homeDiv").attr("divIsVisible", "true");
-// 		$("#quizDiv").attr("divIsVisible", "false");
-// 		$("#sandboxDiv").attr("divIsVisible", "false");
