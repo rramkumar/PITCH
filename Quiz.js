@@ -82,7 +82,11 @@ function redrawMuteButtons() {
 }
 
 function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
-	//randomize how many/which tracks will be out of tune, and which direction
+	//Reads the JSON File
+	var levels=($('input[name=level]:checked').val());
+	var datas=$.getJSON( "test.json", function( data ) {
+	});
+		//randomize how many/which tracks will be out of tune, and which direction
 	var tones=[0,0,0,0,0];
 	var degreeOutOfTune1="0";
 	var degreeOutOfTune2="0";
@@ -156,8 +160,8 @@ function hangInteractions() {
 		audio4.play();
 		audio5.play();
 		audio1.pause();
-		audio2.pause();
 		audio3.pause();
+		audio2.pause();
 		audio4.pause();
 		audio5.pause();
 		setTimeout(function(){audio1.currentTime=audio0.currentTime;}, 100);
@@ -206,11 +210,11 @@ function hangInteractions() {
 
 	//when the master audio element's volume is changed, it controls all the volumes together
 	$("#audio0").on('volumechange', function(event) {
-		volume1.value = audio0.volume; // why do these work without being JQuery wrapped?....volume1 is the id of the input element
-		volume2.value = audio0.volume;
-		volume3.value = audio0.volume;
-		volume4.value = audio0.volume;
-		volume5.value = audio0.volume;
+		$("#volume1").val(audio0.volume);
+		$("#volume2").val(audio0.volume);
+		$("#volume3").val(audio0.volume);
+		$("#volume4").val(audio0.volume);
+		$("#volume5").val(audio0.volume);
 		audio1.volume = $("#volume1").val();
 		audio2.volume = $("#volume2").val();
 		audio3.volume = $("#volume3").val();
