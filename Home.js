@@ -1,3 +1,5 @@
+var game;
+
 $(document).ready(function(){
 	$("#homeSubmit").click(function(event){
 		 var checked=($('input[name=song]:checked').is(':checked'));
@@ -18,6 +20,9 @@ $(document).ready(function(){
 	$("#headerDivTitle").on("click", function(event) {
 		showDiv("home");
 	});
+
+	function parseLevelsJSON();
+    console.log(game.levels);
 });
 
 function showDiv(which) {
@@ -73,4 +78,22 @@ function showDiv(which) {
 	$("#mute3").val("Mute");
 	$("#mute4").val("Mute");
 	$("#mute5").val("Mute");
+}
+
+function parseLevelsJSON() {
+	var getGameData = $.getJSON( "./test.json", function(json) {
+		game.levels=json;
+  		console.log( "success" );
+	})
+  	.done(function() {
+    	//generate level options HTML here
+    	console.log(game.levels);
+    	console.log( "Done" );
+	})
+	.fail(function() {
+	    console.log( "error" );
+	 })
+	 .always(function() {
+	    console.log( "complete:Enjoy the game" );
+	 });
 }

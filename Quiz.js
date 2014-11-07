@@ -15,6 +15,8 @@ var audio4Muted=false;
 var audio5Muted=false;
 var tones;
 
+var game;
+
 
 $(document).ready(function() {
 	
@@ -141,6 +143,8 @@ function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + degreeOutOfTune4 + ".mp3");
 	audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + degreeOutOfTune5 + ".mp3");
 	return tones;
+
+
 }
 
 function hangInteractions() {
@@ -296,6 +300,8 @@ function hangInteractions() {
 		}
 	});
 }
+
+
 
 /*
 audioPlayer.play();
