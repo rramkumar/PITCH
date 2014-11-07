@@ -21,7 +21,7 @@ $(document).ready(function(){
 		showDiv("home");
 	});
 
-	function parseLevelsJSON();
+	parseLevelsJSON();
     console.log(game.levels);
 });
 
