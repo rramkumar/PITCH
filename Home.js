@@ -99,8 +99,7 @@ function parseJSONFiles() {
 	    var songsInsert = "";
 	    $.each(game.songs, function(index, obj) {
 	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objname+'">' + obj.title + ' </li>';
-	    	console.log(obj.title);
-	    })
+	    });
 
 	    $(".songs").html(songsInsert);
     	console.log( "Done" );
@@ -125,7 +124,7 @@ function parseJSONFiles() {
 	    $.each(game.levels, function(index, obj) {
 	    	levelsInsert += '<li><input type="radio" name="level" value="level'+(index+1)+'"> Level ' + (index+1) + ' </li>';
 	    	//console.log(obj.level);
-	    })
+	    });
 
 	    $(".levels").html(levelsInsert);
 		console.log( "Done" );
