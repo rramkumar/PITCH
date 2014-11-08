@@ -2,61 +2,61 @@
     {
         "level":1,
         "numberOutOfTune":1,
-        "tune":1,
+        "degreeOutOfTune":1,
         "voicePattern":1
     },
     {
         "level":2,
         "numberOutOfTune":1,
-        "tune":1,
+        "degreeOutOfTune":1,
         "voicePattern":2
     },
     {
         "level":3,
         "numberOutOfTune":1,
-        "tune":1,
+        "degreeOutOfTune":1,
         "voicePattern":3
     },
     {
         "level":4,
         "numberOutOfTune":1,
-        "tune":3,
+        "degreeOutOfTune":3,
         "voicePattern":3
     },
     {
         "level":5,
         "numberOutOfTune":1,
-        "tune":4,
+        "degreeOutOfTune":4,
         "voicePattern":3
     },
     {
         "level":6,
         "numberOutOfTune":2,
-        "tune":2,
+        "degreeOutOfTune":2,
         "voicePattern":1
     },
     {
         "level":7,
         "numberOutOfTune":2,
-        "tune":2,
+        "degreeOutOfTune":2,
         "voicePattern":2
     },
     {
         "level":8,
         "numberOutOfTune":2,
-        "tune":2,
+        "degreeOutOfTune":2,
         "voicePattern":3
     },
     {
         "level":9,
         "numberOutOfTune":2,
-        "tune":3,
+        "degreeOutOfTune":3,
         "voicePattern":3
     },
     {
         "level":10,
         "numberOutOfTune":2,
-        "tune":4,
+        "degreeOutOfTune":4,
         "voicePattern":3
     }
 ]

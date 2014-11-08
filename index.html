@@ -58,49 +58,51 @@
 					<span class="choices">Answers:</span>
 				</div>
 				<br>
-				<div id="quizPartDiv1" class="quizPartDiv">
-					<input type="range" id="volume1" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute1" class="m-btn blue" value="Mute"> <span>Flute Volume</span>
-					<ul class="choices">
-					 	<li><input type="radio" name="tone1" value="-1" id="tone1flat">Flat</li>
-					 	<li><input type="radio" name="tone1" value="0" id= "tone1inTune" checked>In Tune</li>
-					 	<li><input type="radio" name="tone1" value="1" id="tone1sharp">Sharp</li>
-					</ul>
-				</div>
-				<br>
-				<div id="quizPartDiv2" class="quizPartDiv">
-					<input type="range" id="volume2" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute2" class="m-btn blue" value="Mute"> <span>Clarinet Volume</span>
-					<ul class="choices">
-						<li><input type="radio" name="tone2" value="-1" id="tone2flat">Flat</li>
-						<li><input type="radio" name="tone2" value="0" id="tone2inTune" checked>In Tune</li>
-						<li><input type="radio" name="tone2" value="1" id="tone2sharp">Sharp</li>
-					</ul>
-				</div>
-				<br>
-				<div id="quizPartDiv3" class="quizPartDiv">
-					<input type="range" id="volume3" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute3" class="m-btn blue" value="Mute"> <span>Trumpet Volume</span>
-					<ul class="choices">
-						<li><input type="radio" name="tone3" value="-1" id="tone3flat">Flat</li>
-						<li><input type="radio" name="tone3" value="0" id="tone3inTune" checked>In Tune</li>
-						<li><input type="radio" name="tone3" value="1" id="tone3sharp">Sharp</li>
-					</ul>
-				</div>
-				<br>
-				<div id="quizPartDiv4" class="quizPartDiv">
-					<input type="range" id="volume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute4" class="m-btn blue" value="Mute"> <span>Trombone Volume</span>
-					<ul class="choices">
-						<li><input type="radio" name="tone4" value="-1" id="tone4flat">Flat</li>
-						<li><input type="radio" name="tone4" value="0" id="tone4inTune" checked>In Tune</li>
-						<li><input type="radio" name="tone4" value="1" id="tone4sharp">Sharp</li>
-					</ul>
-				</div>
-				<br>
-				<div id="quizPartDiv5" class="quizPartDiv">
-					<input type="range" id="volume5" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute5" class="m-btn blue" value="Mute"> <span>Tuba Volume</span>
-					<ul class="choices">
-						<li><input type="radio" name="tone5" value="-1" id="tone5flat">Flat</li>
-						<li><input type="radio" name="tone5" value="0" id="tone5inTune" checked>In Tune</li>
-						<li><input type="radio" name="tone5" value="1" id="tone5sharp">Sharp</li>
-					</ul>
+				<div id="quizVoiceComponents">
+					<div id="quizPartDiv1" class="quizPartDiv">
+						<input type="range" id="volume1" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute1" class="m-btn blue" value="Mute"> <span>Flute Volume</span>
+						<ul class="choices">
+						 	<li><input type="radio" name="tone1" value="-1" id="tone1flat">Flat</li>
+						 	<li><input type="radio" name="tone1" value="0" id= "tone1inTune" checked>In Tune</li>
+						 	<li><input type="radio" name="tone1" value="1" id="tone1sharp">Sharp</li>
+						</ul>
+					</div>
+					<br>
+					<div id="quizPartDiv2" class="quizPartDiv">
+						<input type="range" id="volume2" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute2" class="m-btn blue" value="Mute"> <span>Clarinet Volume</span>
+						<ul class="choices">
+							<li><input type="radio" name="tone2" value="-1" id="tone2flat">Flat</li>
+							<li><input type="radio" name="tone2" value="0" id="tone2inTune" checked>In Tune</li>
+							<li><input type="radio" name="tone2" value="1" id="tone2sharp">Sharp</li>
+						</ul>
+					</div>
+					<br>
+					<div id="quizPartDiv3" class="quizPartDiv">
+						<input type="range" id="volume3" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute3" class="m-btn blue" value="Mute"> <span>Trumpet Volume</span>
+						<ul class="choices">
+							<li><input type="radio" name="tone3" value="-1" id="tone3flat">Flat</li>
+							<li><input type="radio" name="tone3" value="0" id="tone3inTune" checked>In Tune</li>
+							<li><input type="radio" name="tone3" value="1" id="tone3sharp">Sharp</li>
+						</ul>
+					</div>
+					<br>
+					<div id="quizPartDiv4" class="quizPartDiv">
+						<input type="range" id="volume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute4" class="m-btn blue" value="Mute"> <span>Trombone Volume</span>
+						<ul class="choices">
+							<li><input type="radio" name="tone4" value="-1" id="tone4flat">Flat</li>
+							<li><input type="radio" name="tone4" value="0" id="tone4inTune" checked>In Tune</li>
+							<li><input type="radio" name="tone4" value="1" id="tone4sharp">Sharp</li>
+						</ul>
+					</div>
+					<br>
+					<div id="quizPartDiv5" class="quizPartDiv">
+						<input type="range" id="volume5" class="volumeSlider" min="0" max="1" value="1" step=".01"> <input type="button" id="mute5" class="m-btn blue" value="Mute"> <span>Tuba Volume</span>
+						<ul class="choices">
+							<li><input type="radio" name="tone5" value="-1" id="tone5flat">Flat</li>
+							<li><input type="radio" name="tone5" value="0" id="tone5inTune" checked>In Tune</li>
+							<li><input type="radio" name="tone5" value="1" id="tone5sharp">Sharp</li>
+						</ul>
+					</div>
 				</div>
 
 				

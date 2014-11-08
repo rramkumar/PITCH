@@ -20,11 +20,7 @@ $(document).ready(function() {
 	
 
 
-	tones=createAudios("dannyboy", 1, 1);
-
-	hangInteractions();
-
-
+	
 	$("#quizSubmit").click(function(event){
 		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
 		if (checked==false) {	
@@ -79,64 +75,69 @@ function redrawMuteButtons() {
 	}
 }
 
-function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
-	//randomize how many/which tracks will be out of tune, and which direction
-	var tones=[0,0,0,0,0];
-	var degreeOutOfTune1="0";
-	var degreeOutOfTune2="0";
-	var degreeOutOfTune3="0";
-	var degreeOutOfTune4="0";
-	var degreeOutOfTune5="0";
-	var level=0;
-	//inject the silent file source for this song
-	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
-	//Calculates which instrument
-	var random= Math.random()*5;
-    random=Math.floor(random);
-    random=random+1;
-    //Chooses degree
-    var degree=Math.random()*2;
-    degree=Math.floor(degree);
-    switch(degree){
-    	case 0: 
-    		level="-1";
-    		break;
-    	case 1:
-    		level="1";
-    		break;
-    }
-	switch(random){
-		case 1:
-			degreeOutOfTune1=level;
-			tones[0]=level;
-			break;
-		case 2:
-			degreeOutOfTune2=level;
-			tones[1]=level;
-			break;
-		case 3:
-			degreeOutOfTune3=level;
-			tones[2]=level;
-			break;
-		case 4:
-			degreeOutOfTune4=level;
-			tones[3]=level;
-			break;
-		case 5:
-			degreeOutOfTune5=level;
-			tones[4]=level;
-			break;
+function createAudios(songName, difficultyLevel) {
+	var numberOutOfTune = game.levels[difficultyLevel-1].numberOutOfTune;
+	//5 minus value returned to ensure the levels match file names
+	var degreeOutOfTune = 5-game.levels[difficultyLevel-1].degreeOutOfTune;
+	var voicePattern = game.levels[difficultyLevel-1].voicePattern;
+	var numberOfVoices;
+	var voices;
+	for (var i = 0; i < game.songs.length; i++) {
+		if (game.songs[i].objName==songName) {
+			numberOfVoices = game.songs[i].voices.length;
+			voices=game.songs[i].voices;
+			alert(numberOfVoices);
+		}
 	}
 
+	$("#quizVoiceComponents").empty();
+	var quizContentAppend = "";
+
+	for (var i=1; i<=numberOfVoices; i++) {
+		var voiceName = voices[i-1];
+		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
+		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
+		quizContentAppend += 	'<input type="button" id="mute'+i+'" class="m-btn blue" value="Mute"> <span>'+voiceName+' Volume</span>';
+		quizContentAppend += 	'<ul class="choices">';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">Sharp </li>';
+		quizContentAppend += 	'</ul></div><br>';
+	}
+
+	$("#quizVoiceComponents").html(quizContentAppend);
+
+
+	// if (degreeOutOfTune = 4) {
+	// 	degreeOutOfTune =
+	// } else if (degreeOutOfTune = 3) {
+	// 	degreeOutOfTune
+	// } else if (degreeOutOfTune = 2) {
+	// 	degreeOutOfTune
+	// } else if (degreeOutOfTune = 1) {
+	// 	degreeOutOfTune
+	// } 
+
+	//randomize how many will be out of tune
+	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
+	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
+	alert(OutOfTuneArray);
+
+	
+
 	audio0 = document.getElementById("audio0");
-	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + degreeOutOfTune1 + ".mp3");
-	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + degreeOutOfTune2 + ".mp3");
-	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + degreeOutOfTune3 + ".mp3");
-	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + degreeOutOfTune4 + ".mp3");
-	audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + degreeOutOfTune5 + ".mp3");
+	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + OutOfTuneArray[0] + ".mp3");
+	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + OutOfTuneArray[1] + ".mp3");
+	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + OutOfTuneArray[2] + ".mp3");
+	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + OutOfTuneArray[3] + ".mp3");
 	return tones;
 
-
+	if(numberOfVoices==4) {
+		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "0" + ".mp3");
+	}else{
+		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + OutOfTuneArray[4] + ".mp3");
+	}
+	hangInteractions();
 }
 
 function hangInteractions() {
@@ -293,6 +294,145 @@ function hangInteractions() {
 	});
 }
 
+function randomizeNumberOutOfTune(numberOutOfTune) {
+	if (numberOutOfTune==1) {
+		var rand = Math.floor(Math.random()*10);
+		if (rand == 0) {
+			return 0;
+		} else {
+			return 1;
+		}
+	} else if (numberOutOfTune=2) {
+		var rand = Math.floor(Math.random()*10);
+		if (rand == 0) {
+			return 0;
+		} else if (rand <= 3) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+}
+//All the level specifications!!!!
+function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern) {
+	var OutofTuneArray;
+	var sOrf1=sharpOrFlat();
+	var sOrf2=sharpOrFlat();
+	var valueOutOfTune1=sOrf1+degreeOutOfTune.toString();
+	var valueOutOfTune2=sOrf2+degreeOutOfTune.toString();
+	if(numberOutOfTune==0){
+		if(numberOfVoices==5){
+			OutofTuneArray=["0","0","0","0","0"];
+			return OutofTuneArray;
+		}else{
+			OutofTuneArray=["0","0","0","0"];
+			return OutofTuneArray;
+		}
+	}
+	if (numberOfVoices == 4) {
+		OutofTuneArray=[0,0,0,0];
+		if (numberOutOfTune==1) {
+			if(voicePattern==1){
+				var temp=Math.floor(Math.random()*2);
+				if(temp==0){
+					OutofTuneArray[0]=valueOutOfTune1;
+				}else{
+					OutofTuneArray[3]=valueOutOfTune1;
+				}
+			}
+			if(voicePattern==2){
+				var temp=Math.floor(Math.random()*2);
+				if(temp==0){
+					OutofTuneArray[1]=valueOutOfTune1;
+				}else{
+					OutofTuneArray[2]=valueOutOfTune1;
+				}
+
+			}
+			if(voicePattern==3){
+				var temp=Math.floor(Math.random()*numberOfVoices);
+				OutofTuneArray[temp]=valueOutOfTune1;
+			}
+			
+		}else{
+			if(voicePattern==1){
+				OutofTuneArray[0]=valueOutOfTune1;
+				OutofTuneArray[3]=valueOutOfTune2;
+			}else if(voicePattern==2){
+				OutofTuneArray[1]=valueOutOfTune1;
+				OutofTuneArray[2]=valueOutOfTune2;
+			}else{
+				var arr=[0,1,2,3];
+				arr=shuffle(arr);
+				OutofTuneArray[arr[0]]=valueOutOfTune1;
+				OutofTuneArray[arr[1]]=valueOutOfTune2;
+			}
+		}
+	} else if (numberOfVoices == 5) {
+		OutofTuneArray=[0,0,0,0,0];
+		if (numberOutOfTune==1) {
+			if(voicePattern==1){
+				var temp=Math.floor(Math.random()*2);
+				if(temp==0){
+					OutofTuneArray[0]=valueOutOfTune1;
+				}else{
+					OutofTuneArray[4]=valueOutOfTune1;
+				}
+			}
+			if(voicePattern==2){
+				var temp=Math.floor(Math.random()*3)+1;
+				OutofTuneArray[temp]=valueOutOfTune1;
+			}
+			if(voicePattern==3){
+				var temp=Math.floor(Math.random()*numberOfVoices);
+				OutofTuneArray[temp]=valueOutOfTune1;
+			}
+		}else{
+			if(voicePattern==1){
+				OutofTuneArray[0]=valueOutOfTune1;
+				OutofTuneArray[4]=valueOutOfTune2;
+			}else if(voicePattern==2){
+				var arr=[1,2,3];
+				arr=shuffle(arr);
+				OutofTuneArray[1]=valueOutOfTune1;
+				OutofTuneArray[2]=valueOutOfTune2;
+			}else{
+				var arr=[0,1,2,3,4];
+				arr=shuffle(arr);
+				OutofTuneArray[arr[0]]=valueOutOfTune1;
+				OutofTuneArray[arr[1]]=valueOutOfTune2;
+			}
+		}
+
+	}
+	return OutofTuneArray
+}
+function sharpOrFlat(){
+	var sharpFlat=Math.floor(Math.random()*2);
+		if(sharpFlat==0){
+			return "";
+		}else{
+			return "-";
+		}
+}
+function shuffle(array){
+	 var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 
 /*

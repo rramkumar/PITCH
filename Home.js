@@ -1,9 +1,10 @@
 //globals 
 
-//var LEVEL_SPEC_JSON_PATH = "./levels.json";
 var game= {
 	songs: {},
 	levels: {},
+	currentSong: "",
+	currentLevel: 0,
 	LEVEL_SPEC_JSON_PATH: "./levels.json",
 	SONGS_SPEC_JSON_PATH: "./songs.json"
 };
@@ -18,10 +19,11 @@ $(document).ready(function(){
 		 if(checked2==false) {
 		 	alert("Level not selected");
 		} else {
+			game.currentSong = $('input[name=song]:checked').val();
+			game.currentLevel = parseInt($('input[name=level]:checked').val().substring(5));
+			tones=createAudios(game.currentSong, game.currentLevel);
+			//hangInteractions(); // method is in Quiz.js
 			showDiv("quiz");
-			var names=($('input[name=song]:checked').val());
-			alert(names);
-			tones=createAudios(names, 1, 1);
 		}
 	});
 
@@ -30,14 +32,12 @@ $(document).ready(function(){
 	});
 
 	parseJSONFiles();
-	//makeSelectionButtons();
 });
 
 function showDiv(which) {
 	if (which=="home") {
-		//reset homepage options
-		$(".songSelectRadio").removeAttr("checked");
-		$(".levelSelectRadio").removeAttr("checked");
+		audio0.pause();
+		audio0.currentTime=0;
 
 		//do the move
 		$("#homeDiv").attr("divIsVisible", "true");
@@ -57,14 +57,16 @@ function showDiv(which) {
 		$("#tone5inTune").prop("checked", true);
 	}
 	if (which=="sandbox") {
+		audio0.pause();
+		audio0.currentTime=0;
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "false");
 		$("#sandboxDiv").attr("divIsVisible", "true");
 	}
 
-	audio0.pause();
-	audio0.currentTime=0;
 
+	
+	
 	//reset custom player
 
 	

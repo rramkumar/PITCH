@@ -3,5 +3,10 @@
         "song":"Come Sweet Death",
         "objName":"comeSweetDeath",
         "voices":["Flute","Clarinet","Alto Sax","Tuba"]
+    },
+    {
+        "song":"potato",
+        "objName":"potato",
+        "voices":["batman","jesus","Alto Sax","Tuba","potato"]
     }
 ]
