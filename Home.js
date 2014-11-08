@@ -30,7 +30,7 @@ $(document).ready(function(){
 	});
 
 	parseJSONFiles();
-	makeSelectionButtons();
+	//makeSelectionButtons();
 });
 
 function showDiv(which) {
@@ -95,7 +95,14 @@ function parseJSONFiles() {
   		console.log( "success" );
 	})
   	.done(function() {
-		console.log(game.songs);
+		$(".songs").empty();
+	    var songsInsert = "";
+	    $.each(game.songs, function(index, obj) {
+	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objname+'">' + obj.title + ' </li>';
+	    	console.log(obj.title);
+	    })
+
+	    $(".songs").html(songsInsert);
     	console.log( "Done" );
 	})
 	.fail(function() {
@@ -112,6 +119,15 @@ function parseJSONFiles() {
 		console.log( "success" );
 	})
   	.done(function() {
+  		$(".levels").empty();
+
+	    var levelsInsert = "";
+	    $.each(game.levels, function(index, obj) {
+	    	levelsInsert += '<li><input type="radio" name="level" value="level'+(index+1)+'"> Level ' + (index+1) + ' </li>';
+	    	//console.log(obj.level);
+	    })
+
+	    $(".levels").html(levelsInsert);
 		console.log( "Done" );
 	})
 	.fail(function() {
@@ -125,27 +141,12 @@ function parseJSONFiles() {
 function makeSelectionButtons() {
 	// songs
 	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
-		$(".songs").empty();
-	    var songsInsert = "";
-	    $.each(game.songs, function(index, obj) {
-	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objname+'">' + obj.title + ' </li>';
-	    	console.log(obj.title);
-	    })
-
-	    $(".songs").html(songsInsert);
+		
 	}, 50);
 	
 
 	// levels
 	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
-		$(".levels").empty();
-
-	    var levelsInsert = "";
-	    $.each(game.levels, function(index, obj) {
-	    	levelsInsert += '<li><input type="radio" name="level" value="level'+(index+1)+'"> Level ' + (index+1) + ' </li>';
-	    	//console.log(obj.level);
-	    })
-
-	    $(".levels").html(levelsInsert);
+		
     }, 50);
 }
