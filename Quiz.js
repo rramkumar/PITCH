@@ -15,6 +15,8 @@ var audio4Muted=false;
 var audio5Muted=false;
 var tones;
 
+var game;
+
 
 $(document).ready(function() {
 	
@@ -25,30 +27,28 @@ $(document).ready(function() {
 	hangInteractions();
 
 
-$("#quizSubmit").click(function(event){
- var checked=(($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
- if(checked==false)
- {	
- 	alert("Answer Not Selected");
-}else{
-	
-	var correct=true;
-	for(var i=0; i<tones.length; i++){
-		var temp1=tones[i];
-		var temp3=i+1;
-		var temp4="tone" + temp3.toString();
-		var temp2=($('input[name="'+temp4+'"]:checked').val());
-		if(temp1!=temp2){
-			correct=false;
+	$("#quizSubmit").click(function(event){
+		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
+		if (checked==false) {	
+			alert("Answer Not Selected");
+		} else {
+			var correct=true;
+			for (var i=0; i<tones.length; i++) {
+				var temp1=tones[i];
+				var temp3=i+1;
+				var temp4="tone" + temp3.toString();
+				var temp2=($('input[name="'+temp4+'"]:checked').val());
+				if (temp1!=temp2) {
+					correct=false;
+				}
+			}
+			if (correct) {
+				alert("You win!");
+			} else {
+				alert("try again");
+			}
 		}
-	}
-	if(correct){
-		alert("You win!");
-	}else{
-		alert("try again");
-	}
-}
-});
+	});
 
 });
 
@@ -82,7 +82,11 @@ function redrawMuteButtons() {
 }
 
 function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
-	//randomize how many/which tracks will be out of tune, and which direction
+	//Reads the JSON File
+	var levels=($('input[name=level]:checked').val());
+	var datas=$.getJSON( "test.json", function( data ) {
+	});
+		//randomize how many/which tracks will be out of tune, and which direction
 	var tones=[0,0,0,0,0];
 	var degreeOutOfTune1="0";
 	var degreeOutOfTune2="0";
@@ -137,6 +141,8 @@ function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
 	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + degreeOutOfTune4 + ".mp3");
 	audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + degreeOutOfTune5 + ".mp3");
 	return tones;
+
+
 }
 
 function hangInteractions() {
@@ -156,8 +162,8 @@ function hangInteractions() {
 		audio4.play();
 		audio5.play();
 		audio1.pause();
-		audio2.pause();
 		audio3.pause();
+		audio2.pause();
 		audio4.pause();
 		audio5.pause();
 		setTimeout(function(){audio1.currentTime=audio0.currentTime;}, 100);
@@ -292,6 +298,8 @@ function hangInteractions() {
 		}
 	});
 }
+
+
 
 /*
 audioPlayer.play();

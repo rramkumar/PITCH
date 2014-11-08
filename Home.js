@@ -1,3 +1,13 @@
+//globals 
+
+//var LEVEL_SPEC_JSON_PATH = "./levels.json";
+var game= {
+	songs: {},
+	levels: {},
+	LEVEL_SPEC_JSON_PATH: "./levels.json",
+	SONGS_SPEC_JSON_PATH: "./songs.json"
+};
+
 $(document).ready(function(){
 	$("#homeSubmit").click(function(event){
 		 var checked=($('input[name=song]:checked').is(':checked'));
@@ -18,6 +28,9 @@ $(document).ready(function(){
 	$("#headerDivTitle").on("click", function(event) {
 		showDiv("home");
 	});
+
+	parseJSONFiles();
+	makeSelectionButtons();
 });
 
 function showDiv(which) {
@@ -73,4 +86,66 @@ function showDiv(which) {
 	$("#mute3").val("Mute");
 	$("#mute4").val("Mute");
 	$("#mute5").val("Mute");
+}
+
+function parseJSONFiles() {
+	//songs
+	var getSongsData = $.getJSON(game.SONGS_SPEC_JSON_PATH, function(json) {
+		game.songs=json;
+  		console.log( "success" );
+	})
+  	.done(function() {
+		console.log(game.songs);
+    	console.log( "Done" );
+	})
+	.fail(function() {
+	    console.log( "error" );
+	})
+	.always(function() {
+	    console.log( "complete:Enjoy the game" );
+	});
+
+	// levels
+	var getLevelData = $.getJSON(game.LEVEL_SPEC_JSON_PATH, function(json) {
+
+		game.levels=json;
+		console.log( "success" );
+	})
+  	.done(function() {
+		console.log( "Done" );
+	})
+	.fail(function() {
+	    console.log( "error" );
+	})
+	.always(function() {
+	    console.log( "complete:Enjoy the game" );
+	});
+}
+
+function makeSelectionButtons() {
+	// songs
+	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
+		$(".songs").empty();
+	    var songsInsert = "";
+	    $.each(game.songs, function(index, obj) {
+	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objname+'">' + obj.title + ' </li>';
+	    	console.log(obj.title);
+	    })
+
+	    $(".songs").html(songsInsert);
+	}, 0);
+	
+
+	// levels
+	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
+		$(".levels").empty();
+
+	    var levelsInsert = "";
+	    $.each(game.levels, function(index, obj) {
+	    	levelsInsert += '<li><input type="radio" name="level" value="level'+(index+1)+'"> Level ' + (index+1) + ' </li>';
+	    	//console.log(obj.level);
+	    })
+
+	    $(".levels").html(levelsInsert);
+    }, 0);
 }
