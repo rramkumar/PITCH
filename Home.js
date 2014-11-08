@@ -96,9 +96,10 @@ function parseJSONFiles() {
 	})
   	.done(function() {
 		$(".songs").empty();
+
 	    var songsInsert = "";
 	    $.each(game.songs, function(index, obj) {
-	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objname+'">' + obj.title + ' </li>';
+	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
 	    });
 
 	    $(".songs").html(songsInsert);
