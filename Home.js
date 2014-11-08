@@ -133,7 +133,7 @@ function makeSelectionButtons() {
 	    })
 
 	    $(".songs").html(songsInsert);
-	}, 0);
+	}, 15);
 	
 
 	// levels
@@ -147,5 +147,5 @@ function makeSelectionButtons() {
 	    })
 
 	    $(".levels").html(levelsInsert);
-    }, 0);
+    }, 15);
 }
