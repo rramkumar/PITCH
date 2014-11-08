@@ -6,24 +6,23 @@ Each Level is defined by three parameters
 
 Each category is broken up as follows:
 1. Number of Instruments
-	1. Level 1: (0 or 1 Instrument out of tune)
-	2. Level 2: (0-2 Instruments out of tune)
-	3. Level 3: (0-3 Instruments out of tune)
+	1: 0-1 Instrument out of tune
+	2: 0-2 Instruments out of tune
 2. Level out of Tune
-	1. Level 1: (Instrument is the most out of tune)
-	2. Level 2: (Insttument is at a middle level of out of tune)
-	3. Level 3: (Instrument is at the lowest level out of tune)
-3. Voices out of Tune
-	1. Level 1: (1 instrument out of tune (outside voices only))
-	2. Level 2: (0-2 of outside voices are out of tune)
-	3. Level 3: (0-1 of outside voices plus 0-1 of any other voice)
-	4. Level 4: (0-2 of any instrument out of tune)
+	1: very out of tune
+	2: fairly of out of tune
+	3: slightly out of tune
+	4: barely out of tune
+3. voicePattern out of Tune
+	1: outside voices only
+	2: inside voice only
+	3: any voices
 
 Example Level Specification:
-	"Level": "1",   //Level Name 
-		"Number": "1", //States that the number of instrument of out tune is a level 1
-		"Tune": "1", //States that the level out of tune is at level 1
-		"Voices": "1", //States that the number of voices out of tune is at level 1
+	"level":6,   			//Level Name 
+	"numberOutOfTune":2, 	//number of instruments of out tune is 0-2
+	"tune":2, 				//fairly of out of tune
+	"voicePattern":1, 		//only outside voices may be out of tune
 
-To change a level, change the value in quotes to match on of the levels listed above
+To change a level, change the valueafter the colon to match one of the options listed above
 
