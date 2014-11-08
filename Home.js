@@ -138,16 +138,3 @@ function parseJSONFiles() {
 	    console.log( "complete:Enjoy the game" );
 	});
 }
-
-function makeSelectionButtons() {
-	// songs
-	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
-		
-	}, 50);
-	
-
-	// levels
-	setTimeout(function () { // if this isn't in a setTimeout, jquery makes a bunch of poor life choices and doesn't do anything
-		
-    }, 50);
-}

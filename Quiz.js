@@ -15,8 +15,6 @@ var audio4Muted=false;
 var audio5Muted=false;
 var tones;
 
-var game;
-
 
 $(document).ready(function() {
 	
