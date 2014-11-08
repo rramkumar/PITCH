@@ -82,11 +82,7 @@ function redrawMuteButtons() {
 }
 
 function createAudios(songName, numberOutOfTune, degreeOutOfTune) {
-	//Reads the JSON File
-	var levels=($('input[name=level]:checked').val());
-	var datas=$.getJSON( "test.json", function( data ) {
-	});
-		//randomize how many/which tracks will be out of tune, and which direction
+	//randomize how many/which tracks will be out of tune, and which direction
 	var tones=[0,0,0,0,0];
 	var degreeOutOfTune1="0";
 	var degreeOutOfTune2="0";
