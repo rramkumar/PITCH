@@ -100,7 +100,7 @@ function parseJSONFiles() {
 	    var songsInsert = "";
 	    $.each(game.songs, function(index, obj) {
 	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objName+'">' + obj.song + ' </li>';
-	    	console.log(obj.objName);
+	    	console.log(obj.song);
 	    });
 
 	    $(".songs").html(songsInsert);
