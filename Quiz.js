@@ -121,31 +121,29 @@ function createAudios(songName, difficultyLevel) {
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
-	alert(OutOfTuneArray);
-
-	
-
+	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
-	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + OutOfTuneArray[0] + ".mp3");
-	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + OutOfTuneArray[1] + ".mp3");
-	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + OutOfTuneArray[2] + ".mp3");
-	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + OutOfTuneArray[3] + ".mp3");
-	return tones;
+	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + 0 + ".mp3");
+	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + 0 + ".mp3");
+	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + 0 + ".mp3");
+	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + 0 + ".mp3");
 
 	if(numberOfVoices==4) {
 		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "0" + ".mp3");
 	}else{
-		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + OutOfTuneArray[4] + ".mp3");
+		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + 0 + ".mp3");
 	}
-	hangInteractions();
+	return tones;
 }
 
-function hangInteractions() {
+function hangInteractions(tester) {
 	audio1.load();
 	audio2.load();
 	audio3.load();
 	audio4.load();
-	audio5.load();
+	if(numVoices>=5){
+		audio5.load();
+	}
 		
 	//play all Audio objects when the master audio element is played
 	//this starts all of them to avoid future startup costs, then pauses them as fast as possible
@@ -155,19 +153,24 @@ function hangInteractions() {
 		audio2.play();
 		audio3.play();
 		audio4.play();
-		audio5.play();
+		if(numVoices>=5){
+			audio5.play();
+		}
 		audio1.pause();
 		audio3.pause();
 		audio2.pause();
 		audio4.pause();
-		audio5.pause();
+		if(numVoices>=5){
+			audio5.pause();
+		}
 		setTimeout(function(){audio1.currentTime=audio0.currentTime;}, 100);
 		setTimeout(function(){audio2.currentTime=audio0.currentTime;}, 100);
 		setTimeout(function(){audio3.currentTime=audio0.currentTime;}, 100);
 		setTimeout(function(){audio4.currentTime=audio0.currentTime;}, 100);
-		setTimeout(function(){audio5.currentTime=audio0.currentTime;}, 100);
-
-		setTimeout(function(){audio1.play();audio2.play();audio3.play();audio4.play();audio5.play();}, 100);
+		if(numVoices>=5){
+			setTimeout(function(){audio5.currentTime=audio0.currentTime;}, 100);
+		}	
+		setTimeout(function(){audio1.play();audio2.play();audio3.play();audio4.play();if(numVoices>=5){audio5.play();}}, 100);
 	});
 
 	//pause all Audio objects when the master audio element is paused
@@ -176,7 +179,9 @@ function hangInteractions() {
 		audio2.pause();
 		audio3.pause();
 		audio4.pause();
-		audio5.pause();
+		if(numVoices>=5){
+			audio5.pause();
+		}
 	});
 
 	//when the master audio element is clicked on, check for muted/unmuted state
@@ -189,18 +194,24 @@ function hangInteractions() {
 				audio2.muted=true;
 				audio3.muted=true;
 				audio4.muted=true;
-				audio5.muted=true;
+				if(numVoices>=5){
+					audio5.muted=true;
+				}
 				$("#mute1").val("Unmute");
 				$("#mute2").val("Unmute");
 				$("#mute3").val("Unmute");
 				$("#mute4").val("Unmute");
-				$("#mute5").val("Unmute");
+				if(numVoices>=5){
+					$("#mute5").val("Unmute");
+				}
 			} else {
 				audio1.muted=audio1Muted;
 				audio2.muted=audio2Muted;
 				audio3.muted=audio3Muted;
 				audio4.muted=audio4Muted;
-				audio5.muted=audio5Muted;
+				if(numVoices>=5){
+					audio5.muted=audio5Muted;
+				}
 				redrawMuteButtons();
 			}}, null);
 	});
@@ -211,12 +222,16 @@ function hangInteractions() {
 		$("#volume2").val(audio0.volume);
 		$("#volume3").val(audio0.volume);
 		$("#volume4").val(audio0.volume);
-		$("#volume5").val(audio0.volume);
+		if(numVoices>=5){
+			$("#volume5").val(audio0.volume);
+		}
 		audio1.volume = $("#volume1").val();
 		audio2.volume = $("#volume2").val();
 		audio3.volume = $("#volume3").val();
 		audio4.volume = $("#volume4").val();
-		audio5.volume = $("#volume5").val();
+		if(numVoices>=5){
+			audio5.volume = $("#volume5").val();
+		}
 	});
 
 	//when the mouse is moved on volume sliders, change the volume property of the audio object
@@ -232,10 +247,11 @@ function hangInteractions() {
 	$("#volume4").mousemove(function(event) {
 		audio4.volume = $("#volume4").val();
 	});
-	$("#volume5").mousemove(function(event) {
-		audio5.volume = $("#volume5").val();
-	});
-
+	if(numVoices>=5){
+		$("#volume5").mousemove(function(event) {
+			audio5.volume = $("#volume5").val();
+		});
+	}
 	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
 	$("#mute1").on('click', function(event) {
 		if (audio1.muted) {
@@ -330,7 +346,7 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 		}
 	}
 	if (numberOfVoices == 4) {
-		OutofTuneArray=[0,0,0,0];
+		OutofTuneArray=["0","0","0","0"];
 		if (numberOutOfTune==1) {
 			if(voicePattern==1){
 				var temp=Math.floor(Math.random()*2);
@@ -369,7 +385,7 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			}
 		}
 	} else if (numberOfVoices == 5) {
-		OutofTuneArray=[0,0,0,0,0];
+		OutofTuneArray=["0","0","0","0","0"];
 		if (numberOutOfTune==1) {
 			if(voicePattern==1){
 				var temp=Math.floor(Math.random()*2);

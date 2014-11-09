@@ -8,6 +8,7 @@ var game= {
 	LEVEL_SPEC_JSON_PATH: "./levels.json",
 	SONGS_SPEC_JSON_PATH: "./songs.json"
 };
+var numVoices;
 
 $(document).ready(function(){
 	$("#homeSubmit").click(function(event){
@@ -18,11 +19,17 @@ $(document).ready(function(){
 		 var checked2=($('input[name=level]:checked').is(':checked'));
 		 if(checked2==false) {
 		 	alert("Level not selected");
-		} else {
+		} if(checked==checked2==true) {
 			game.currentSong = $('input[name=song]:checked').val();
 			game.currentLevel = parseInt($('input[name=level]:checked').val().substring(5));
+			for (var i = 0; i < game.songs.length; i++) {
+				if (game.songs[i].objName==game.currentSong) {
+					numVoices = game.songs[i].voices.length;
+					voices=game.songs[i].voices;
+				}
+			}
 			tones=createAudios(game.currentSong, game.currentLevel);
-			//hangInteractions(); // method is in Quiz.js
+			hangInteractions(); // method is in Quiz.js
 			showDiv("quiz");
 		}
 	});
@@ -75,19 +82,26 @@ function showDiv(which) {
 	volume2.value=1;
 	volume3.value=1;
 	volume4.value=1;
-	volume5.value=1;
+	if(numVoices>=5){
+		volume5.value=1;
+	}
+
 
 	//mute button
 	audio1.muted=false;
 	audio2.muted=false;
 	audio3.muted=false;
 	audio4.muted=false;
-	audio5.muted=false;
+	if(numVoices>=5){
+		audio5.muted=false;
+	}
 	$("#mute1").val("Mute");
 	$("#mute2").val("Mute");
 	$("#mute3").val("Mute");
 	$("#mute4").val("Mute");
-	$("#mute5").val("Mute");
+	if(numVoices>=5){
+		$("#mute5").val("Mute");
+	}
 }
 
 function parseJSONFiles() {
