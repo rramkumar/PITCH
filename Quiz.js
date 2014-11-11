@@ -22,7 +22,11 @@ $(document).ready(function() {
 
 	
 	$("#quizSubmit").click(function(event){
-		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked'))&&($('input[name=tone5]:checked').is(':checked')))
+		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked')))
+		// check 5th answer if there's a 5th voice
+		if (numVoices >= 5) {
+			checked = checked&&($('input[name=tone5]:checked').is(':checked'));
+		}
 		if (checked==false) {	
 			alert("Answer Not Selected");
 		} else {
@@ -78,6 +82,8 @@ function redrawMuteButtons() {
 function createAudios(songName, difficultyLevel) {
 	var numberOutOfTune = game.levels[difficultyLevel-1].numberOutOfTune;
 	//5 minus value returned to ensure the levels match file names
+	// files are named 10,11,12,13,14 in order of increasing out-of-tune-ness,
+	// whereas difficulties are 1, 2, 3, 4 in order of increasing difficulty of perception (i.e. decreasing out-of-tune-ness)
 	var degreeOutOfTune = 5-game.levels[difficultyLevel-1].degreeOutOfTune;
 	var voicePattern = game.levels[difficultyLevel-1].voicePattern;
 	var numberOfVoices;
@@ -86,7 +92,6 @@ function createAudios(songName, difficultyLevel) {
 		if (game.songs[i].objName==songName) {
 			numberOfVoices = game.songs[i].voices.length;
 			voices=game.songs[i].voices;
-			alert(numberOfVoices);
 		}
 	}
 
@@ -108,16 +113,6 @@ function createAudios(songName, difficultyLevel) {
 	$("#quizVoiceComponents").html(quizContentAppend);
 
 
-	// if (degreeOutOfTune = 4) {
-	// 	degreeOutOfTune =
-	// } else if (degreeOutOfTune = 3) {
-	// 	degreeOutOfTune
-	// } else if (degreeOutOfTune = 2) {
-	// 	degreeOutOfTune
-	// } else if (degreeOutOfTune = 1) {
-	// 	degreeOutOfTune
-	// } 
-
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
@@ -134,7 +129,7 @@ function createAudios(songName, difficultyLevel) {
 	}else{
 		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + "0" + ".mp3");
 	}
-	return tones;
+	return OutOfTuneArray;
 }
 
 function hangInteractions(tester) {
