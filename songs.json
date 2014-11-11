@@ -1,12 +1,12 @@
 [
     {
-        "song":"Come Sweet Death",
+        "title":"Come Sweet Death",
         "objName":"comeSweetDeath",
         "voices":["Flute","Clarinet","Alto Sax","Tuba"]
     },
     {
-        "song":"potato",
+        "title":"potato",
         "objName":"potato",
-        "voices":["batman","jesus","Alto Sax","Tuba","potato"]
+        "voices":["batman","ninja","Alto Sax","Tuba","potato"]
     }
 ]

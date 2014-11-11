@@ -3,7 +3,8 @@
 var game= {
 	songs: {},
 	levels: {},
-	currentSong: "",
+	currentSongTitle: "",
+	currentSongObjName: "",
 	currentLevel: 0,
 	LEVEL_SPEC_JSON_PATH: "./levels.json",
 	SONGS_SPEC_JSON_PATH: "./songs.json"
@@ -20,15 +21,15 @@ $(document).ready(function(){
 		 if(checked2==false) {
 		 	alert("Level not selected");
 		} if(checked==checked2==true) {
-			game.currentSong = $('input[name=song]:checked').val();
+			game.currentSongObjName = $('input[name=song]:checked').val();
 			game.currentLevel = parseInt($('input[name=level]:checked').val().substring(5));
 			for (var i = 0; i < game.songs.length; i++) {
-				if (game.songs[i].objName==game.currentSong) {
+				if (game.songs[i].objName==game.currentSongObjName) {
 					numVoices = game.songs[i].voices.length;
-					voices=game.songs[i].voices;
+					game.currentSongTitle = game.songs[i].title;
 				}
 			}
-			tones=createAudios(game.currentSong, game.currentLevel);
+			tones=createAudios(game.currentSongObjName, game.currentLevel); // method is in Quiz.js
 			hangInteractions(); // method is in Quiz.js
 			showDiv("quiz");
 		}
@@ -52,6 +53,9 @@ function showDiv(which) {
 		$("#sandboxDiv").attr("divIsVisible", "false");
 	}
 	if (which=="quiz") {
+		audio0.pause();
+		audio0.currentTime=0;
+
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "true");
 		$("#sandboxDiv").attr("divIsVisible", "false");
@@ -61,7 +65,11 @@ function showDiv(which) {
 		$("#tone2inTune").prop("checked", true);
 		$("#tone3inTune").prop("checked", true);
 		$("#tone4inTune").prop("checked", true);
-		$("#tone5inTune").prop("checked", true);
+		if (numVoices >= 5) {
+			$("#tone5inTune").prop("checked", true);
+		}
+
+		$("#quizTitle").html(game.currentSongTitle + ', Difficultly Level ' + game.currentLevel);
 	}
 	if (which=="sandbox") {
 		audio0.pause();
@@ -115,8 +123,8 @@ function parseJSONFiles() {
 
 	    var songsInsert = "";
 	    $.each(game.songs, function(index, obj) {
-	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objName+'">' + obj.song + ' </li>';
-	    	console.log(obj.song);
+	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
+	    	console.log(obj.title);
 	    });
 
 	    $(".songs").html(songsInsert);

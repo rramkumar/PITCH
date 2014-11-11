@@ -36,12 +36,24 @@ $(document).ready(function() {
 				var temp3=i+1;
 				var temp4="tone" + temp3.toString();
 				var temp2=($('input[name="'+temp4+'"]:checked').val());
-				if (temp1!=temp2) {
-					correct=false;
+				temp1=parseInt(temp1);
+				temp2=parseInt(temp2);
+				
+				if (temp1 < 0 && temp2 >=0) {
+					correct = false;
+				}
+				if (temp1 == 0 && temp2 != 0) {
+					correct = false;
+				}
+				if (temp1 > 0 && temp2 <= 0) {
+					correct = false;
 				}
 			}
 			if (correct) {
 				alert("You win!");
+				showDiv("quiz");
+				setTimeout(function(){tones=createAudios(game.currentSongObjName, game.currentLevel);},1000); 
+				correct=false;
 			} else {
 				alert("try again");
 			}
@@ -132,7 +144,7 @@ function createAudios(songName, difficultyLevel) {
 	return OutOfTuneArray;
 }
 
-function hangInteractions(tester) {
+function hangInteractions() {
 	audio1.load();
 	audio2.load();
 	audio3.load();
@@ -171,6 +183,7 @@ function hangInteractions(tester) {
 
 	//pause all Audio objects when the master audio element is paused
 	$("#audio0").on("pause", function(event) {
+		alert("I am ALIVE!");
 		audio1.pause();
 		audio2.pause();
 		audio3.pause();
