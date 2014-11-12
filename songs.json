@@ -5,8 +5,8 @@
         "voices":["Flute","Clarinet","Alto Sax","Tuba"]
     },
     {
-        "title":"potato",
+        "title":"Potato",
         "objName":"potato",
-        "voices":["batman","ninja","Alto Sax","Tuba","potato"]
+        "voices":["Batman","Ninja","Doctor","Tuba","Contrabass Potato"]
     }
 ]
