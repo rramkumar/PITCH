@@ -86,7 +86,6 @@ function createAudios(songName, difficultyLevel) {
 		if (game.songs[i].objName==songName) {
 			numberOfVoices = game.songs[i].voices.length;
 			voices=game.songs[i].voices;
-			alert(numberOfVoices);
 		}
 	}
 
@@ -124,7 +123,6 @@ function createAudios(songName, difficultyLevel) {
 	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
 	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + "0" + ".mp3");
-	alert(musicRelativePath + songName + "/" + songName + "1" + "0" + ".mp3");
 	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + "0" + ".mp3");
 	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + "0" + ".mp3");
 	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + "0" + ".mp3");
