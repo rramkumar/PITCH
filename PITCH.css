@@ -101,6 +101,11 @@ form{
   padding-right:30%;
 }
 
+.quizAnswerMark {
+  width: 16px;
+  height: 16px;
+}
+
 input {
   padding-top: 5px;
 }

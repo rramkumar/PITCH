@@ -7,7 +7,8 @@ var game= {
 	currentSongObjName: "",
 	currentLevel: 0,
 	LEVEL_SPEC_JSON_PATH: "./levels.json",
-	SONGS_SPEC_JSON_PATH: "./songs.json"
+	SONGS_SPEC_JSON_PATH: "./songs.json",
+	hints: false
 };
 var numVoices;
 
@@ -18,11 +19,10 @@ $(document).ready(function(){
 		 	alert("Song Not Selected");
 		 }
 		 var checked2=($('input[name=level]:checked').is(':checked'));
-		 if(checked2==false) {
-		 	alert("Level not selected");
-		} if(checked==checked2==true) {
+		 if(checked==true) {
 			game.currentSongObjName = $('input[name=song]:checked').val();
-			game.currentLevel = parseInt($('input[name=level]:checked').val().substring(5));
+			var selectElement = document.getElementById("levels");
+			game.currentLevel = parseInt(selectElement.options[selectElement.selectedIndex].value.substring(5));
 			for (var i = 0; i < game.songs.length; i++) {
 				if (game.songs[i].objName==game.currentSongObjName) {
 					numVoices = game.songs[i].voices.length;
@@ -70,6 +70,8 @@ function showDiv(which) {
 		}
 
 		$("#quizTitle").html(game.currentSongTitle + ', Difficultly Level ' + game.currentLevel);
+
+		$("#toggleHints").hide();
 	}
 	if (which=="sandbox") {
 		audio0.pause();
@@ -134,7 +136,7 @@ function parseJSONFiles() {
 	    console.log( "error" );
 	})
 	.always(function() {
-	    console.log( "complete:Enjoy the game" );
+	    console.log( "complete");
 	});
 
 	// levels
@@ -148,7 +150,7 @@ function parseJSONFiles() {
 
 	    var levelsInsert = "";
 	    $.each(game.levels, function(index, obj) {
-	    	levelsInsert += '<li><input type="radio" name="level" value="level'+(index+1)+'"> Level ' + (index+1) + ' </li>';
+	    	levelsInsert += '<option value="level'+(index+1)+'"> Level ' + (index+1) + ' </option>';
 	    	//console.log(obj.level);
 	    });
 
@@ -159,6 +161,6 @@ function parseJSONFiles() {
 	    console.log( "error" );
 	})
 	.always(function() {
-	    console.log( "complete:Enjoy the game" );
+	    console.log( "complete" );
 	});
 }

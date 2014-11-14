@@ -4,8 +4,10 @@ var audio2;
 var audio3;
 var audio4;
 var audio5;
+var drone1;
 
-var musicRelativePath = "assets/music/";
+var MUSIC_RELATIVE_PATH = "assets/music/";
+var IMAGE_RELATIVE_PATH = "assets/images/";
 
 //vars record whether each track is to be muted independent of muting by the master control in the audio tag
 var audio1Muted=false;
@@ -21,7 +23,7 @@ $(document).ready(function() {
 
 
 	
-	$("#quizSubmit").click(function(event){
+	$("#quizSubmit").click(function(event) {
 		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked')))
 		// check 5th answer if there's a 5th voice
 		if (numVoices >= 5) {
@@ -41,12 +43,15 @@ $(document).ready(function() {
 				
 				if (temp1 < 0 && temp2 >=0) {
 					correct = false;
-				}
-				if (temp1 == 0 && temp2 != 0) {
+					markCorrectOrIncorrect(i+1, false);
+				} else if (temp1 == 0 && temp2 != 0) {
 					correct = false;
-				}
-				if (temp1 > 0 && temp2 <= 0) {
+					markCorrectOrIncorrect(i+1, false);
+				} else if (temp1 > 0 && temp2 <= 0) {
 					correct = false;
+					markCorrectOrIncorrect(i+1, false);
+				} else {
+					markCorrectOrIncorrect(i+1, true);
 				}
 			}
 			if (correct) {
@@ -56,8 +61,24 @@ $(document).ready(function() {
 				correct=false;
 			} else {
 				alert("try again");
+				$("#toggleHints").show();
 			}
 		}
+	});
+
+	$("#toggleHints").on("click", function(event) {
+		if (game.hints) {
+			$("#toggleHints").html("Show Hints");
+		} else {
+			$("#toggleHints").html("Hide Hints");
+		}
+		game.hints = !game.hints;
+		$(".quizAnswerMark").toggle();
+	});
+	$("#toggleHints").hide();
+
+	$("#quizReturnHome").on("click", function(event) {
+		showDiv("home");
 	});
 
 });
@@ -93,7 +114,7 @@ function redrawMuteButtons() {
 
 function createAudios(songName, difficultyLevel) {
 	var numberOutOfTune = game.levels[difficultyLevel-1].numberOutOfTune;
-	//5 minus value returned to ensure the levels match file names
+	// 5 minus value returned to ensure the levels match file names
 	// files are named 10,11,12,13,14 in order of increasing out-of-tune-ness,
 	// whereas difficulties are 1, 2, 3, 4 in order of increasing difficulty of perception (i.e. decreasing out-of-tune-ness)
 	var degreeOutOfTune = 5-game.levels[difficultyLevel-1].degreeOutOfTune;
@@ -119,27 +140,44 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">Sharp </li>';
+		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
 
 	$("#quizVoiceComponents").html(quizContentAppend);
+	$("#quizDroneComponents").empty();
+	var quizDroneContent="";
+	for(var q=1; q<=1; q++){
+		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
+		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
+		quizDroneContent+='<input type="button" id="muteDrone'+q+'" class="m-btn blue" value="Unmute"> <span>'+'Drone'+ q +' Volume</span>';
+	}
+	$("#quizDroneComponents").html(quizDroneContent);
+	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
+	drone1.preload="auto";
+	drone1.loop=true;
+	drone1.load();
+	drone1.muted=true;
+	drone1.play();
+
+
 
 
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
-	$("#audio0").html("<source src=\"" + musicRelativePath + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
+	$("#audio0").html("<source src=\"" + MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
-	audio1 = new Audio(musicRelativePath + songName + "/" + songName + "1" + "0" + ".mp3");
-	alert(musicRelativePath + songName + "/" + songName + "1" + "0" + ".mp3");
-	audio2 = new Audio(musicRelativePath + songName + "/" + songName + "2" + "0" + ".mp3");
-	audio3 = new Audio(musicRelativePath + songName + "/" + songName + "3" + "0" + ".mp3");
-	audio4 = new Audio(musicRelativePath + songName + "/" + songName + "4" + "0" + ".mp3");
+	audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + "0" + ".mp3");
+	alert(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + "0" + ".mp3");
+	audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + "0" + ".mp3");
+	audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + "0" + ".mp3");
+	audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + "0" + ".mp3");
 
 	if(numberOfVoices==4) {
-		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "0" + ".mp3");
+		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3");
 	}else{
-		audio5 = new Audio(musicRelativePath + songName + "/" + songName + "5" + "0" + ".mp3");
+		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + "0" + ".mp3");
 	}
 	return OutOfTuneArray;
 }
@@ -317,6 +355,19 @@ function hangInteractions() {
 			$("#mute5").val("Unmute");
 		}
 	});
+	$("#muteDrone1").on('click', function(event){
+		if(drone1.muted){
+			console.log("the world is flat");
+			drone1.muted=false;
+			$("#muteDrone1").val("Mute");
+		}else{
+			drone1.muted=true;
+			$("#muteDrone1").val("Unmute");
+		}
+	});
+	$("#volumeDrone1").mousemove(function(event) {
+		drone1.volume = $("#volumeDrone1").val();
+	});
 }
 
 function randomizeNumberOutOfTune(numberOutOfTune) {
@@ -432,6 +483,15 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 	}
 	return OutofTuneArray
 }
+
+function markCorrectOrIncorrect(voiceNumber, correct) {
+	if (correct) {
+		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"correctMark.png");
+	} else {
+		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"incorrectMark.png");
+	}
+}
+
 function sharpOrFlat(){
 	var sharpFlat=Math.floor(Math.random()*2);
 		if(sharpFlat==0){
