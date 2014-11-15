@@ -1,12 +1,12 @@
 [
     {
         "title":"Come Sweet Death",
-        "objName":"comeSweetDeath",
+        "objName":"comeSweetDeath1",
         "voices":["Flute","Clarinet","Alto Sax","Tuba"]
     },
     {
         "title":"Potato",
         "objName":"potato",
-        "voices":["Batman","Ninja","Doctor","Tuba","Contrabass Potato"]
+        "voices":["Piccolo Potato","Soprano Potato","Alto Potato","Tenor Potato","Contrabass Potato"]
     }
 ]

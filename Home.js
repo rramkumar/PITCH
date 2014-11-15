@@ -72,6 +72,8 @@ function showDiv(which) {
 		$("#quizTitle").html(game.currentSongTitle + ', Difficultly Level ' + game.currentLevel);
 
 		$("#toggleHints").hide();
+		$("#toggleHints").html("Show Hints");
+		game.hints=false;
 	}
 	if (which=="sandbox") {
 		audio0.pause();
@@ -86,25 +88,18 @@ function showDiv(which) {
 	
 	//reset custom player
 
+
+
 	
-	//volumes
-	volume1.value=1;
-	volume2.value=1;
-	volume3.value=1;
-	volume4.value=1;
-	if(numVoices>=5){
-		volume5.value=1;
-	}
+	audio1Muted=false;
+	audio2Muted=false;
+	audio3Muted=false;
+	audio4Muted=false;
+	audio5Muted=false;
+	drone1.muted=true;
+	drone2.muted=true;
 
 
-	//mute button
-	audio1.muted=false;
-	audio2.muted=false;
-	audio3.muted=false;
-	audio4.muted=false;
-	if(numVoices>=5){
-		audio5.muted=false;
-	}
 	$("#mute1").val("Mute");
 	$("#mute2").val("Mute");
 	$("#mute3").val("Mute");
@@ -125,7 +120,7 @@ function parseJSONFiles() {
 
 	    var songsInsert = "";
 	    $.each(game.songs, function(index, obj) {
-	    	songsInsert += '<li><input type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
+	    	songsInsert += '<li><input class="songSelectRadio" type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
 	    	console.log(obj.title);
 	    });
 

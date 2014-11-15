@@ -29,9 +29,7 @@ $(document).ready(function() {
 		if (numVoices >= 5) {
 			checked = checked&&($('input[name=tone5]:checked').is(':checked'));
 		}
-		if (checked==false) {	
-			alert("Answer Not Selected");
-		} else {
+		else {
 			var correct=true;
 			for (var i=0; i<tones.length; i++) {
 				var temp1=tones[i];
@@ -86,29 +84,29 @@ $(document).ready(function() {
 //edit val of button for when the master audio element's mute is clicked to unmute
 function redrawMuteButtons() {
 	if (audio1.muted) {
-		$("#mute1").val("Unmute");
+		$("#mute1").html("Unmute");
 	} else {
-		$("#mute1").val("Mute");
+		$("#mute1").html("Mute");
 	}
 	if (audio2.muted) {
-		$("#mute2").val("Unmute");
+		$("#mute2").html("Unmute");
 	} else {
-		$("#mute2").val("Mute");
+		$("#mute2").html("Mute");
 	}
 	if (audio3.muted) {
-		$("#mute3").val("Unmute");
+		$("#mute3").html("Unmute");
 	} else {
-		$("#mute3").val("Mute");
+		$("#mute3").html("Mute");
 	}
 	if (audio4.muted) {
-		$("#mute4").val("Unmute");
+		$("#mute4").html("Unmute");
 	} else {
-		$("#mute4").val("Mute");
+		$("#mute4").html("Mute");
 	}
 	if (audio5.muted) {
-		$("#mute5").val("Unmute");
+		$("#mute5").html("Unmute");
 	} else {
-		$("#mute5").val("Mute");
+		$("#mute5").html("Mute");
 	}
 }
 
@@ -135,7 +133,7 @@ function createAudios(songName, difficultyLevel) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<input type="button" id="mute'+i+'" class="m-btn blue" value="Mute"> <span>'+voiceName+' Volume</span>';
+		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue">Mute</button><span> '+voiceName+' Volume</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
@@ -147,21 +145,24 @@ function createAudios(songName, difficultyLevel) {
 	$("#quizVoiceComponents").html(quizContentAppend);
 	$("#quizDroneComponents").empty();
 	var quizDroneContent="";
-	for(var q=1; q<=1; q++){
+	for(var q=1; q<=2; q++){
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<input type="button" id="muteDrone'+q+'" class="m-btn blue" value="Unmute"> <span>'+'Drone'+ q +' Volume</span>';
+		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" >Unmute</button> <span> '+'Drone'+ q +' Volume</span>';
 	}
 	$("#quizDroneComponents").html(quizDroneContent);
 	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
+	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
 	drone1.preload="auto";
 	drone1.loop=true;
 	drone1.load();
 	drone1.muted=true;
 	drone1.play();
-
-
-
+	drone2.preload="auto";
+	drone2.loop=true;
+	drone2.load();
+	drone2.muted=true;
+	drone2.play();
 
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
@@ -169,7 +170,6 @@ function createAudios(songName, difficultyLevel) {
 	$("#audio0").html("<source src=\"" + MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
 	audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + "0" + ".mp3");
-	alert(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + "0" + ".mp3");
 	audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + "0" + ".mp3");
 	audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + "0" + ".mp3");
 	audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + "0" + ".mp3");
@@ -221,7 +221,6 @@ function hangInteractions() {
 
 	//pause all Audio objects when the master audio element is paused
 	$("#audio0").on("pause", function(event) {
-		alert("I am ALIVE!");
 		audio1.pause();
 		audio2.pause();
 		audio3.pause();
@@ -244,12 +243,12 @@ function hangInteractions() {
 				if(numVoices>=5){
 					audio5.muted=true;
 				}
-				$("#mute1").val("Unmute");
-				$("#mute2").val("Unmute");
-				$("#mute3").val("Unmute");
-				$("#mute4").val("Unmute");
+				$("#mute1").html("Unmute");
+				$("#mute2").html("Unmute");
+				$("#mute3").html("Unmute");
+				$("#mute4").html("Unmute");
 				if(numVoices>=5){
-					$("#mute5").val("Unmute");
+					$("#mute5").html("Unmute");
 				}
 			} else {
 				audio1.muted=audio1Muted;
@@ -304,69 +303,82 @@ function hangInteractions() {
 		if (audio1.muted) {
 			audio1.muted=false;
 			audio1Muted=false;
-			$("#mute1").val("Mute");
+			$("#mute1").html("Mute");
 		} else {
 			audio1.muted=true;
 			audio1Muted=true;
-			$("#mute1").val("Unmute");
+			$("#mute1").html("Unmute");
 		}
 	});
 	$("#mute2").on('click', function(event) {
 		if (audio2.muted) {
 			audio2.muted=false;
 			audio2Muted=false;
-			$("#mute2").val("Mute");
+			$("#mute2").html("Mute");
 		} else {
 			audio2.muted=true;
 			audio2Muted=true;
-			$("#mute2").val("Unmute");
+			$("#mute2").html("Unmute");
 		}
 	});
 	$("#mute3").on('click', function(event) {
 		if (audio3.muted) {
 			audio3.muted=false;
 			audio3Muted=false;
-			$("#mute3").val("Mute");
+			$("#mute3").html("Mute");
 		} else {
 			audio3.muted=true;
 			audio3Muted=true;
-			$("#mute3").val("Unmute");
+			$("#mute3").html("Unmute");
 		}
 	});
 	$("#mute4").on('click', function(event) {
 		if (audio4.muted) {
 			audio4.muted=false;
 			audio4Muted=false;
-			$("#mute4").val("Mute");
+			$("#mute4").html("Mute");
 		} else {
 			audio4.muted=true;
 			audio4Muted=true;
-			$("#mute4").val("Unmute");
+			$("#mute4").html("Unmute");
 		}
 	});
 	$("#mute5").on('click', function(event) {
 		if (audio5.muted) {
 			audio5.muted=false;
 			audio5Muted=false;
-			$("#mute5").val("Mute");
+			$("#mute5").html("Mute");
 		} else {
 			audio5.muted=true;
 			audio5Muted=true;
-			$("#mute5").val("Unmute");
+			$("#mute5").html("Unmute");
 		}
 	});
 	$("#muteDrone1").on('click', function(event){
 		if(drone1.muted){
 			console.log("the world is flat");
 			drone1.muted=false;
-			$("#muteDrone1").val("Mute");
+			$("#muteDrone1").html("Mute");
 		}else{
 			drone1.muted=true;
-			$("#muteDrone1").val("Unmute");
+			$("#muteDrone1").html("Unmute");
 		}
 	});
 	$("#volumeDrone1").mousemove(function(event) {
 		drone1.volume = $("#volumeDrone1").val();
+	});
+	$("#muteDrone2").on('click', function(event){
+		if(drone2.muted){
+			console.log("the world is flat");
+			drone2.muted=false;
+			$("#muteDrone2").html("Mute");
+		}else{
+			drone2.muted=true;
+			$("#muteDrone2").html("Unmute");
+		}
+	});
+	$("#volumeDrone2").mousemove(function(event) {
+		drone2.volume = $("#volumeDrone2").val();
 	});
 }
 
