@@ -491,7 +491,7 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 				OutofTuneArray[arr[1]]=valueOutOfTune2;
 			}
 		}
-
+		//The answer is 42!!
 	}
 	return OutofTuneArray
 }

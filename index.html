@@ -28,16 +28,26 @@
 			<div class="content">
 				<h4 id="pageSubtitle">Personal Intonation Training, Computer Heuristics</h4>
 				<form class="songSelection" id="songs">
-					<h2>Please Select a Song</h2>
+					<h2>Select a Song</h2>
 				 	<ul class="songs">
 			 		</ul>
 				</form>
-				<form class="levelSelection">
-					<h2> Please Select a Difficulty</h2>
-					<select id="levels" class="levels">
-					</select>
-				</form>
-				<button class="m-btn blue" id="homeSubmit" name="submit" type="button">Submit </button>
+				<table>
+					<tr>
+						<td>
+							<h3>Challenge your listening skills with the Quiz</h3>
+							<h4>Select a difficulty for the Quiz:</h4>
+							<select id="levels" class="levels">
+							</select>
+							<button class="m-btn blue" id="homeSubmit" name="submit" type="button">Go!</button>
+						</td>
+						<td>
+							<h3>Adjust tuning freely in the Sandbox</h3>
+							<h4>Click Go to enter sandbox</h4>
+							<button class="m-btn blue" id="homeSubmit" name="submit" type="button">Go!</button>
+						</td>
+				</table>
+				
 			</div>
 			<div class="information">
 				<h2> Instructions </h2>
@@ -73,6 +83,15 @@
 
 		<div id="sandboxDiv" divIsVisible="false">
 			<div class="content">
+				<h2 id="sandboxTitle"></h2>
+				<audio id="sandboxAudio0" controls>
+					
+				</audio><br>
+				<div id="sandboxVoiceComponents">
+				</div>
+				<h3> Drone Controls </h3>
+				<div id ="sandboxDroneComponents">
+				</div>
 			</div>
 		</div>
 	</body>
