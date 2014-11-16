@@ -165,7 +165,24 @@ function createAudios(songName, difficultyLevel) {
 	drone2.load();
 	drone2.muted=true;
 	drone2.play();
-
+	$("#volume1").mousemove(function(event) {
+		console.log("hello world");
+		audio1.volume = $("#volume1").val();
+	});
+	$("#volume2").mousemove(function(event) {
+		audio2.volume = $("#volume2").val();
+	});
+	$("#volume3").mousemove(function(event) {
+		audio3.volume = $("#volume3").val();
+	});
+	$("#volume4").mousemove(function(event) {
+		audio4.volume = $("#volume4").val();
+	});
+	if(numVoices>=5){
+		$("#volume5").mousemove(function(event) {
+			audio5.volume = $("#volume5").val();
+		});
+	}
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
@@ -351,25 +368,9 @@ function hangInteractions() {
 		}
 	});
 
+	
 	//when the mouse is moved on volume sliders, change the volume property of the audio object
-	$("#volume1").mousemove(function(event) {
-		console.log("hello world");
-		audio1.volume = $("#volume1").val();
-	});
-	$("#volume2").mousemove(function(event) {
-		audio2.volume = $("#volume2").val();
-	});
-	$("#volume3").mousemove(function(event) {
-		audio3.volume = $("#volume3").val();
-	});
-	$("#volume4").mousemove(function(event) {
-		audio4.volume = $("#volume4").val();
-	});
-	if(numVoices>=5){
-		$("#volume5").mousemove(function(event) {
-			audio5.volume = $("#volume5").val();
-		});
-	}
+	
 	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
 	/*
 	$("#mute1").on('click', function(event) {
