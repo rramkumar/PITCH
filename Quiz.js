@@ -54,8 +54,12 @@ $(document).ready(function() {
 			}
 			if (correct) {
 				alert("You win!");
+				showDiv("home");
 				showDiv("quiz");
 				setTimeout(function(){tones=createAudios(game.currentSongObjName, game.currentLevel);},1000); 
+				hangInteractions();
+				audio0.pause();
+				audio0.currentTime=0;
 				correct=false;
 			} else {
 				alert("try again");
@@ -126,14 +130,12 @@ function createAudios(songName, difficultyLevel) {
 		}
 	}
 
-	$("#quizVoiceComponents").empty();
-	var quizContentAppend = "";
-
+	quizContentAppend="";
 	for (var i=1; i<=numberOfVoices; i++) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue">Mute</button><span> '+voiceName+' Volume</span>';
+		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue" onclick="clicked'+i+'();">Mute</button><span> '+voiceName+' Volume</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
@@ -141,16 +143,16 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
-
-	$("#quizVoiceComponents").html(quizContentAppend);
+	$("#quizVoiceComponents").empty();
+	$("#quizVoiceComponents").append(quizContentAppend);
 	$("#quizDroneComponents").empty();
 	var quizDroneContent="";
 	for(var q=1; q<=2; q++){
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" >Unmute</button> <span> '+'Drone'+ q +' Volume</span>';
+		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+'Drone'+ q +' Volume</span>';
 	}
-	$("#quizDroneComponents").html(quizDroneContent);
+	$("#quizDroneComponents").append(quizDroneContent);
 	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
 	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
 	drone1.preload="auto";
@@ -181,7 +183,76 @@ function createAudios(songName, difficultyLevel) {
 	}
 	return OutOfTuneArray;
 }
-
+function clicked1(){
+	if (audio1.muted) {
+			audio1.muted=false;
+			audio1Muted=false;
+			$("#mute1").html("Mute");
+		} else {
+			audio1.muted=true;
+			audio1Muted=true;
+			$("#mute1").html("Unmute");
+	}
+}
+function clicked2(){
+	if (audio2.muted) {
+			audio2.muted=false;
+			audio2Muted=false;
+			$("#mute2").html("Mute");
+		} else {
+			audio2.muted=true;
+			audio2Muted=true;
+			$("#mute2").html("Unmute");
+	}
+}
+function clicked3(){
+	if (audio3.muted) {
+			audio3.muted=false;
+			audio3Muted=false;
+			$("#mute3").html("Mute");
+		} else {
+			audio3.muted=true;
+			audio3Muted=true;
+			$("#mute3").html("Unmute");
+	}
+}function clicked4(){
+	if (audio4.muted) {
+			audio4.muted=false;
+			audio4Muted=false;
+			$("#mute4").html("Mute");
+		} else {
+			audio4.muted=true;
+			audio4Muted=true;
+			$("#mute4").html("Unmute");
+	}
+}function clicked5(){
+	if (audio5.muted) {
+			audio5.muted=false;
+			audio5Muted=false;
+			$("#mute5").html("Mute");
+		} else {
+			audio5.muted=true;
+			audio5Muted=true;
+			$("#mute5").html("Unmute");
+	}
+}function clickedDrone1(){
+	if(drone1.muted){
+			console.log("the world is flat");
+			drone1.muted=false;
+			$("#muteDrone1").html("Mute");
+		}else{
+			drone1.muted=true;
+			$("#muteDrone1").html("Unmute");
+		}
+}function clickedDrone2(){
+	if(drone2.muted){
+			drone2.muted=false;
+			$("#muteDrone2").html("Mute");
+		}else{
+			drone2.muted=true;
+			$("#muteDrone2").html("Unmute");
+		}
+}
 function hangInteractions() {
 	audio1.load();
 	audio2.load();
@@ -282,6 +353,7 @@ function hangInteractions() {
 
 	//when the mouse is moved on volume sliders, change the volume property of the audio object
 	$("#volume1").mousemove(function(event) {
+		console.log("hello world");
 		audio1.volume = $("#volume1").val();
 	});
 	$("#volume2").mousemove(function(event) {
@@ -299,6 +371,7 @@ function hangInteractions() {
 		});
 	}
 	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
+	/*
 	$("#mute1").on('click', function(event) {
 		if (audio1.muted) {
 			audio1.muted=false;
@@ -354,6 +427,7 @@ function hangInteractions() {
 			$("#mute5").html("Unmute");
 		}
 	});
+
 	$("#muteDrone1").on('click', function(event){
 		if(drone1.muted){
 			console.log("the world is flat");
@@ -364,9 +438,12 @@ function hangInteractions() {
 			$("#muteDrone1").html("Unmute");
 		}
 	});
+*/
 	$("#volumeDrone1").mousemove(function(event) {
 		drone1.volume = $("#volumeDrone1").val();
 	});
+
+/*
 	$("#muteDrone2").on('click', function(event){
 		if(drone2.muted){
 			console.log("the world is flat");
@@ -377,6 +454,7 @@ function hangInteractions() {
 			$("#muteDrone2").html("Unmute");
 		}
 	});
+*/
 	$("#volumeDrone2").mousemove(function(event) {
 		drone2.volume = $("#volumeDrone2").val();
 	});

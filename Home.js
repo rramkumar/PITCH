@@ -46,16 +46,12 @@ function showDiv(which) {
 	if (which=="home") {
 		audio0.pause();
 		audio0.currentTime=0;
-
 		//do the move
 		$("#homeDiv").attr("divIsVisible", "true");
 		$("#quizDiv").attr("divIsVisible", "false");
 		$("#sandboxDiv").attr("divIsVisible", "false");
 	}
 	if (which=="quiz") {
-		audio0.pause();
-		audio0.currentTime=0;
-
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "true");
 		$("#sandboxDiv").attr("divIsVisible", "false");
