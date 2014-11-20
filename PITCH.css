@@ -76,6 +76,12 @@ p {
 
 #headerDivTitle {
   cursor:pointer;
+  height: 50px;
+  font-family: 'Cinzel Decorative';
+  font-size: 45 pt;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
 }
 
 
@@ -181,3 +187,25 @@ input[type="range"]::-ms-thumb {
   border: 0;
   background-image: linear-gradient(to bottom, #529de1 0, #245e8f 100%); /* W3C */
 }
+
+//TESTING STUFF
+
+.m-btn.blue{
+  display: inline-block;
+  padding: 5px 10px 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 1px 3px #999;
+  -webkit-box-shadow: 0 1px 3px #999;
+  text-shadow: 0 -1px 1px #222;
+  border-bottom: 1px solid #222;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
