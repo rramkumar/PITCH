@@ -1,8 +1,8 @@
 [
     {
-        "title":"Come Sweet Death",
-        "objName":"comeSweetDeath1",
-        "voices":["Flute","Clarinet","Alto Sax","Tuba"]
+        "title":"Bach Fantasia - Flute, Clarinet, and 2 Euphoniums",
+        "objName":"bachFantasia1",
+        "voices":["Flute","Clarinet","Euphonium 1","Euphonium 2"]
     },
     {
         "title":"Potato",

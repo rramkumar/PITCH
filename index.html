@@ -63,6 +63,13 @@
 					
 				</audio><br>
 
+				<div id='customcontrols'>
+					<span id='mainplaypause'>Play</span>
+					<span id='mainseeker'><input type='range' id='mainseekerrange'></span>
+					<span id='mainvolumeslider'><input type='range' id='mainvolumerange'></span>
+					<span id='mainmute'>Mute</span>
+				</div>
+
 				<div>
 					<span>Individual Part Controls</span>
 					<span class="choices">Select Answers:</span>
@@ -91,17 +98,84 @@
 				<span>Individual Part Controls</span>
 				<div id="sandboxVoiceComponents">
 					<table>
-						<tr>	<th>1</th>	<th>2</th>	<th>3</th>
+						<tr>	<th></th>	<th>Volume</th>	<th>Tuning</th>
 
-						<tr>	<td>4</td>	<td>5</td>	<td>6</td>
+						<tr>
+							<td><span> Flute </span></td>	
+							<td><input type="range" id="volume1" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute1" class="m-btn blue" onclick="clicked1()">Mute</button></td>	
+							<td><select id='sandboxTuning1'>
+									<option value='4'>+4, Hella Sharp</option>
+									<option value='3'>+3, Quite Sharp</option>
+									<option value='2'>+2, Kinda Sharp</option>
+									<option value='1'>+1, Barely Sharp</option>
+									<option value='0' selected='selected'>0, In Tune</option>
+									<option value='-1'>-1, Barely Flat</option>
+									<option value='-2'>-2, Kinda Flat</option>
+									<option value='-3'>-3, Quite Flat</option>
+									<option value='-4'>-4, Hella Flat</option>
+								</select>
+							</td>
 
-						<tr>	<td>7</td>	<td>8</td>	<td>9</td>
+						<tr>
+							<td><span> Clarinet </span></td>
+							<td><input type="range" id="volume2" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute2" class="m-btn blue" onclick="clicked2()">Mute</button></td>
+							<td><select id='sandboxTuning2'>
+									<option value='4'>+4, Hella Sharp</option>
+									<option value='3'>+3, Quite Sharp</option>
+									<option value='2'>+2, Kinda Sharp</option>
+									<option value='1'>+1, Barely Sharp</option>
+									<option value='0' selected='selected'>0, In Tune</option>
+									<option value='-1'>-1, Barely Flat</option>
+									<option value='-2'>-2, Kinda Flat</option>
+									<option value='-3'>-3, Quite Flat</option>
+									<option value='-4'>-4, Hella Flat</option>
+								</select>
+							</td>
 
-						<tr>	<td>10</td>	<td>11</td>	<td>12</td>
+						<tr>
+							<td><span> Alto Sax </span></td>
+							<td><input type="range" id="volume3" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute3" class="m-btn blue" onclick="clicked3()">Mute</button></td>
+							<td><select id='sandboxTuning3'>
+									<option value='4'>+4, Hella Sharp</option>
+									<option value='3'>+3, Quite Sharp</option>
+									<option value='2'>+2, Kinda Sharp</option>
+									<option value='1'>+1, Barely Sharp</option>
+									<option value='0' selected='selected'>0, In Tune</option>
+									<option value='-1'>-1, Barely Flat</option>
+									<option value='-2'>-2, Kinda Flat</option>
+									<option value='-3'>-3, Quite Flat</option>
+									<option value='-4'>-4, Hella Flat</option>
+								</select>
+							</td>
+						<tr>
+							<td><span> Trombone </span></td>
+							<td><input type="range" id="volume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute4" class="m-btn blue" onclick="clicked4()">Mute</button></td>
+							<td><select id='sandboxTuning4'>
+									<option value='4'>+4, Hella Sharp</option>
+									<option value='3'>+3, Quite Sharp</option>
+									<option value='2'>+2, Kinda Sharp</option>
+									<option value='1'>+1, Barely Sharp</option>
+									<option value='0' selected='selected'>0, In Tune</option>
+									<option value='-1'>-1, Barely Flat</option>
+									<option value='-2'>-2, Kinda Flat</option>
+									<option value='-3'>-3, Quite Flat</option>
+									<option value='-4'>-4, Hella Flat</option>
+								</select></td>
 
-						<tr>	<td>13</td>	<td>14</td>	<td>15</td>
-
-						<tr>	<td>16</td>	<td>17</td>	<td>18</td>
+						<tr>
+							<td><span> Tuba </span></td>
+							<td><input type="range" id="volume5" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute5" class="m-btn blue" onclick="clicked5()">Mute</button></td>
+							<td><select id='sandboxTuning5'>
+									<option value='4'>+4, Hella Sharp</option>
+									<option value='3'>+3, Quite Sharp</option>
+									<option value='2'>+2, Kinda Sharp</option>
+									<option value='1'>+1, Barely Sharp</option>
+									<option value='0' selected='selected'>0, In Tune</option>
+									<option value='-1'>-1, Barely Flat</option>
+									<option value='-2'>-2, Kinda Flat</option>
+									<option value='-3'>-3, Quite Flat</option>
+									<option value='-4'>-4, Hella Flat</option>
+								</select></td>
 					</table>
 				</div>
 				<h3> Drone Controls </h3>

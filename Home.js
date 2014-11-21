@@ -14,12 +14,12 @@ var numVoices;
 
 $(document).ready(function(){
 	$("#homeSubmit").click(function(event){
-		 var checked=($('input[name=song]:checked').is(':checked'));
-		 if(checked==false) {	
-		 	alert("Song Not Selected");
-		 }
-		 var checked2=($('input[name=level]:checked').is(':checked'));
-		 if(checked==true) {
+		var checked=($('input[name=song]:checked').is(':checked'));
+		if(checked==false) {	
+			alert("Song Not Selected");
+		}
+		var checked2=($('input[name=level]:checked').is(':checked'));
+		if(checked==true) {
 			game.currentSongObjName = $('input[name=song]:checked').val();
 			var selectElement = document.getElementById("levels");
 			game.currentLevel = parseInt(selectElement.options[selectElement.selectedIndex].value.substring(5));
@@ -33,6 +33,26 @@ $(document).ready(function(){
 			hangInteractions(); // method is in Quiz.js
 			showDiv("quiz");
 		}
+	});
+
+	$("#homeSandboxSubmit").on('click', function(event) {
+		var checked=($('input[name=song]:checked').is(':checked'));
+		if(checked==false) {	
+			alert("Song Not Selected");
+		}
+		if (checked) {
+			game.currentSongObjName = $('input[name=song]:checked').val();
+			for (var i = 0; i < game.songs.length; i++) {
+				if (game.songs[i].objName==game.currentSongObjName) {
+					numVoices = game.songs[i].voices.length;
+					game.currentSongTitle = game.songs[i].title;
+				}
+			}
+		}
+
+		// createAudios-like function
+		 // method is in Quiz.js
+		showDiv("sandbox");
 	});
 
 	$("#headerDivTitle").on("click", function(event) {
@@ -72,8 +92,8 @@ function showDiv(which) {
 		game.hints=false;
 	}
 	if (which=="sandbox") {
-		audio0.pause();
-		audio0.currentTime=0;
+		//audio0.pause();
+		//audio0.currentTime=0;
 		$("#homeDiv").attr("divIsVisible", "false");
 		$("#quizDiv").attr("divIsVisible", "false");
 		$("#sandboxDiv").attr("divIsVisible", "true");
@@ -109,25 +129,25 @@ function parseJSONFiles() {
 	//songs
 	var getSongsData = $.getJSON(game.SONGS_SPEC_JSON_PATH, function(json) {
 		game.songs=json;
-  		console.log( "success" );
+		console.log( "success" );
 	})
-  	.done(function() {
+	.done(function() {
 		$(".songs").empty();
 
-	    var songsInsert = "";
-	    $.each(game.songs, function(index, obj) {
-	    	songsInsert += '<li><input class="songSelectRadio" type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
-	    	console.log(obj.title);
-	    });
+		var songsInsert = "";
+		$.each(game.songs, function(index, obj) {
+			songsInsert += '<li><input class="songSelectRadio" type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
+			console.log(obj.title);
+		});
 
-	    $(".songs").html(songsInsert);
-    	console.log( "Done" );
+		$(".songs").html(songsInsert);
+		console.log( "Done" );
 	})
 	.fail(function() {
-	    console.log( "error" );
+		console.log( "error" );
 	})
 	.always(function() {
-	    console.log( "complete");
+		console.log( "complete");
 	});
 
 	// levels
@@ -136,22 +156,22 @@ function parseJSONFiles() {
 		game.levels=json;
 		console.log( "success" );
 	})
-  	.done(function() {
-  		$(".levels").empty();
+	.done(function() {
+		$(".levels").empty();
 
-	    var levelsInsert = "";
-	    $.each(game.levels, function(index, obj) {
-	    	levelsInsert += '<option value="level'+(index+1)+'"> Level ' + (index+1) + ' </option>';
-	    	//console.log(obj.level);
-	    });
+		var levelsInsert = "";
+		$.each(game.levels, function(index, obj) {
+			levelsInsert += '<option value="level'+(index+1)+'"> Level ' + (index+1) + ' </option>';
+			//console.log(obj.level);
+		});
 
-	    $(".levels").html(levelsInsert);
+		$(".levels").html(levelsInsert);
 		console.log( "Done" );
 	})
 	.fail(function() {
-	    console.log( "error" );
+		console.log( "error" );
 	})
 	.always(function() {
-	    console.log( "complete" );
+		console.log( "complete" );
 	});
 }

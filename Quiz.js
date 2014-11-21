@@ -183,22 +183,30 @@ function createAudios(songName, difficultyLevel) {
 			audio5.volume = $("#volume5").val();
 		});
 	}
+	$("#volumeDrone2").mousemove(function(event) {
+		drone2.volume = $("#volumeDrone2").val();
+	});
+	$("#volumeDrone1").mousemove(function(event) {
+		drone1.volume = $("#volumeDrone1").val();
+	});
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
 	$("#audio0").html("<source src=\"" + MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
-	audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + "0" + ".mp3");
-	audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + "0" + ".mp3");
-	audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + "0" + ".mp3");
-	audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + "0" + ".mp3");
+	audio0.load();
+	audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + OutOfTuneArray[0] + ".mp3");
+	audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + OutOfTuneArray[1] + ".mp3");
+	audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + OutOfTuneArray[2] + ".mp3");
+	audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + OutOfTuneArray[3] + ".mp3");
 
 	if(numberOfVoices==4) {
 		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3");
 	}else{
-		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + "0" + ".mp3");
+		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + OutOfTuneArray[4] + ".mp3");
 	}
 	return OutOfTuneArray;
+
 }
 function clicked1(){
 	if (audio1.muted) {
@@ -440,9 +448,7 @@ function hangInteractions() {
 		}
 	});
 */
-	$("#volumeDrone1").mousemove(function(event) {
-		drone1.volume = $("#volumeDrone1").val();
-	});
+	
 
 /*
 	$("#muteDrone2").on('click', function(event){
@@ -456,9 +462,7 @@ function hangInteractions() {
 		}
 	});
 */
-	$("#volumeDrone2").mousemove(function(event) {
-		drone2.volume = $("#volumeDrone2").val();
-	});
+	
 }
 
 function randomizeNumberOutOfTune(numberOutOfTune) {
