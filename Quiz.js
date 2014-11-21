@@ -153,8 +153,8 @@ function createAudios(songName, difficultyLevel) {
 		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+'Drone'+ q +' Volume</span>';
 	}
 	$("#quizDroneComponents").append(quizDroneContent);
-	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
-	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
+	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone " + "1" + ".mp3");
+	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone " + "2" + ".mp3");
 	drone1.preload="auto";
 	drone1.loop=true;
 	drone1.load();
@@ -166,7 +166,6 @@ function createAudios(songName, difficultyLevel) {
 	drone2.muted=true;
 	drone2.play();
 	$("#volume1").mousemove(function(event) {
-		console.log("hello world");
 		audio1.volume = $("#volume1").val();
 	});
 	$("#volume2").mousemove(function(event) {
@@ -262,7 +261,6 @@ function clicked3(){
 	}
 }function clickedDrone1(){
 	if(drone1.muted){
-			console.log("the world is flat");
 			drone1.muted=false;
 			$("#muteDrone1").html("Mute");
 		}else{
@@ -329,7 +327,6 @@ function hangInteractions() {
 	//when the master audio element is clicked on, check for muted/unmuted state
 	//(there's no onmuted event for it, so we used onmouseup)
 	$("#audio0").on("mouseup", function(event) {
-		console.log("#audio0 onmouseup");
 		setTimeout(function(){
 			if (audio0.muted) {
 				audio1.muted=true;
@@ -439,7 +436,6 @@ function hangInteractions() {
 
 	$("#muteDrone1").on('click', function(event){
 		if(drone1.muted){
-			console.log("the world is flat");
 			drone1.muted=false;
 			$("#muteDrone1").html("Mute");
 		}else{
@@ -453,7 +449,6 @@ function hangInteractions() {
 /*
 	$("#muteDrone2").on('click', function(event){
 		if(drone2.muted){
-			console.log("the world is flat");
 			drone2.muted=false;
 			$("#muteDrone2").html("Mute");
 		}else{
@@ -574,7 +569,6 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 				OutofTuneArray[arr[1]]=valueOutOfTune2;
 			}
 		}
-		//The answer is 42!!
 	}
 	return OutofTuneArray
 }

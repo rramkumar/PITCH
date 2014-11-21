@@ -180,8 +180,17 @@
 				</div>
 				<h3> Drone Controls </h3>
 				<div id="sandboxDroneComponents">
+					<div id="sandboxDronePartDiv1" class="quizDronePartDiv">
+   						<input id="sandboxVolumeDrone1" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
+    					<button id="sandboxMuteDrone1" class="m-btn blue" onclick="clickedSandboxDrone1();">Unmute</button><span> Drone 1 Volume</span>
+    				</div>
+    				<div id="quizDronePartDiv2" class="quizDronePartDiv">
+        				<input id="sandboxVolumeDrone2" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
+        				<button id="sandboxMuteDrone2" class="m-btn blue" onclick="sandboxClickedDrone2();">Unmute</button>
+        				<span> Drone 2 Volume</span>
+    				</div>
 				</div>
-			</div>
-		</div>
+			</div> <!-- close .content -->
+		</div> <!-- close #sanboxDiv -->
 	</body>
 </html>
