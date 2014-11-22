@@ -23,10 +23,10 @@
 	<body>
 		<div id="headerDiv">
 			<h1 id="headerDivTitle">PITCH</h1>
+			<h4 id="pageSubtitle">Personal Intonation Training, Computer Heuristics</h4>
 		</div>
 		<div id="homeDiv" divIsVisible="true">
 			<div class="content">
-				<h4 id="pageSubtitle">Personal Intonation Training, Computer Heuristics</h4>
 				<form class="songSelection" id="songs">
 					<h2>Select a Song</h2>
 				 	<ul class="songs">
@@ -35,24 +35,17 @@
 				<table>
 					<tr>
 						<td>
-							<h3>Challenge your listening skills with the Quiz</h3>
-							<h4>Select a difficulty for the Quiz:</h4>
+							<h3>Select a difficulty for listening practice</h3>
 							<select id="levels" class="levels">
 							</select>
 							<button class="m-btn blue" id="homeSubmit" name="submit" type="button">Go!</button>
 						</td>
 						<td>
-							<h3>Adjust tuning freely in the Sandbox</h3>
-							<h4>Click Go to enter sandbox</h4>
+							<h3>Play in the sandbox (adjust tuning freely)</h3>
 							<button class="m-btn blue" id="homeSandboxSubmit" name="submit" type="button">Go!</button>
 						</td>
 				</table>
 				
-			</div>
-			<div class="information">
-				<h2> Instructions </h2>
-				<p> Welcome to the PITCH application. Please select a song and level from the menu above. If you want to create your own level, please select a song and select the sandbox option. 
-
 			</div>
 		</div>
 
@@ -71,13 +64,13 @@
 				</div>
 
 				<div>
-					<span>Individual Part Controls</span>
+					<span> Volume Controls</span>
 					<span class="choices">Select Answers:</span>
 				</div>
 				<br>
 				<div id="quizVoiceComponents">
 				</div>
-				<h3> Drone Controls </h3>
+				<h3> Drones (reference pitches) </h3>
 				<div id ="quizDroneComponents">
 				</div>
 				
@@ -95,10 +88,10 @@
 					
 				</audio><br>
 
-				<span>Volume Controls</span>
 				<div id="sandboxVoiceComponents">
 					<table>
 						<tr>	<th class='sandboxTableHead'></th>	<th class='sandboxTableHead'>Volume</th>	<th class='sandboxTableHead'>Tuning</th>
+						</tr>
 
 						<tr>
 							<td class="sandboxInstrumentTitle">Flute</td>	
@@ -115,6 +108,7 @@
 									<option value='-4'>Extremely Flat</option>
 								</select>
 							</td>
+						</tr>
 
 						<tr>
 							<td class="sandboxInstrumentTitle">Clarinet</td>
@@ -131,6 +125,7 @@
 									<option value='-4'>Extremely Flat</option>
 								</select>
 							</td>
+						</tr>
 
 						<tr>
 							<td class="sandboxInstrumentTitle">Alto Sax</td>
@@ -147,6 +142,8 @@
 									<option value='-4'>Extremely Flat</option>
 								</select>
 							</td>
+						</tr>
+
 						<tr>
 							<td class="sandboxInstrumentTitle">Trombone</td>
 							<td><input type="range" id="volume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute4" class="m-btn blue" onclick="clicked4()">Mute</button></td>
@@ -160,7 +157,9 @@
 									<option value='-2'>Moderately Flat</option>
 									<option value='-3'>Very Flat</option>
 									<option value='-4'>Extremely Flat</option>
-								</select></td>
+								</select>
+							</td>
+						</tr>
 
 						<tr>
 							<td class="sandboxInstrumentTitle">Tuba</td>
@@ -175,20 +174,27 @@
 									<option value='-2'>Moderately Flat</option>
 									<option value='-3'>Very Flat</option>
 									<option value='-4'>Extremely Flat</option>
-								</select></td>
+								</select>
+							</td>
+						</tr>
 					</table>
-				</div>
-				<h3> Drone Controls </h3>
-				<div id="sandboxDroneComponents">
-					<div id="sandboxDronePartDiv1" class="quizDronePartDiv">
-   						<input id="sandboxVolumeDrone1" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
-    					<button id="sandboxMuteDrone1" class="m-btn blue" onclick="clickedSandboxDrone1();">Unmute</button><span> Drone 1 Volume</span>
-    				</div>
-    				<div id="quizDronePartDiv2" class="quizDronePartDiv">
-        				<input id="sandboxVolumeDrone2" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
-        				<button id="sandboxMuteDrone2" class="m-btn blue" onclick="sandboxClickedDrone2();">Unmute</button>
-        				<span> Drone 2 Volume</span>
-    				</div>
+
+					<h3> Drones (reference pitches) </h3>
+					<table id="sandboxDroneComponentsTable">
+						<tr>
+							<td class="sandboxInstrumentTitle">High Drone</td>
+							<td><input id="sandboxVolumeDrone1" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
+    						<button id="sandboxMuteDrone1" class="m-btn blue" onclick="clickedSandboxDrone1();">Unmute</button></td>
+    						<td><select class='invisibleThings'><option value='2'>Moderately Sharp</option></select></td>
+						</tr>
+
+						<tr>
+							<td class="sandboxInstrumentTitle">Low Drone</td>
+							<td><input id="sandboxVolumeDrone2" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
+        					<button id="sandboxMuteDrone2" class="m-btn blue" onclick="sandboxClickedDrone2();">Unmute</button></td>
+        					<td><select class='invisibleThings'><option value='2'>Moderately Sharp</option></select></td>
+						</tr>
+					</table>
 				</div>
 			</div> <!-- close .content -->
 		</div> <!-- close #sanboxDiv -->

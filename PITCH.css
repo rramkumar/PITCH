@@ -32,8 +32,8 @@ td{
 }
 
 li{
-  display: inline;
   list-style-type: none;
+  text-align: center;
 }
 
 html {
@@ -68,15 +68,14 @@ p {
 
 
 /*headerDiv elements*/
-#headerDiv {
-  width:150px;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 #headerDivTitle {
-  cursor:pointer;
-  height: 50px;
+  width:150px;
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
   font-family: 'Cinzel Decorative';
   font-size: 45 pt;
   text-align: center;
@@ -125,6 +124,13 @@ input {
   display: inline;
   list-style-type: none;
 }
+
+/* sandboxDiv elements */
+.invisibleThings {
+  visibility: hidden;
+}
+
+
 /*
 input[type="range"] {
   -webkit-appearance: none;

@@ -85,8 +85,6 @@ function showDiv(which) {
 			$("#tone5inTune").prop("checked", true);
 		}
 
-		$("#quizTitle").html(game.currentSongTitle + ', Difficultly Level ' + game.currentLevel);
-
 		$("#toggleHints").hide();
 		$("#toggleHints").html("Show Hints");
 		game.hints=false;

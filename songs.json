@@ -1,12 +1,12 @@
 [
     {
-        "title":"Bach Fantasia - Flute, Clarinet, and 2 Euphoniums",
+        "title":"Bach Fantasia -- Flute, Clarinet, and 2 Tubas",
         "objName":"bachFantasia1",
-        "voices":["Flute","Clarinet","Ins3","Ins4"]
+        "voices":["Flute", "Clarinet", "Tuba 1", "Tuba 2"]
     },
     {
-        "title":"Potato",
-        "objName":"potato",
-        "voices":["Piccolo Potato","Soprano Potato","Alto Potato","Tenor Potato","Contrabass Potato"]
+        "title":"Bach Fantasia -- Clarinet, Alto Sax, Trombone, and Tuba",
+        "objName":"bachFantasia2",
+        "voices":["Clarinet", "Alto Sax", "Trombone", "Tuba"]
     }
 ]

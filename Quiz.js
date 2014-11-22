@@ -115,6 +115,12 @@ function redrawMuteButtons() {
 }
 
 function createAudios(songName, difficultyLevel) {
+	// change displayed title in the quiz
+	var insertTitle = game.currentSongTitle.split('--')[0];
+	insertTitle = insertTitle.substring(0, insertTitle.length-1);
+	$("#quizTitle").html(insertTitle + ', Level ' + game.currentLevel);
+
+
 	var numberOutOfTune = game.levels[difficultyLevel-1].numberOutOfTune;
 	// 5 minus value returned to ensure the levels match file names
 	// files are named 10,11,12,13,14 in order of increasing out-of-tune-ness,
@@ -148,13 +154,20 @@ function createAudios(songName, difficultyLevel) {
 	$("#quizDroneComponents").empty();
 	var quizDroneContent="";
 	for(var q=1; q<=2; q++){
+		var highLow = "";
+		if (q == 1) {
+			highLow = "High";
+		} else if (q == 2) {
+			highLow = "Low";
+		}
+
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+'Drone'+ q +'</span>';
+		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+ highLow +' Drone' +'</span>';
 	}
 	$("#quizDroneComponents").append(quizDroneContent);
-	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone " + "1" + ".mp3");
-	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone " + "2" + ".mp3");
+	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
+	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
 	drone1.preload="auto";
 	drone1.loop=true;
 	drone1.load();
