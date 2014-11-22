@@ -32,7 +32,7 @@
 				 	<ul class="songs">
 			 		</ul>
 				</form>
-				<table>
+				<table id='homeTable'>
 					<tr>
 						<td>
 							<h3>Select a difficulty for listening practice</h3>
@@ -70,13 +70,20 @@
 				<br>
 				<div id="quizVoiceComponents">
 				</div>
-				<h3> Drones (reference pitches) </h3>
-				<div id ="quizDroneComponents">
-				</div>
 				
-				<button class="submit m-btn blue" id="quizSubmit" name="submit" type="button">Submit</button>
-				<button class="m-btn blue" id="toggleHints" name="toggle hints" type="button">Show Hints</button>
-				<button class="m-btn blue" id="quizReturnHome" name="quit" type="button">Quit to Home</button>
+				<table id='quizDroneComponentsTable'>
+					<tr>
+						<td>
+							<h3> Drones (reference pitches) </h3>
+							<div id ="quizDroneComponents"></div>
+						</td>
+						<td>
+							<button class="submit m-btn blue" id="quizSubmit" name="submit" type="button">Submit</button>
+							<button class="m-btn blue" id="toggleHints" name="toggle hints" type="button">Show Hints</button>
+							<button class="m-btn blue" id="quizReturnHome" name="quit" type="button">Quit to Home</button>
+						</td>
+					</tr>
+				</table>
 				
 			</div>
 		</div>

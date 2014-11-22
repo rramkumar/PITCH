@@ -26,7 +26,8 @@ div {
 table {
   width: 100%;
 }
-td{
+
+#homeTable td{
   width:400px;
   text-align: center;
 }
@@ -125,7 +126,12 @@ input {
   list-style-type: none;
 }
 
+#quizDroneComponentsTable td {
+  width: 50%;
+}
+
 /* sandboxDiv elements */
+
 .invisibleThings {
   visibility: hidden;
 }
