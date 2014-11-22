@@ -135,7 +135,7 @@ function createAudios(songName, difficultyLevel) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue" onclick="clicked'+i+'();">Mute</button><span> '+voiceName+' Volume</span>';
+		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue" onclick="clicked'+i+'();">Mute</button><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
@@ -150,7 +150,7 @@ function createAudios(songName, difficultyLevel) {
 	for(var q=1; q<=2; q++){
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+'Drone'+ q +' Volume</span>';
+		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+'Drone'+ q +'</span>';
 	}
 	$("#quizDroneComponents").append(quizDroneContent);
 	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone " + "1" + ".mp3");
