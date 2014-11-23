@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="Home.js"></script>
     	<script type="text/javascript" src="Quiz.js"></script>
+		<script type="text/javascript" src="Sandbox.js"></script>
 		<link href="PITCH.css" rel="stylesheet">
 		<link href="m-buttons.css" rel="stylesheet">
 	</head>
@@ -25,7 +26,7 @@
 			<h1 id="headerDivTitle">PITCH</h1>
 			<h4 id="pageSubtitle">Personal Intonation Training, Computer Heuristics</h4>
 		</div>
-		<div id="homeDiv" divIsVisible="true">
+		<div id="homeDiv" isVisible="true">
 			<div class="content">
 				<form class="songSelection" id="songs">
 					<h2>Select a Song</h2>
@@ -49,7 +50,7 @@
 			</div>
 		</div>
 
-		<div id="quizDiv" divIsVisible="false">
+		<div id="quizDiv" isVisible="false">
 			<div class="content">
 				<h2 id="quizTitle"></h2>
 				<audio id="audio0" controls>
@@ -88,7 +89,7 @@
 			</div>
 		</div>
 
-		<div id="sandboxDiv" divIsVisible="true">
+		<div id="sandboxDiv" isVisible="false">
 			<div class="content">
 				<h2 id="sandboxTitle"></h2>
 				<audio id="sandboxAudio0" controls>
@@ -96,13 +97,13 @@
 				</audio><br>
 
 				<div id="sandboxVoiceComponents">
-					<table>
+					<table id='sandboxTable'>
 						<tr>	<th class='sandboxTableHead'></th>	<th class='sandboxTableHead'>Volume</th>	<th class='sandboxTableHead'>Tuning</th>
 						</tr>
 
-						<tr>
-							<td class="sandboxInstrumentTitle">Flute</td>	
-							<td><input type="range" id="volume1" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute1" class="m-btn blue" onclick="clicked1()">Mute</button></td>	
+						<tr id="sandboxInstrumentRow1">
+							<td id="sandboxInstrumentTitle1">Flute</td>	
+							<td><input type="range" id="sandboxVolume1" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="sandboxMute1" class="m-btn blue">Mute</button></td>	
 							<td><select id='sandboxTuning1'>
 									<option value='4'>Extremely Sharp</option>
 									<option value='3'>Very Sharp</option>
@@ -117,9 +118,9 @@
 							</td>
 						</tr>
 
-						<tr>
-							<td class="sandboxInstrumentTitle">Clarinet</td>
-							<td><input type="range" id="volume2" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute2" class="m-btn blue" onclick="clicked2()">Mute</button></td>
+						<tr id="sandboxInstrumentRow2">
+							<td id="sandboxInstrumentTitle2">Clarinet</td>
+							<td><input type="range" id="sandboxVolume2" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="sandboxMute2" class="m-btn blue">Mute</button></td>
 							<td><select id='sandboxTuning2'>
 									<option value='4'>Extremely Sharp</option>
 									<option value='3'>Very Sharp</option>
@@ -134,9 +135,9 @@
 							</td>
 						</tr>
 
-						<tr>
-							<td class="sandboxInstrumentTitle">Alto Sax</td>
-							<td><input type="range" id="volume3" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute3" class="m-btn blue" onclick="clicked3()">Mute</button></td>
+						<tr id="sandboxInstrumentRow3">
+							<td id="sandboxInstrumentTitle3">Alto Sax</td>
+							<td><input type="range" id="sandboxVolume3" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="sandboxMute3" class="m-btn blue">Mute</button></td>
 							<td><select id='sandboxTuning3'>
 									<option value='4'>Extremely Sharp</option>
 									<option value='3'>Very Sharp</option>
@@ -151,9 +152,9 @@
 							</td>
 						</tr>
 
-						<tr>
-							<td class="sandboxInstrumentTitle">Trombone</td>
-							<td><input type="range" id="volume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute4" class="m-btn blue" onclick="clicked4()">Mute</button></td>
+						<tr id="sandboxInstrumentRow4">
+							<td id="sandboxInstrumentTitle4">Trombone</td>
+							<td><input type="range" id="sandboxVolume4" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="sandboxMute4" class="m-btn blue">Mute</button></td>
 							<td><select id='sandboxTuning4'>
 									<option value='4'>Extremely Sharp</option>
 									<option value='3'>Very Sharp</option>
@@ -168,9 +169,9 @@
 							</td>
 						</tr>
 
-						<tr>
-							<td class="sandboxInstrumentTitle">Tuba</td>
-							<td><input type="range" id="volume5" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="mute5" class="m-btn blue" onclick="clicked5()">Mute</button></td>
+						<tr id="sandboxInstrumentRow5" isVisible="true">
+							<td id="sandboxInstrumentTitle5">Tuba</td>
+							<td><input type="range" id="sandboxVolume5" class="volumeSlider" min="0" max="1" value="1" step=".01"> <button id="sandboxMute5" class="m-btn blue">Mute</button></td>
 							<td><select id='sandboxTuning5'>
 									<option value='4'>Extremely Sharp</option>
 									<option value='3'>Very Sharp</option>
@@ -191,14 +192,14 @@
 						<tr>
 							<td class="sandboxInstrumentTitle">High Drone</td>
 							<td><input id="sandboxVolumeDrone1" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
-    						<button id="sandboxMuteDrone1" class="m-btn blue" onclick="clickedSandboxDrone1();">Unmute</button></td>
+    						<button id="sandboxMuteDrone1" class="m-btn blue">Unmute</button></td>
     						<td><select class='invisibleThings'><option value='2'>Moderately Sharp</option></select></td>
 						</tr>
 
 						<tr>
 							<td class="sandboxInstrumentTitle">Low Drone</td>
 							<td><input id="sandboxVolumeDrone2" class="volumeSlider" type="range" step=".01" value="1" max="1" min="0"></input>
-        					<button id="sandboxMuteDrone2" class="m-btn blue" onclick="sandboxClickedDrone2();">Unmute</button></td>
+        					<button id="sandboxMuteDrone2" class="m-btn blue">Unmute</button></td>
         					<td><select class='invisibleThings'><option value='2'>Moderately Sharp</option></select></td>
 						</tr>
 					</table>

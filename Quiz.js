@@ -136,7 +136,7 @@ function createAudios(songName, difficultyLevel) {
 		}
 	}
 
-	quizContentAppend="";
+	var quizContentAppend="";
 	for (var i=1; i<=numberOfVoices; i++) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';

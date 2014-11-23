@@ -50,8 +50,8 @@ $(document).ready(function(){
 			}
 		}
 
-		// createAudios-like function
-		 // method is in Quiz.js
+		createSandbox(game.currentSongObjName, hangInteractionsSandbox);	
+		//hangInteractionsSandbox();// hanginteractions-like thing in Sandbox.js
 		showDiv("sandbox");
 	});
 
@@ -67,14 +67,14 @@ function showDiv(which) {
 		audio0.pause();
 		audio0.currentTime=0;
 		//do the move
-		$("#homeDiv").attr("divIsVisible", "true");
-		$("#quizDiv").attr("divIsVisible", "false");
-		$("#sandboxDiv").attr("divIsVisible", "false");
+		$("#homeDiv").attr("isVisible", "true");
+		$("#quizDiv").attr("isVisible", "false");
+		$("#sandboxDiv").attr("isVisible", "false");
 	}
 	if (which=="quiz") {
-		$("#homeDiv").attr("divIsVisible", "false");
-		$("#quizDiv").attr("divIsVisible", "true");
-		$("#sandboxDiv").attr("divIsVisible", "false");
+		$("#homeDiv").attr("isVisible", "false");
+		$("#quizDiv").attr("isVisible", "true");
+		$("#sandboxDiv").attr("isVisible", "false");
 
 		//reset quiz answers
 		$("#tone1inTune").prop("checked", true);
@@ -92,9 +92,9 @@ function showDiv(which) {
 	if (which=="sandbox") {
 		//audio0.pause();
 		//audio0.currentTime=0;
-		$("#homeDiv").attr("divIsVisible", "false");
-		$("#quizDiv").attr("divIsVisible", "false");
-		$("#sandboxDiv").attr("divIsVisible", "true");
+		$("#homeDiv").attr("isVisible", "false");
+		$("#quizDiv").attr("isVisible", "false");
+		$("#sandboxDiv").attr("isVisible", "true");
 	}
 
 
