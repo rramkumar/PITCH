@@ -19,7 +19,102 @@ var tones;
 
 
 $(document).ready(function() {
-	
+	$("#mainplaypause").on("click", function(event) {//custom play/pause button
+		if (audio0.paused == false){
+			audio0.pause();//will in turn call a pause on the rest of the parts.
+		}
+		else if (audio0.paused == true){
+			audio0.play();//will in turn call a pause on the rest of the parts.
+		}
+	});
+
+	$("#mainmute").on("click", function(event) {//custom mute button
+		if (audio0.muted == false){
+			audio0.muted=true;//mute 0
+		}
+		else if (audio0.muted == true){
+			audio0.muted=false;//unmute 0
+		}
+		
+		setTimeout(function(){// mutes/unmutes the other parts based on part 0
+			if (audio0.muted) {
+				audio1.muted=true;
+				audio2.muted=true;
+				audio3.muted=true;
+				audio4.muted=true;
+				if(numVoices>=5){
+					audio5.muted=true;
+				}
+				$("#mute1").html("Unmute");
+				$("#mute2").html("Unmute");
+				$("#mute3").html("Unmute");
+				$("#mute4").html("Unmute");
+				if(numVoices>=5){
+					$("#mute5").html("Unmute");
+				}
+			} else {
+				audio1.muted=audio1Muted;
+				audio2.muted=audio2Muted;
+				audio3.muted=audio3Muted;
+				audio4.muted=audio4Muted;
+				if(numVoices>=5){
+					audio5.muted=audio5Muted;
+				}
+				redrawMuteButtons();
+			}}, 50);
+	});
+	$("#mainvolumerange").mousemove(function(event) {
+		audio1.volume = $("#mainvolumerange").val();
+		audio2.volume = $("#mainvolumerange").val();
+		audio3.volume = $("#mainvolumerange").val();
+		audio4.volume = $("#mainvolumerange").val();
+		if (numVoices>=5){
+			audio5.volume = $("#mainvolumerange").val();
+		}
+		$("#volume1").val($("#mainvolumerange").val());
+		$("#volume2").val($("#mainvolumerange").val());
+		$("#volume3").val($("#mainvolumerange").val());
+		$("#volume4").val($("#mainvolumerange").val());
+		if(numVoices>=5){
+			$("#volume5").val($("#mainvolumerange").val());
+		}
+	});
+
+	var seekShouldUpdate = true;
+	$("#mainseekerrange").mousedown(function(event) {
+		seekShouldUpdate = false;
+		audio0.pause();
+		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio1.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio2.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio3.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio4.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		if(numVoices>=5){
+			audio5.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		}
+	});
+
+	$("#mainseekerrange").mouseup(function(event) {
+		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio1.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio2.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio3.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		audio4.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		if(numVoices>=5){
+			audio5.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		}
+		audio0.play();
+		seekShouldUpdate = true;
+	});
+
+	var audioTRACKTHING = document.getElementById("audio0");
+	audioTRACKTHING.ontimeupdate = function() {updateAudioTime()};
+
+	function updateAudioTime(){
+		if (seekShouldUpdate){
+			$("#mainseekerrange").val((audio0.currentTime/audio0.duration));
+		}
+	}
 
 
 	

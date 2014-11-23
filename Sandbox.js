@@ -1,6 +1,65 @@
+var currentSong;
+function createNewSandbox(songName,callback,part,tune){
+	audio0.pause();
+	audio0.currentTime=0;
+
+	drone1 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
+	drone2 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
+	drone1.preload="auto";
+	drone1.loop=true;
+	drone1.load();
+	drone1.muted=true;
+	drone1.play();
+	drone2.preload="auto";
+	drone2.loop=true;
+	drone2.load();
+	drone2.muted=true;
+	drone2.play();
+	$("#sandboxVolume1").mousemove(function(event) {
+		audio1.volume = $("#sandboxVolume1").val();
+	});
+	$("#sandboxVolume2").mousemove(function(event) {
+		audio2.volume = $("#sandboxVolume2").val();
+	});
+	$("#sandboxVolume3").mousemove(function(event) {
+		audio3.volume = $("#sandboxVolume3").val();
+	});
+	$("#sandboxVolume4").mousemove(function(event) {
+		audio4.volume = $("#sandboxVolume4").val();
+	});
+	if(numVoices>=5){
+		$("#sandboxVolume5").mousemove(function(event) {
+			audio5.volume = $("#sandboxVolume5").val();
+		});
+	}
+	$("#sandboxVolumeDrone2").mousemove(function(event) {
+		drone2.volume = $("#sandboxVolumeDrone2").val();
+	});
+	$("#sandboxVolumeDrone1").mousemove(function(event) {
+		drone1.volume = $("#sandboxVolumeDrone1").val();
+	});
+	if(part==1){
+		alert(tune);
+		audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
+	}
+	else if(part==2){
+		audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + tune + ".mp3");
+	}else if(part==3){
+		audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + tune + ".mp3");
+	}else if(part==4){
+		audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + tune + ".mp3");
+	}else if(part==5){
+		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + tune + ".mp3");
+	}
+	//randomize how many will be out of tune
+
+	callback();
+}
+
 
 function createSandbox(songName, callback) {
 	// change displayed title in the sandbox
+	currentSong=songName;
 	var insertTitle = game.currentSongTitle.split('--')[0];
 	insertTitle = insertTitle.substring(0, insertTitle.length-1);
 	$("#sandboxTitle").html(insertTitle);
@@ -264,6 +323,11 @@ function hangInteractionsSandbox() {
 			$("#sandboxMuteDrone2").html("Unmute");
 		}
 	});
-
-	
+	/*
+	$("#sandboxTuning1").change(function(){
+		var e = document.getElementById("sandboxTuning1");
+		var strUser = e.options[e.selectedIndex].value;
+		createNewSandbox(currentSong,hangInteractionsSandbox,1,strUser);
+	});
+	*/
 }
