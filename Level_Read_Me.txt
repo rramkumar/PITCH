@@ -1,3 +1,6 @@
+Read Me written By Rahul Ramkumar
+JSON files written by Alex Britt
+
 Welcome to the Pitch Level Specification Information Page
 Each Level is defined by three parameters
 	1. Number of Instruments out of tune

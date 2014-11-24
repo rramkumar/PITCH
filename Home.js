@@ -1,5 +1,5 @@
 //globals 
-
+//Code written by Alex Britt, Jon Medenblik, and Rahul Ramkumar
 var game= {
 	songs: {},
 	levels: {},

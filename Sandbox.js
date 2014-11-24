@@ -1,7 +1,28 @@
+/*
+	Code created by Alex Britt, and Rahul Ramkumar
+*/
+
 var currentSong;
 function createNewSandbox(songName,callback,part,tune){
 	audio0.pause();
 	audio0.currentTime=0;
+
+	audio1Muted=false;
+	audio2Muted=false;
+	audio3Muted=false;
+	audio4Muted=false;
+	audio5Muted=false;
+	drone1.muted=true;
+	drone2.muted=true;
+
+
+	$("#mute1").val("Mute");
+	$("#mute2").val("Mute");
+	$("#mute3").val("Mute");
+	$("#mute4").val("Mute");
+	if(numVoices>=5){
+		$("#mute5").val("Mute");
+	}
 
 	drone1 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
 	drone2 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
@@ -39,17 +60,17 @@ function createNewSandbox(songName,callback,part,tune){
 		drone1.volume = $("#sandboxVolumeDrone1").val();
 	});
 	if(part==1){
-		alert(tune);
-		audio1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
+		audio1.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
+		alert(audio1.src);
 	}
 	else if(part==2){
-		audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + tune + ".mp3");
+		audio2.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + tune + ".mp3");
 	}else if(part==3){
-		audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + tune + ".mp3");
+		audio3.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + tune + ".mp3");
 	}else if(part==4){
-		audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + tune + ".mp3");
+		audio4.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + tune + ".mp3");
 	}else if(part==5){
-		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + tune + ".mp3");
+		audio5.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + tune + ".mp3");
 	}
 	//randomize how many will be out of tune
 
@@ -315,6 +336,7 @@ function hangInteractionsSandbox() {
 
 
 	$("#sandboxMuteDrone2").on('click', function(event){
+		console.log("pi");
 		if(drone2.muted){
 			drone2.muted=false;
 			$("#sandboxMuteDrone2").html("Mute");
@@ -324,10 +346,10 @@ function hangInteractionsSandbox() {
 		}
 	});
 	/*
-	$("#sandboxTuning1").change(function(){
+		$("#sandboxTuning1").change(function(){
 		var e = document.getElementById("sandboxTuning1");
 		var strUser = e.options[e.selectedIndex].value;
-		createNewSandbox(currentSong,hangInteractionsSandbox,1,strUser);
-	});
-	*/
+		setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,1,strUser)},100);
+	});	
+*/
 }
