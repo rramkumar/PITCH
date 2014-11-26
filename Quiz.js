@@ -152,7 +152,6 @@ $(document).ready(function() {
 			}
 			if (correct) {
 				alert("You win!");
-				showDiv("home");
 				showDiv("quiz");
 				setTimeout(function(){tones=createAudios(game.currentSongObjName, game.currentLevel);},1000); 
 				hangInteractions();

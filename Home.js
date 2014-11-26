@@ -13,6 +13,10 @@ var game= {
 var numVoices;
 
 $(document).ready(function(){
+	//Button submit to enter the Quiz div
+	//Checks to see if a song is selected
+	//Stores value of level selected
+	//Sends info to Quiz.js to create Quiz. 
 	$("#homeSubmit").click(function(event){
 		var checked=($('input[name=song]:checked').is(':checked'));
 		if(checked==false) {	
@@ -34,7 +38,9 @@ $(document).ready(function(){
 			showDiv("quiz");
 		}
 	});
-
+	//handles the clicking of the Sandbox button on home page
+	//Checks to ensure song has been selected
+	//Sends info to createSandbox method in Sandbox.js
 	$("#homeSandboxSubmit").on('click', function(event) {
 		var checked=($('input[name=song]:checked').is(':checked'));
 		if(checked==false) {	
@@ -51,18 +57,19 @@ $(document).ready(function(){
 		}
 
 		createSandbox(game.currentSongObjName, hangInteractionsSandbox);	
-		//hangInteractionsSandbox();// hanginteractions-like thing in Sandbox.js
 		showDiv("sandbox");
 	});
-
+	//Method that allows the user to return to the home page
+	//IF the title Pitch is clicked
 	$("#headerDivTitle").on("click", function(event) {
 		showDiv("home");
 	});
 
 	parseJSONFiles();
 });
-
+//Controls which div is shown.
 function showDiv(which) {
+	//Called when returning home. 
 	if (which=="home") {
 		audio0.pause();
 		audio0.currentTime=0;
@@ -71,6 +78,7 @@ function showDiv(which) {
 		$("#quizDiv").attr("isVisible", "false");
 		$("#sandboxDiv").attr("isVisible", "false");
 	}
+	//Called when switching to quiz view
 	if (which=="quiz") {
 		$("#homeDiv").attr("isVisible", "false");
 		$("#quizDiv").attr("isVisible", "true");
@@ -89,9 +97,21 @@ function showDiv(which) {
 		$("#toggleHints").html("Show Hints");
 		game.hints=false;
 	}
+	//Resets the sanbox to defualt start
+	//Called when switching to sandbox
 	if (which=="sandbox") {
-		//audio0.pause();
-		//audio0.currentTime=0;
+		$("#sandboxTuning1").val(0);
+		$("#sandboxVolume1").val(1);
+		$("#sandboxTuning2").val(0);
+		$("#sandboxVolume2").val(1);
+		$("#sandboxTuning3").val(0);
+		$("#sandboxVolume3").val(1);
+		$("#sandboxTuning4").val(0);
+		$("#sandboxVolume4").val(1);
+		if(numVoices>=5){
+			$("#sandboxTuning5").val(0);
+			$("#sandboxVolume5").val(1);
+		}
 		$("#homeDiv").attr("isVisible", "false");
 		$("#quizDiv").attr("isVisible", "false");
 		$("#sandboxDiv").attr("isVisible", "true");
@@ -122,7 +142,7 @@ function showDiv(which) {
 		$("#mute5").val("Mute");
 	}
 }
-
+//Mehtod to read in a JSON file and use that to create the home page
 function parseJSONFiles() {
 	//songs
 	var getSongsData = $.getJSON(game.SONGS_SPEC_JSON_PATH, function(json) {

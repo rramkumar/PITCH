@@ -16,65 +16,25 @@ function createNewSandbox(songName,callback,part,tune){
 	drone2.muted=true;
 
 
-	$("#mute1").val("Mute");
-	$("#mute2").val("Mute");
-	$("#mute3").val("Mute");
-	$("#mute4").val("Mute");
-	if(numVoices>=5){
-		$("#mute5").val("Mute");
-	}
 
-	drone1 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
-	drone2 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
-	drone1.preload="auto";
-	drone1.loop=true;
-	drone1.load();
-	drone1.muted=true;
-	drone1.play();
-	drone2.preload="auto";
-	drone2.loop=true;
-	drone2.load();
-	drone2.muted=true;
-	drone2.play();
-	$("#sandboxVolume1").mousemove(function(event) {
-		audio1.volume = $("#sandboxVolume1").val();
-	});
-	$("#sandboxVolume2").mousemove(function(event) {
-		audio2.volume = $("#sandboxVolume2").val();
-	});
-	$("#sandboxVolume3").mousemove(function(event) {
-		audio3.volume = $("#sandboxVolume3").val();
-	});
-	$("#sandboxVolume4").mousemove(function(event) {
-		audio4.volume = $("#sandboxVolume4").val();
-	});
-	if(numVoices>=5){
-		$("#sandboxVolume5").mousemove(function(event) {
-			audio5.volume = $("#sandboxVolume5").val();
-		});
-	}
-	$("#sandboxVolumeDrone2").mousemove(function(event) {
-		drone2.volume = $("#sandboxVolumeDrone2").val();
-	});
-	$("#sandboxVolumeDrone1").mousemove(function(event) {
-		drone1.volume = $("#sandboxVolumeDrone1").val();
-	});
 	if(part==1){
 		audio1.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
-		alert(audio1.src);
 	}
 	else if(part==2){
 		audio2.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + tune + ".mp3");
+		audio2.load();
 	}else if(part==3){
 		audio3.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "3" + tune + ".mp3");
+		audio3.load();
 	}else if(part==4){
 		audio4.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "4" + tune + ".mp3");
+		audio4.load();
 	}else if(part==5){
 		audio5.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + tune + ".mp3");
+		audio5.load();
 	}
 	//randomize how many will be out of tune
 
-	callback();
 }
 
 
@@ -158,10 +118,6 @@ function createSandbox(songName, callback) {
 	} else {
 		$("#sandboxInstrumentRow5").attr("isVisible", "true");
 	}
-
-	callback();
-}
-function hangInteractionsSandbox() {
 	audio1.load();
 	audio2.load();
 	audio3.load();
@@ -169,6 +125,12 @@ function hangInteractionsSandbox() {
 	if(numVoices>=5){
 		audio5.load();
 	}
+	
+
+	callback();
+}
+function hangInteractionsSandbox() {
+
 		
 	//play all Audio objects when the master audio element is played
 	//this starts all of them to avoid future startup costs, then pauses them as fast as possible
@@ -345,11 +307,31 @@ function hangInteractionsSandbox() {
 			$("#sandboxMuteDrone2").html("Unmute");
 		}
 	});
-	/*
+	
 		$("#sandboxTuning1").change(function(){
-		var e = document.getElementById("sandboxTuning1");
-		var strUser = e.options[e.selectedIndex].value;
-		setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,1,strUser)},100);
-	});	
-*/
+			var e = document.getElementById("sandboxTuning1");
+			var strUser = e.options[e.selectedIndex].value;
+			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,1,strUser)},100);
+		});	
+		$("#sandboxTuning2").change(function(){
+			var e = document.getElementById("sandboxTuning2");
+			var strUser = e.options[e.selectedIndex].value;
+			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,2,strUser)},100);
+		});	
+		$("#sandboxTuning3").change(function(){
+			var e = document.getElementById("sandboxTuning3");
+			var strUser = e.options[e.selectedIndex].value;
+			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,3,strUser)},100);
+		});	
+		$("#sandboxTuning4").change(function(){
+			var e = document.getElementById("sandboxTuning4");
+			var strUser = e.options[e.selectedIndex].value;
+			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,4,strUser)},100);
+		});	
+		$("#sandboxTuning5").change(function(){
+			var e = document.getElementById("sandboxTuning5");
+			var strUser = e.options[e.selectedIndex].value;
+			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,5,strUser)},100);
+		});	
+
 }
