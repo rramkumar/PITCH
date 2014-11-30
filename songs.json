@@ -8,5 +8,25 @@
         "title":"Bach Fantasia -- Clarinet, Alto Sax, Trombone, and Tuba",
         "objName":"bachFantasia2",
         "voices":["Clarinet", "Alto Sax", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Flute, Clarinet, Horn, and Tuba",
+        "objName":"simpleGifts1",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Trumpet, Alto Sax, Trombone, Tuba",
+        "objName":"simpleGifts2",
+        "voices":["Trumpet", "Alto Sax", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Trumpet, Horn, Trombone, and Tuba",
+        "objName":"simpleGifts3",
+        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- 2 Trumpets, Horn, and Tuba",
+        "objName":"simpleGifts4",
+        "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
     }
 ]
