@@ -334,4 +334,9 @@ function hangInteractionsSandbox() {
 			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,5,strUser)},100);
 		});	
 
+
+		$("#sandboxReturnHome").on("click", function(event) {
+		showDiv("home");
+	});
+
 }
