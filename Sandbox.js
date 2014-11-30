@@ -2,8 +2,12 @@
 	Code created by Alex Britt, and Rahul Ramkumar
 */
 
+//Var used for current song
 var currentSong;
+//Method to change the part of one piece
+//Called if the user changes the tunage of a piece
 function createNewSandbox(songName,callback,part,tune){
+	//Resets the player
 	audio0.pause();
 	audio0.currentTime=0;
 
@@ -16,7 +20,7 @@ function createNewSandbox(songName,callback,part,tune){
 	drone2.muted=true;
 
 
-
+	//Uses the part var pased in to determine which instrument source to change
 	if(part==1){
 		audio1.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
 	}
@@ -33,10 +37,9 @@ function createNewSandbox(songName,callback,part,tune){
 		audio5.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "5" + tune + ".mp3");
 		audio5.load();
 	}
-	//randomize how many will be out of tune
 
 }
-
+//Creates the sandbox when selected from the home screen. 
 
 function createSandbox(songName, callback) {
 	// change displayed title in the sandbox
@@ -60,7 +63,7 @@ function createSandbox(songName, callback) {
 		console.log(voiceName);
 		$("#sandboxInstrumentTitle"+i).html(voiceName);
 	}
-
+	//Creates drones and set them to loop,and muted
 	drone1 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
 	drone2 = new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
 	drone1.preload="auto";
@@ -73,6 +76,7 @@ function createSandbox(songName, callback) {
 	drone2.load();
 	drone2.muted=true;
 	drone2.play();
+	//Volume controls for all the parts
 	$("#sandboxVolume1").mousemove(function(event) {
 		audio1.volume = $("#sandboxVolume1").val();
 	});
@@ -96,7 +100,7 @@ function createSandbox(songName, callback) {
 	$("#sandboxVolumeDrone1").mousemove(function(event) {
 		drone1.volume = $("#sandboxVolumeDrone1").val();
 	});
-	//randomize how many will be out of tune
+	//Sets the parts to all be intune to start
 	$("#sandboxAudio0").html("<source src=\"" + MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("sandboxAudio0");
 	audio0.load();
@@ -104,7 +108,7 @@ function createSandbox(songName, callback) {
 	audio2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "20" + ".mp3");
 	audio3 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "30" + ".mp3");
 	audio4 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "40" + ".mp3");
-
+	//Test for fidth voice
 	if(numberOfVoices==4) {
 		audio5 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3");
 	} else {
@@ -126,7 +130,7 @@ function createSandbox(songName, callback) {
 		audio5.load();
 	}
 	
-
+	//Calls handInteractionsSandbox
 	callback();
 }
 function hangInteractionsSandbox() {
@@ -307,7 +311,8 @@ function hangInteractionsSandbox() {
 			$("#sandboxMuteDrone2").html("Unmute");
 		}
 	});
-	
+	//If the value of a select element changes, the method calls the createNewSandbox method
+	//with the part that changes and its new value
 		$("#sandboxTuning1").change(function(){
 			var e = document.getElementById("sandboxTuning1");
 			var strUser = e.options[e.selectedIndex].value;
@@ -334,7 +339,7 @@ function hangInteractionsSandbox() {
 			setTimeout(function(){ createNewSandbox(currentSong,hangInteractionsSandbox,5,strUser)},100);
 		});	
 
-
+		//Button to return home
 		$("#sandboxReturnHome").on("click", function(event) {
 		showDiv("home");
 	});

@@ -1,5 +1,8 @@
 //globals 
 //Code written by Alex Britt, Jon Medenblik, and Rahul Ramkumar
+
+//Creates an Game object that holds information about the song and levels
+//As well as the path to the json files. 
 var game= {
 	songs: {},
 	levels: {},

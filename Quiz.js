@@ -1,6 +1,7 @@
 /*
 Code Written by Alex Britt, Jon Medenblik, Rahul Ramkumar
 */
+//Global variables 
 var audio0;
 var audio1;
 var audio2;
@@ -22,6 +23,7 @@ var tones;
 
 
 $(document).ready(function() {
+	//Method to play pause custom player
 	$("#mainplaypause").on("click", function(event) {//custom play/pause button
 		if (audio0.paused == false){
 			audio0.pause();//will in turn call a pause on the rest of the parts.
@@ -30,7 +32,7 @@ $(document).ready(function() {
 			audio0.play();//will in turn call a pause on the rest of the parts.
 		}
 	});
-
+	//Method to mute custom player
 	$("#mainmute").on("click", function(event) {//custom mute button
 		if (audio0.muted == false){
 			audio0.muted=true;//mute 0
@@ -66,6 +68,7 @@ $(document).ready(function() {
 				redrawMuteButtons();
 			}}, 50);
 	});
+	//Matches parts volume to the custom player volume control
 	$("#mainvolumerange").mousemove(function(event) {
 		audio1.volume = $("#mainvolumerange").val();
 		audio2.volume = $("#mainvolumerange").val();
@@ -82,7 +85,8 @@ $(document).ready(function() {
 			$("#volume5").val($("#mainvolumerange").val());
 		}
 	});
-
+	//Method to seek all parts with the main part. 
+	//Jon to add comments here
 	var seekShouldUpdate = true;
 	$("#mainseekerrange").mousedown(function(event) {
 		seekShouldUpdate = false;
@@ -119,15 +123,11 @@ $(document).ready(function() {
 		}
 	}
 
-
+	//Quiz submit button
+	//Goes through and makes sure value of the flat/sharp/intune button
+	//Mathes the tone of the actual piece. 
 	
 	$("#quizSubmit").click(function(event) {
-		var checked = (($('input[name=tone1]:checked').is(':checked'))&&($('input[name=tone2]:checked').is(':checked'))&&($('input[name=tone3]:checked').is(':checked'))&&($('input[name=tone4]:checked').is(':checked')))
-		// check 5th answer if there's a 5th voice
-		if (numVoices >= 5) {
-			checked = checked&&($('input[name=tone5]:checked').is(':checked'));
-		}
-		else {
 			var correct=true;
 			for (var i=0; i<tones.length; i++) {
 				var temp1=tones[i];
@@ -136,7 +136,7 @@ $(document).ready(function() {
 				var temp2=($('input[name="'+temp4+'"]:checked').val());
 				temp1=parseInt(temp1);
 				temp2=parseInt(temp2);
-				
+				//Test to see if signs mathes for each instrument in the piece
 				if (temp1 < 0 && temp2 >=0) {
 					correct = false;
 					markCorrectOrIncorrect(i+1, false);
@@ -150,6 +150,7 @@ $(document).ready(function() {
 					markCorrectOrIncorrect(i+1, true);
 				}
 			}
+			//Correct result
 			if (correct) {
 				alert("You win!");
 				showDiv("quiz");
@@ -159,12 +160,14 @@ $(document).ready(function() {
 				audio0.currentTime=0;
 				correct=false;
 			} else {
+				//Incorrect
 				alert("try again");
 				$("#toggleHints").show();
 			}
-		}
 	});
-
+	//Toggle Hints button
+	//Turns on answers if selected
+	//Only shown after the user submits the first time
 	$("#toggleHints").on("click", function(event) {
 		if (game.hints) {
 			$("#toggleHints").html("Show Hints");
@@ -232,7 +235,8 @@ function createAudios(songName, difficultyLevel) {
 			voices=game.songs[i].voices;
 		}
 	}
-
+	//Creates the custom music player system each time the player is needed
+	//Called after each correct quiz answer ect. 
 	var quizContentAppend="";
 	for (var i=1; i<=numberOfVoices; i++) {
 		var voiceName = voices[i-1];
@@ -257,14 +261,17 @@ function createAudios(songName, difficultyLevel) {
 		} else if (q == 2) {
 			highLow = "Low";
 		}
-
+		//Creates the drones player controls
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+ highLow +' Drone' +'</span>';
 	}
+	//Appends the drone components
 	$("#quizDroneComponents").append(quizDroneContent);
 	drone1= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "1" + ".mp3");
 	drone2= new Audio(MUSIC_RELATIVE_PATH+ songName + "/" + songName + "Drone" + "2" + ".mp3");
+	//loads the drones and mutes then (so constantly playing)
+	//loops the file to ensure always playing
 	drone1.preload="auto";
 	drone1.loop=true;
 	drone1.load();
@@ -275,6 +282,7 @@ function createAudios(songName, difficultyLevel) {
 	drone2.load();
 	drone2.muted=true;
 	drone2.play();
+	//Volume control
 	$("#volume1").mousemove(function(event) {
 		audio1.volume = $("#volume1").val();
 	});
@@ -291,6 +299,7 @@ function createAudios(songName, difficultyLevel) {
 		$("#volume5").mousemove(function(event) {
 			audio5.volume = $("#volume5").val();
 		});
+	//Volume drone control
 	}
 	$("#volumeDrone2").mousemove(function(event) {
 		drone2.volume = $("#volumeDrone2").val();
@@ -300,6 +309,8 @@ function createAudios(songName, difficultyLevel) {
 	});
 	//randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
+	//Method used to figure out which part should be out of tune
+	//Returns an array with each value
 	var OutOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
 	$("#audio0").html("<source src=\"" + MUSIC_RELATIVE_PATH + songName + "/" + songName + "0" + ".mp3\" type=\"audio/mpeg\">");
 	audio0 = document.getElementById("audio0");
@@ -317,6 +328,7 @@ function createAudios(songName, difficultyLevel) {
 	return OutOfTuneArray;
 
 }
+//Method to turn mute features off and on. 
 function clicked1(){
 	if (audio1.muted) {
 			audio1.muted=false;
@@ -386,6 +398,7 @@ function clicked3(){
 			$("#muteDrone2").html("Unmute");
 		}
 }
+//Function to load all music values
 function hangInteractions() {
 	audio1.load();
 	audio2.load();
@@ -481,96 +494,13 @@ function hangInteractions() {
 		if(numVoices>=5){
 			audio5.volume = $("#volume5").val();
 		}
-	});
-
-	
-	//when the mouse is moved on volume sliders, change the volume property of the audio object
-	
-	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
-	/*
-	$("#mute1").on('click', function(event) {
-		if (audio1.muted) {
-			audio1.muted=false;
-			audio1Muted=false;
-			$("#mute1").html("Mute");
-		} else {
-			audio1.muted=true;
-			audio1Muted=true;
-			$("#mute1").html("Unmute");
-		}
-	});
-	$("#mute2").on('click', function(event) {
-		if (audio2.muted) {
-			audio2.muted=false;
-			audio2Muted=false;
-			$("#mute2").html("Mute");
-		} else {
-			audio2.muted=true;
-			audio2Muted=true;
-			$("#mute2").html("Unmute");
-		}
-	});
-	$("#mute3").on('click', function(event) {
-		if (audio3.muted) {
-			audio3.muted=false;
-			audio3Muted=false;
-			$("#mute3").html("Mute");
-		} else {
-			audio3.muted=true;
-			audio3Muted=true;
-			$("#mute3").html("Unmute");
-		}
-	});
-	$("#mute4").on('click', function(event) {
-		if (audio4.muted) {
-			audio4.muted=false;
-			audio4Muted=false;
-			$("#mute4").html("Mute");
-		} else {
-			audio4.muted=true;
-			audio4Muted=true;
-			$("#mute4").html("Unmute");
-		}
-	});
-	$("#mute5").on('click', function(event) {
-		if (audio5.muted) {
-			audio5.muted=false;
-			audio5Muted=false;
-			$("#mute5").html("Mute");
-		} else {
-			audio5.muted=true;
-			audio5Muted=true;
-			$("#mute5").html("Unmute");
-		}
-	});
-
-	$("#muteDrone1").on('click', function(event){
-		if(drone1.muted){
-			drone1.muted=false;
-			$("#muteDrone1").html("Mute");
-		}else{
-			drone1.muted=true;
-			$("#muteDrone1").html("Unmute");
-		}
-	});
-*/
-	
-
-/*
-	$("#muteDrone2").on('click', function(event){
-		if(drone2.muted){
-			drone2.muted=false;
-			$("#muteDrone2").html("Mute");
-		}else{
-			drone2.muted=true;
-			$("#muteDrone2").html("Unmute");
-		}
-	});
-*/
-	
+	});	
 }
-
+//Method to determine which parts are out of tune
 function randomizeNumberOutOfTune(numberOutOfTune) {
+	//If at most one is out of tune
+	//Then there is a 90% change one is out of tune
+	//and a 10% chance 0 are out of tune. 
 	if (numberOutOfTune==1) {
 		var rand = Math.floor(Math.random()*10);
 		if (rand == 0) {
@@ -578,6 +508,10 @@ function randomizeNumberOutOfTune(numberOutOfTune) {
 		} else {
 			return 1;
 		}
+	//IF at max two can be out of tune then
+	//10% change 0 out of tune
+	//30% change 1 out of tune
+	//60% change 2 out of tune
 	} else if (numberOutOfTune=2) {
 		var rand = Math.floor(Math.random()*10);
 		if (rand == 0) {
@@ -596,6 +530,8 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 	var sOrf2=sharpOrFlat();
 	var valueOutOfTune1=sOrf1+degreeOutOfTune.toString();
 	var valueOutOfTune2=sOrf2+degreeOutOfTune.toString();
+	//IF 0 out of tune just returns all 0's to say all
+	//Should be in tune
 	if(numberOutOfTune==0){
 		if(numberOfVoices==5){
 			OutofTuneArray=["0","0","0","0","0"];
@@ -605,6 +541,8 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			return OutofTuneArray;
 		}
 	}
+	//Calculates the out of tune part based on the specifications
+	//From the levels.json file. 
 	if (numberOfVoices == 4) {
 		OutofTuneArray=["0","0","0","0"];
 		if (numberOutOfTune==1) {
@@ -682,7 +620,9 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 	}
 	return OutofTuneArray
 }
-
+//Method called by show hints
+//Marks an instrument as correct if they get the intonation correct
+//Marks incorrect if they get the intonation wrong
 function markCorrectOrIncorrect(voiceNumber, correct) {
 	if (correct) {
 		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"correctMark.png");
@@ -690,7 +630,10 @@ function markCorrectOrIncorrect(voiceNumber, correct) {
 		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"incorrectMark.png");
 	}
 }
-
+//Method is called by randomizeoutoftune(method to determine which part is out of tune)
+//Chooses a random num between 0 and 1
+//if 0 the instrument is sharp
+//if 1 the instrument is flat
 function sharpOrFlat(){
 	var sharpFlat=Math.floor(Math.random()*2);
 		if(sharpFlat==0){
