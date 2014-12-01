@@ -12,6 +12,8 @@ var drone1;
 
 var MUSIC_RELATIVE_PATH = "assets/music/";
 var IMAGE_RELATIVE_PATH = "assets/images/";
+var FLAT_IMG_TAG = '<img src="./assets/images/flat.png">';
+var SHARP_IMG_TAG = '<img src="./assets/images/sharp.png">';
 
 //vars record whether each track is to be muted independent of muting by the master control in the audio tag
 var audio1Muted=false;
@@ -276,9 +278,9 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizContentAppend += 	'<img id="mute'+i+'" src="./assets/images/unmuted.png" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat"> <img src="./assets/images/flat.png"></img> </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</img> </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK </li>';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp"> <img src="./assets/images/sharp.png"> </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
