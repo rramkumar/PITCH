@@ -28,5 +28,10 @@
         "title":"Simple Gifts -- 2 Trumpets, Horn, Tuba",
         "objName":"simpleGifts4",
         "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
+    },
+    {
+        "title":"Metronome Party -- 5 Identical Metronomes",
+        "objName":"metronome1",
+        "voices":["Metronome 1", "Metronome 2", "Metronome 3", "Metronome 4", "Metronome 5"]
     }
 ]
