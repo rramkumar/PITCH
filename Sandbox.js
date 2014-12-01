@@ -11,11 +11,6 @@ function createNewSandbox(songName,callback,part,tune){
 	audio0.pause();
 	audio0.currentTime=0;
 
-	audio1Muted=false;
-	audio2Muted=false;
-	audio3Muted=false;
-	audio4Muted=false;
-	audio5Muted=false;
 	drone1.muted=true;
 	drone2.muted=true;
 
@@ -23,6 +18,7 @@ function createNewSandbox(songName,callback,part,tune){
 	//Uses the part var pased in to determine which instrument source to change
 	if(part==1){
 		audio1.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "1" + tune + ".mp3");
+		audio1.load();
 	}
 	else if(part==2){
 		audio2.src=(MUSIC_RELATIVE_PATH + songName + "/" + songName + "2" + tune + ".mp3");
@@ -202,7 +198,7 @@ function hangInteractionsSandbox() {
 				if(numVoices>=5){
 					audio5.muted=audio5Muted;
 				}
-				redrawMuteButtons();
+				redrawSandboxMuteButtons();
 			}}, 100);
 	});
 
@@ -344,4 +340,32 @@ function hangInteractionsSandbox() {
 		showDiv("home");
 	});
 
+}
+
+function redrawSandboxMuteButtons() {
+	if (audio1.muted) {
+		$("#sandboxMute1").html("Unmute");
+	} else {
+		$("#sandboxMute1").html("Mute");
+	}
+	if (audio2.muted) {
+		$("#sandboxMute2").html("Unmute");
+	} else {
+		$("#sandboxMute2").html("Mute");
+	}
+	if (audio3.muted) {
+		$("#sandboxMute3").html("Unmute");
+	} else {
+		$("#sandboxMute3").html("Mute");
+	}
+	if (audio4.muted) {
+		$("#sandboxMute4").html("Unmute");
+	} else {
+		$("#sandboxMute4").html("Mute");
+	}
+	if (audio5.muted) {
+		$("#sandboxMute5").html("Unmute");
+	} else {
+		$("#sandboxMute5").html("Mute");
+	}
 }
