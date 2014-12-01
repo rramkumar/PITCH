@@ -117,10 +117,19 @@ $(document).ready(function() {
 	var audioTRACKTHING = document.getElementById("audio0");
 	audioTRACKTHING.ontimeupdate = function() {updateAudioTime()};
 
+	function twoDigits(n){
+    return n > 9 ? "" + n: "0" + n;
+	}
+
 	function updateAudioTime(){
 		if (seekShouldUpdate){
 			$("#mainseekerrange").val((audio0.currentTime/audio0.duration));
 		}
+		var currentMinutes = Math.floor(audio0.currentTime / 60);
+		var currentSeconds = parseInt(audio0.currentTime % 60, 10);
+		var totalMinutes = Math.floor(audio0.duration / 60);
+		var totalSeconds = parseInt(audio0.duration % 60, 10);
+		$("#timedisplay").html(parseInt(currentMinutes, 10)+":"+ twoDigits(parseInt(currentSeconds, 10)) + " / "+parseInt(totalMinutes, 10) + ":" + twoDigits(parseInt(totalSeconds, 10)) );
 	}
 
 	//Quiz submit button
