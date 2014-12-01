@@ -5,12 +5,12 @@
         "voices":["Flute", "Clarinet", "Tuba 1", "Tuba 2"]
     },
     {
-        "title":"Bach Fantasia -- Clarinet, Alto Sax, Trombone, and Tuba",
+        "title":"Bach Fantasia -- Clarinet, Alto Sax, Trombone, Tuba",
         "objName":"bachFantasia2",
         "voices":["Clarinet", "Alto Sax", "Trombone", "Tuba"]
     },
     {
-        "title":"Simple Gifts -- Flute, Clarinet, Horn, and Tuba",
+        "title":"Simple Gifts -- Flute, Clarinet, Horn, Tuba",
         "objName":"simpleGifts1",
         "voices":["Flute", "Clarinet", "Horn", "Tuba"]
     },
@@ -20,12 +20,12 @@
         "voices":["Trumpet", "Alto Sax", "Trombone", "Tuba"]
     },
     {
-        "title":"Simple Gifts -- Trumpet, Horn, Trombone, and Tuba",
+        "title":"Simple Gifts -- Trumpet, Horn, Trombone, Tuba",
         "objName":"simpleGifts3",
         "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
     },
     {
-        "title":"Simple Gifts -- 2 Trumpets, Horn, and Tuba",
+        "title":"Simple Gifts -- 2 Trumpets, Horn, Tuba",
         "objName":"simpleGifts4",
         "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
     }
