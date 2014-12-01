@@ -134,7 +134,7 @@ function showDiv(which) {
 	audio5Muted=false;
 	drone1.muted=true;
 	drone2.muted=true;
-
+	redrawSandboxMuteButtons();
 
 	$("#mute1").val("Mute");
 	$("#mute2").val("Mute");
