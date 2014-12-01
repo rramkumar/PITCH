@@ -4,6 +4,7 @@
 
 //Var used for current song
 var currentSong;
+var currentCall=0;
 var MUTED_IMG_PATH="./assets/images/muted.png";
 var UNMUTED_IMG_PATH="./assets/images/unmuted.png";
 //Method to change the part of one piece
@@ -40,6 +41,8 @@ function createNewSandbox(songName,callback,part,tune){
 //Creates the sandbox when selected from the home screen. 
 
 function createSandbox(songName, callback) {
+	currentCall++;
+	console.log(currentCall);
 	// change displayed title in the sandbox
 	currentSong=songName;
 	var insertTitle = game.currentSongTitle.split('--')[0];
@@ -127,9 +130,10 @@ function createSandbox(songName, callback) {
 	if(numVoices>=5){
 		audio5.load();
 	}
-	
-	//Calls handInteractionsSandbox
-	callback();
+	//Used to ensure that more than one version of the player is not running.
+	if(currentCall<=1){
+		callback();
+	}
 }
 function hangInteractionsSandbox() {
 
@@ -177,6 +181,7 @@ function hangInteractionsSandbox() {
 	//(there's no onmuted event for it, so we used onmouseup)
 	$("#sandboxAudio0").on("mouseup", function(event) {
 		setTimeout(function(){
+			console.log("in the player");
 			if (audio0.muted) {
 				audio1.muted=true;
 				audio2.muted=true;
@@ -222,8 +227,8 @@ function hangInteractionsSandbox() {
 	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
 	
 	$("#sandboxMute1").on('click', function(event) {
+		console.log("here");
 		if (audio1.muted) {
-			//console.log("here");
 			audio1.muted=false;
 			audio1Muted=false;
 			$("#sandboxMute1").attr("src",UNMUTED_IMG_PATH);
@@ -331,6 +336,7 @@ function hangInteractionsSandbox() {
 
 		//Button to return home
 		$("#sandboxReturnHome").on("click", function(event) {
+			console.log("THis is a test");
 		showDiv("home");
 	});
 

@@ -134,7 +134,7 @@ function showDiv(which) {
 	audio5Muted=false;
 	drone1.muted=true;
 	drone2.muted=true;
-	redrawSandboxMuteButtons();
+	
 
 	$("#mute1").val("Mute");
 	$("#mute2").val("Mute");
@@ -143,6 +143,7 @@ function showDiv(which) {
 	if(numVoices>=5){
 		$("#mute5").val("Mute");
 	}
+	redrawSandboxMuteButtons();
 }
 //Mehtod to read in a JSON file and use that to create the home page
 function parseJSONFiles() {
