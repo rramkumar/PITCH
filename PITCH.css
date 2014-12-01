@@ -92,6 +92,12 @@ p {
   text-shadow: 2px 2px #000000;
 }
 
+#pageSubtitle {
+  font-family: 'Cinzel Decorative';
+  text-shadow: 2px 2px #000000;
+  color: #ffffff;
+}
+
 
 /*homeDiv elements*/
 form{
