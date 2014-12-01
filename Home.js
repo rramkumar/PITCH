@@ -126,8 +126,7 @@ function showDiv(which) {
 	//reset custom player
 
 
-
-	
+	audio0.muted=false;
 	audio1Muted=false;
 	audio2Muted=false;
 	audio3Muted=false;

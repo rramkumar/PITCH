@@ -8,14 +8,10 @@ body{
   font-family: "Arial Black", Gadget, sans-serif;
 }
 
-div[isVisible="false"] {
+
+[isVisible="false"] {
   display:none;
 }
-
-tr[isVisible="false"] {
-  display:none;
-}
-
 
 
 .content{
@@ -74,6 +70,7 @@ p {
 }
 
 
+
 /*headerDiv elements*/
 
 
@@ -100,6 +97,9 @@ form{
   margin-bottom: 10px;
 }
 
+.songs li{
+text-align: left;
+}
 
 
 
@@ -136,6 +136,7 @@ input {
   width: 50%;
 }
 
+
 /* sandboxDiv elements */
 
 #sandboxTable td {
@@ -152,6 +153,11 @@ input {
 margin-left: auto;
 margin-right: auto;
 
+}
+
+#sandboxMute1 {
+  height: 36px;
+  width: 36px;
 }
 
 

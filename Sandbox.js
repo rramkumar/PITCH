@@ -4,6 +4,8 @@
 
 //Var used for current song
 var currentSong;
+var MUTED_IMG_PATH="./assets/images/muted.png";
+var UNMUTED_IMG_PATH="./assets/images/unmuted.png";
 //Method to change the part of one piece
 //Called if the user changes the tunage of a piece
 function createNewSandbox(songName,callback,part,tune){
@@ -183,13 +185,7 @@ function hangInteractionsSandbox() {
 				if(numVoices>=5){
 					audio5.muted=true;
 				}
-				$("#sandboxMute1").html("Unmute");
-				$("#sandboxMute2").html("Unmute");
-				$("#sandboxMute3").html("Unmute");
-				$("#sandboxMute4").html("Unmute");
-				if(numVoices>=5){
-					$("#sandboxMute5").html("Unmute");
-				}
+				redrawSandboxMuteButtons();
 			} else {
 				audio1.muted=audio1Muted;
 				audio2.muted=audio2Muted;
@@ -226,71 +222,70 @@ function hangInteractionsSandbox() {
 	//when an individual mute button is clicked, mute/unmute the Audio object, record the state (audioXMuted vars), and update the button
 	
 	$("#sandboxMute1").on('click', function(event) {
-		console.log(audio1.muted);
 		if (audio1.muted) {
 			//console.log("here");
 			audio1.muted=false;
 			audio1Muted=false;
-			$("#sandboxMute1").html("Mute");
+			$("#sandboxMute1").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			//console.log("here");
 			audio1.muted=true;
 			audio1Muted=true;
-			$("#sandboxMute1").html("Unmute");
+			$("#sandboxMute1").attr("src",MUTED_IMG_PATH);
 		}
 	});
 	$("#sandboxMute2").on('click', function(event) {
 		if (audio2.muted) {
 			audio2.muted=false;
 			audio2Muted=false;
-			$("#sandboxMute2").html("Mute");
+			$("#sandboxMute2").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio2.muted=true;
 			audio2Muted=true;
-			$("#sandboxMute2").html("Unmute");
+			$("#sandboxMute2").attr("src",MUTED_IMG_PATH);
 		}
 	});
 	$("#sandboxMute3").on('click', function(event) {
 		if (audio3.muted) {
 			audio3.muted=false;
 			audio3Muted=false;
-			$("#sandboxMute3").html("Mute");
+			$("#sandboxMute3").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio3.muted=true;
 			audio3Muted=true;
-			$("#sandboxMute3").html("Unmute");
+			$("#sandboxMute3").attr("src",MUTED_IMG_PATH);
 		}
 	});
 	$("#sandboxMute4").on('click', function(event) {
 		if (audio4.muted) {
 			audio4.muted=false;
 			audio4Muted=false;
-			$("#sandboxMute4").html("Mute");
+			$("#sandboxMute4").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio4.muted=true;
 			audio4Muted=true;
-			$("#sandboxMute4").html("Unmute");
+			$("#sandboxMute4").attr("src",MUTED_IMG_PATH);
 		}
 	});
 	$("#sandboxMute5").on('click', function(event) {
 		if (audio5.muted) {
 			audio5.muted=false;
 			audio5Muted=false;
-			$("#sandboxMute5").html("Mute");
+			$("#sandboxMute5").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio5.muted=true;
 			audio5Muted=true;
-			$("#sandboxMute5").html("Unmute");
+			$("#sandboxMute5").attr("src",MUTED_IMG_PATH);
 		}
 	});
 
 	$("#sandboxMuteDrone1").on('click', function(event){
 		if(drone1.muted){
 			drone1.muted=false;
-			$("#sandboxMuteDrone1").html("Mute");
+			$("#sandboxMuteDrone1").attr("src",UNMUTED_IMG_PATH);
 		}else{
 			drone1.muted=true;
-			$("#sandboxMuteDrone1").html("Unmute");
+			$("#sandboxMuteDrone1").attr("src",MUTED_IMG_PATH);
 		}
 	});
 
@@ -298,13 +293,12 @@ function hangInteractionsSandbox() {
 
 
 	$("#sandboxMuteDrone2").on('click', function(event){
-		console.log("pi");
 		if(drone2.muted){
 			drone2.muted=false;
-			$("#sandboxMuteDrone2").html("Mute");
+			$("#sandboxMuteDrone2").attr("src",UNMUTED_IMG_PATH);
 		}else{
 			drone2.muted=true;
-			$("#sandboxMuteDrone2").html("Unmute");
+			$("#sandboxMuteDrone2").attr("src",MUTED_IMG_PATH);
 		}
 	});
 	//If the value of a select element changes, the method calls the createNewSandbox method
@@ -344,28 +338,28 @@ function hangInteractionsSandbox() {
 
 function redrawSandboxMuteButtons() {
 	if (audio1.muted) {
-		$("#sandboxMute1").html("Unmute");
+		$("#sandboxMute1").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#sandboxMute1").html("Mute");
+		$("#sandboxMute1").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio2.muted) {
-		$("#sandboxMute2").html("Unmute");
+		$("#sandboxMute2").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#sandboxMute2").html("Mute");
+		$("#sandboxMute2").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio3.muted) {
-		$("#sandboxMute3").html("Unmute");
+		$("#sandboxMute3").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#sandboxMute3").html("Mute");
+		$("#sandboxMute3").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio4.muted) {
-		$("#sandboxMute4").html("Unmute");
+		$("#sandboxMute4").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#sandboxMute4").html("Mute");
+		$("#sandboxMute4").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio5.muted) {
-		$("#sandboxMute5").html("Unmute");
+		$("#sandboxMute5").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#sandboxMute5").html("Mute");
+		$("#sandboxMute5").attr("src",UNMUTED_IMG_PATH);
 	}
 }
