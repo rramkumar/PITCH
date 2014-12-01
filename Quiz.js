@@ -26,12 +26,41 @@ $(document).ready(function() {
 	//Method to play pause custom player
 	$("#mainplaypause").on("click", function(event) {//custom play/pause button
 		if (audio0.paused == false){
-			audio0.pause();//will in turn call a pause on the rest of the parts.
+			audio0.pause();//will in turn call a pause on the rest of the parts.			
+			$("#pausegray").attr("isVisible", "false");
+			$("#pauseblack").attr("isVisible", "false");
+			$("#playgray").attr("isVisible", "true");
 		}
 		else if (audio0.paused == true){
 			audio0.play();//will in turn call a pause on the rest of the parts.
+			$("#playgray").attr("isVisible", "false");
+			$("#playblack").attr("isVisible", "false");
+			$("#pausegray").attr("isVisible", "true");
 		}
 	});
+
+	$("#mainplaypause").mouseover(function(event) {
+		if (audio0.paused == true){
+			$("#playgray").attr("isVisible", "false");
+			$("#playblack").attr("isVisible", "true");
+		}
+		else if (audio0.paused == false){
+			$("#pausegray").attr("isVisible", "false");
+			$("#pauseblack").attr("isVisible", "true");
+		}
+	});
+
+	$("#mainplaypause").mouseout(function(event) {
+		if (audio0.paused == true){
+			$("#playblack").attr("isVisible", "false");
+			$("#playgray").attr("isVisible", "true");
+		}
+		else if (audio0.paused == false){
+			$("#pauseblack").attr("isVisible", "false");
+			$("#pausegray").attr("isVisible", "true");
+		}
+	});
+
 	//Method to mute custom player
 	$("#mainmute").on("click", function(event) {//custom mute button
 		if (audio0.muted == false){
