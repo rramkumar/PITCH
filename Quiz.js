@@ -50,13 +50,7 @@ $(document).ready(function() {
 				if(numVoices>=5){
 					audio5.muted=true;
 				}
-				$("#mute1").html("Unmute");
-				$("#mute2").html("Unmute");
-				$("#mute3").html("Unmute");
-				$("#mute4").html("Unmute");
-				if(numVoices>=5){
-					$("#mute5").html("Unmute");
-				}
+				redrawMuteButtons();
 			} else {
 				audio1.muted=audio1Muted;
 				audio2.muted=audio2Muted;
@@ -197,29 +191,29 @@ $(document).ready(function() {
 //edit val of button for when the master audio element's mute is clicked to unmute
 function redrawMuteButtons() {
 	if (audio1.muted) {
-		$("#mute1").html("Unmute");
+		$("#mute1").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#mute1").html("Mute");
+		$("#mute1").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio2.muted) {
-		$("#mute2").html("Unmute");
+		$("#mute2").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#mute2").html("Mute");
+		$("#mute2").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio3.muted) {
-		$("#mute3").html("Unmute");
+		$("#mute3").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#mute3").html("Mute");
+		$("#mute3").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio4.muted) {
-		$("#mute4").html("Unmute");
+		$("#mute4").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#mute4").html("Mute");
+		$("#mute4").attr("src",UNMUTED_IMG_PATH);
 	}
 	if (audio5.muted) {
-		$("#mute5").html("Unmute");
+		$("#mute5").attr("src",MUTED_IMG_PATH);
 	} else {
-		$("#mute5").html("Mute");
+		$("#mute5").attr("src",UNMUTED_IMG_PATH);
 	}
 }
 
@@ -251,7 +245,7 @@ function createAudios(songName, difficultyLevel) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<button id="mute'+i+'" class="m-btn blue" onclick="clicked'+i+'();">Mute</button><span> '+voiceName+'</span>';
+		quizContentAppend += 	'<img id="mute'+i+'" src="./assets/images/unmuted.png" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">Flat </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>In Tune </li>';
@@ -273,7 +267,7 @@ function createAudios(songName, difficultyLevel) {
 		//Creates the drones player controls
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<button id="muteDrone'+q+'" class="m-btn blue" onclick="clickedDrone'+q+'();" >Unmute</button> <span> '+ highLow +' Drone' +'</span>';
+		quizDroneContent+='<img id="muteDrone'+q+'" src="./assets/images/muted.png" onclick="clickedDrone'+q+'();"></img> <span> '+ highLow +' Drone' +'</span>';
 	}
 	//Appends the drone components
 	$("#quizDroneComponents").append(quizDroneContent);
@@ -342,69 +336,69 @@ function clicked1(){
 	if (audio1.muted) {
 			audio1.muted=false;
 			audio1Muted=false;
-			$("#mute1").html("Mute");
+			$("#mute1").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio1.muted=true;
 			audio1Muted=true;
-			$("#mute1").html("Unmute");
+			$("#mute1").attr("src",MUTED_IMG_PATH);
 	}
 }
 function clicked2(){
 	if (audio2.muted) {
 			audio2.muted=false;
 			audio2Muted=false;
-			$("#mute2").html("Mute");
+			$("#mute2").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio2.muted=true;
 			audio2Muted=true;
-			$("#mute2").html("Unmute");
+			$("#mute2").attr("src",MUTED_IMG_PATH);
 	}
 }
 function clicked3(){
 	if (audio3.muted) {
 			audio3.muted=false;
 			audio3Muted=false;
-			$("#mute3").html("Mute");
+			$("#mute3").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio3.muted=true;
 			audio3Muted=true;
-			$("#mute3").html("Unmute");
+			$("#mute3").attr("src",MUTED_IMG_PATH);
 	}
 }function clicked4(){
 	if (audio4.muted) {
 			audio4.muted=false;
 			audio4Muted=false;
-			$("#mute4").html("Mute");
+			$("#mute4").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio4.muted=true;
 			audio4Muted=true;
-			$("#mute4").html("Unmute");
+			$("#mute4").attr("src",MUTED_IMG_PATH);
 	}
 }function clicked5(){
 	if (audio5.muted) {
 			audio5.muted=false;
 			audio5Muted=false;
-			$("#mute5").html("Mute");
+			$("#mute5").attr("src",UNMUTED_IMG_PATH);
 		} else {
 			audio5.muted=true;
 			audio5Muted=true;
-			$("#mute5").html("Unmute");
-	}
+			$("#mute5").attr("src",MUTED_IMG_PATH);
+		}
 }function clickedDrone1(){
 	if(drone1.muted){
 			drone1.muted=false;
-			$("#muteDrone1").html("Mute");
+			$("#muteDrone1").attr("src",UNMUTED_IMG_PATH);
 		}else{
 			drone1.muted=true;
-			$("#muteDrone1").html("Unmute");
+			$("#muteDrone1").attr("src",MUTED_IMG_PATH);
 		}
 }function clickedDrone2(){
 	if(drone2.muted){
 			drone2.muted=false;
-			$("#muteDrone2").html("Mute");
+			$("#muteDrone2").attr("src",UNMUTED_IMG_PATH);
 		}else{
 			drone2.muted=true;
-			$("#muteDrone2").html("Unmute");
+			$("#muteDrone2").attr("src",MUTED_IMG_PATH);
 		}
 }
 //Function to load all music values
@@ -468,13 +462,7 @@ function hangInteractions() {
 				if(numVoices>=5){
 					audio5.muted=true;
 				}
-				$("#mute1").html("Unmute");
-				$("#mute2").html("Unmute");
-				$("#mute3").html("Unmute");
-				$("#mute4").html("Unmute");
-				if(numVoices>=5){
-					$("#mute5").html("Unmute");
-				}
+				redrawMuteButtons();
 			} else {
 				audio1.muted=audio1Muted;
 				audio2.muted=audio2Muted;
