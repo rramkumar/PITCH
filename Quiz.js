@@ -39,7 +39,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#mainplaypause").mouseover(function(event) {
+	$("#mainplaypause").mouseover(function(event) {//changes the play/pause button depending on mouseover
 		if (audio0.paused == true){
 			$("#playgray").attr("isVisible", "false");
 			$("#playblack").attr("isVisible", "true");
@@ -50,7 +50,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#mainplaypause").mouseout(function(event) {
+	$("#mainplaypause").mouseout(function(event) {//changes the play/pause button back after mouseover ends
 		if (audio0.paused == true){
 			$("#playblack").attr("isVisible", "false");
 			$("#playgray").attr("isVisible", "true");
@@ -109,8 +109,7 @@ $(document).ready(function() {
 		}
 	});
 	//Method to seek all parts with the main part. 
-	//Jon to add comments here
-	var seekShouldUpdate = true;
+	var seekShouldUpdate = true; // Lock that won't allow seek to update if the mouse is down.
 	$("#mainseekerrange").mousedown(function(event) {
 		seekShouldUpdate = false;
 		audio0.pause();
@@ -124,7 +123,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#mainseekerrange").mouseup(function(event) {
+	$("#mainseekerrange").mouseup(function(event) {//Sets the volume on mouseup.
 		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);
 		audio1.currentTime = (($("#mainseekerrange").val())*audio0.duration);
 		audio2.currentTime = (($("#mainseekerrange").val())*audio0.duration);
@@ -137,14 +136,15 @@ $(document).ready(function() {
 		seekShouldUpdate = true;
 	});
 
+	//Will run the updateAudioTme function whenever the audio time updates and creates an event.
 	var audioTRACKTHING = document.getElementById("audio0");
 	audioTRACKTHING.ontimeupdate = function() {updateAudioTime()};
 
-	function twoDigits(n){
+	function twoDigits(n){//returns a 2 digit number if input is less than 10. Used for displaying seconds.
     return n > 9 ? "" + n: "0" + n;
 	}
 
-	function updateAudioTime(){
+	function updateAudioTime(){//This redraws the time that is displayed in the custom player. Called on time change events.
 		if (seekShouldUpdate){
 			$("#mainseekerrange").val((audio0.currentTime/audio0.duration));
 		}
@@ -360,7 +360,7 @@ function createAudios(songName, difficultyLevel) {
 	return OutOfTuneArray;
 
 }
-//Method to turn mute features off and on. 
+//Methods that mute individual parts. 
 function clicked1(){
 	if (audio1.muted) {
 			audio1.muted=false;
@@ -686,13 +686,3 @@ function shuffle(array){
 
   return array;
 }
-
-
-/*
-audioPlayer.play();
-audioPlayer.pause();
-audioPlayer.duration; - Returns the length of the music track.
-audioPlayer.currentTime = 0;
-audioPlayer.loop = true;
-audioPlayer.muted = true;
-*/
