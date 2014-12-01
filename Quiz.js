@@ -276,9 +276,9 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizContentAppend += 	'<img id="mute'+i+'" src="./assets/images/unmuted.png" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat"> b </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat"> <img src="./assets/images/flat.png"></img> </li>';
 		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK </li>';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp"> &#35; </li>';
+		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp"> <img src="./assets/images/sharp.png"> </li>';
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
