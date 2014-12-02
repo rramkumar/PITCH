@@ -37,7 +37,6 @@ button{
 
   border-radius: 15px;
   padding-left: 5px;
-  padding-bottom: 5px;
 }
 
 table {
@@ -166,6 +165,10 @@ input {
 #correctIncorrect {
 
 }
+#quizDroneComponentsTable {
+  padding-bottom: 25px;
+}
+
 
 
 /* sandboxDiv elements */
@@ -190,7 +193,9 @@ margin-right: auto;
   height: 36px;
   width: 36px;
 }
-
+#sandboxDroneComponentsTable{
+  padding-bottom: 25px;
+}
 
 /*
 input[type="range"] {
