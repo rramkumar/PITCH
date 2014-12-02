@@ -202,8 +202,8 @@ $(document).ready(function() {
 			}
 			//Correct result
 			if (correct) {
-				alert("Correct!");
-				showDiv("quiz");
+				$("#correctIncorrect").html("Correct!");
+				setTimeout(function(){showDiv("quiz");},1000);
 				setTimeout(function() {
 					tones = createAudios(game.currentSongObjName, game.currentLevel);
 				},1000); 
@@ -213,7 +213,7 @@ $(document).ready(function() {
 				correct = false;
 			} else {
 				//Incorrect
-				alert("Try again.");
+				$("#correctIncorrect").html("Try Again!");
 				$("#toggleHints").show();
 			}
 	});

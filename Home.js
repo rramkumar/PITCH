@@ -106,6 +106,7 @@ function showDiv(which) {
 		$("#toggleHints").hide();
 		$("#toggleHints").html("Show Hints");
 		game.hints=false;
+		$("#correctIncorrect").html("");
 	}
 	//Resets the sanbox to defualt start
 	//Called when switching to sandbox
