@@ -34,22 +34,28 @@ $(document).ready(function() {
 			audio0.pause();//will in turn call a pause on the rest of the parts.			
 			$("#pausegray").attr("isVisible", "false");
 			$("#pauseblack").attr("isVisible", "false");
+			$("#playblack").attr("isVisible", "false");
 			$("#playgray").attr("isVisible", "true");
 		}
 		else if (audio0.paused == true){
 			audio0.play();//will in turn call a pause on the rest of the parts.
 			$("#playgray").attr("isVisible", "false");
 			$("#playblack").attr("isVisible", "false");
+			$("#pauseblack").attr("isVisible", "false");
 			$("#pausegray").attr("isVisible", "true");
 		}
 	});
 
 	$("#mainplaypause").mouseover(function(event) {//changes the play/pause button depending on mouseover
 		if (audio0.paused == true){
+			$("#pausegray").attr("isVisible", "false");
+			$("#pauseblack").attr("isVisible", "false");
 			$("#playgray").attr("isVisible", "false");
 			$("#playblack").attr("isVisible", "true");
 		}
 		else if (audio0.paused == false){
+			$("#playgray").attr("isVisible", "false");
+			$("#playblack").attr("isVisible", "false");
 			$("#pausegray").attr("isVisible", "false");
 			$("#pauseblack").attr("isVisible", "true");
 		}
@@ -57,10 +63,14 @@ $(document).ready(function() {
 
 	$("#mainplaypause").mouseout(function(event) {//changes the play/pause button back after mouseover ends
 		if (audio0.paused == true){
+			$("#pausegray").attr("isVisible", "false");
+			$("#pauseblack").attr("isVisible", "false");
 			$("#playblack").attr("isVisible", "false");
 			$("#playgray").attr("isVisible", "true");
 		}
 		else if (audio0.paused == false){
+			$("#playgray").attr("isVisible", "false");
+			$("#playblack").attr("isVisible", "false");
 			$("#pauseblack").attr("isVisible", "false");
 			$("#pausegray").attr("isVisible", "true");
 		}
@@ -113,31 +123,21 @@ $(document).ready(function() {
 			$("#volume5").val($("#mainvolumerange").val());
 		}
 	});
+	var pausedBeforeSeekPress;//used to let the seeker mouseup function know if it should unpause or not.
 	//Method to seek all parts with the main part. 
 	var seekShouldUpdate = true; // Lock that won't allow seek to update if the mouse is down.
 	$("#mainseekerrange").mousedown(function(event) {
+		pausedBeforeSeekPress = audio0.paused;
 		seekShouldUpdate = false;
 		audio0.pause();
-		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio1.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio2.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio3.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio4.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		if(numVoices>=5){
-			audio5.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		}
+		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);		
 	});
 
 	$("#mainseekerrange").mouseup(function(event) {//Sets the volume on mouseup.
 		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio1.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio2.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio3.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		audio4.currentTime = (($("#mainseekerrange").val())*audio0.duration);
-		if(numVoices>=5){
-			audio5.currentTime = (($("#mainseekerrange").val())*audio0.duration);
+		if (!pausedBeforeSeekPress) {
+			audio0.play();
 		}
-		audio0.play();
 		seekShouldUpdate = true;
 	});
 
