@@ -14,7 +14,7 @@ body{
 }
 button{
   border: 2px solid;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 
 
@@ -145,6 +145,10 @@ input {
 
 #quizDroneComponentsTable td {
   width: 50%;
+}
+
+#correctIncorrect {
+  padding-top: 0px;
 }
 
 
