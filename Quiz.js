@@ -130,7 +130,7 @@ $(document).ready(function() {
 		pausedBeforeSeekPress = audio0.paused;
 		seekShouldUpdate = false;
 		audio0.pause();
-		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);		
+		audio0.currentTime = (($("#mainseekerrange").val())*audio0.duration);	
 	});
 
 	$("#mainseekerrange").mouseup(function(event) {//Sets the volume on mouseup.
@@ -142,8 +142,8 @@ $(document).ready(function() {
 	});
 
 	//Will run the updateAudioTme function whenever the audio time updates and creates an event.
-	var audioTRACKTHING = document.getElementById("audio0");
-	audioTRACKTHING.ontimeupdate = function() {updateAudioTime()};
+	var audioTracker = document.getElementById("audio0");
+	audioTracker.ontimeupdate = function() {updateAudioTime()};
 
 	function twoDigits(n){//returns a 2 digit number if input is less than 10. Used for displaying seconds.
     return n > 9 ? "" + n: "0" + n;
@@ -281,9 +281,9 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizContentAppend += 	'<img id="mute'+i+'" src="' + UNMUTED_IMG_PATH + '" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK </li>';
-		quizContentAppend += 		'<li><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
+		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
+		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK</li>';
+		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}

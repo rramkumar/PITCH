@@ -12,6 +12,7 @@ body{
 [isVisible="false"] {
   display:none;
 }
+
 button{
   border: 2px solid;
   border-radius: 7px;
@@ -128,6 +129,10 @@ text-align: left;
 .choices {
   float:right;
   padding-right:30%;
+}
+
+.quizAnswerRadio {
+  padding:30px;
 }
 
 .quizAnswerMark {
