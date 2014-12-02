@@ -76,6 +76,9 @@ $(document).ready(function() {
 		}
 	});
 
+	/////////////////////////////////////////////////////////////
+	/*  master mute and volume controls removed by client request
+
 	//Method to mute custom player
 	$("#mainmute").on("click", function(event) {//custom mute button
 		if (audio0.muted == false){
@@ -123,6 +126,9 @@ $(document).ready(function() {
 			$("#volume5").val($("#mainvolumerange").val());
 		}
 	});
+	//////////////////////////////////////////////////
+	*/
+	
 	var pausedBeforeSeekPress;//used to let the seeker mouseup function know if it should unpause or not.
 	//Method to seek all parts with the main part. 
 	var seekShouldUpdate = true; // Lock that won't allow seek to update if the mouse is down.
@@ -281,9 +287,9 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizContentAppend += 	'<img id="mute'+i+'" src="' + UNMUTED_IMG_PATH + '" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
-		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
-		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK</li>';
-		quizContentAppend += 		'<li><input class="quizAnswerRadio" type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
