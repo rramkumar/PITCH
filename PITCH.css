@@ -12,35 +12,11 @@ body{
 [isVisible="false"] {
   display:none;
 }
+.muteButtons{
+  position: relative;
+  top: 10px;
+}
 
-#mute1{
-  position: relative;
-  top: 10px;
-}
-#mute2{
-  position: relative;
-  top: 10px;
-}
-#mute3{
-  position: relative;
-  top: 10px;
-}
-#mute4{
-  position: relative;
-  top: 10px;
-}
-#mute5{
-  position: relative;
-  top: 10px;
-}
-#muteDrone1{
-  position: relative;
-  top: 10px;
-}
-#muteDrone2{
-  position: relative;
-  top: 10px;
-}
 
 button{
   border: 2px solid;

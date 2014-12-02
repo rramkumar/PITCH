@@ -286,7 +286,7 @@ function createAudios(songName, difficultyLevel) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume'+i+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<img id="mute'+i+'" src="' + UNMUTED_IMG_PATH + '" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
+		quizContentAppend += 	'<img class="muteButtons" id="mute'+i+'" src="' + UNMUTED_IMG_PATH + '" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>' + OK_IMG_TAG + '</li>';
@@ -308,7 +308,7 @@ function createAudios(songName, difficultyLevel) {
 		//Creates the drones player controls
 		quizDroneContent+='<div id="quizDronePartDiv'+q+'" class="quizDronePartDiv">';
 		quizDroneContent+='<input type="range" id="volumeDrone'+q+'" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent+='<img id="muteDrone'+q+'" src="./assets/images/muted.png" onclick="clickedDrone'+q+'();"></img> <span> '+ highLow +' Drone' +'</span>';
+		quizDroneContent+='<img class="muteButtons" id="muteDrone'+q+'" src="./assets/images/muted.png" onclick="clickedDrone'+q+'();"></img> <span> '+ highLow +' Drone' +'</span>';
 	}
 	//Appends the drone components
 	$("#quizDroneComponents").append(quizDroneContent);
