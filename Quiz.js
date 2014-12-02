@@ -13,6 +13,7 @@ var drone1;
 var MUSIC_RELATIVE_PATH = "assets/music/";
 var IMAGE_RELATIVE_PATH = "assets/images/";
 var FLAT_IMG_TAG = '<img src="./assets/images/flat.png"></img>';
+var OK_IMG_TAG = '<img src="./assets/images/ok.png"></img>';
 var SHARP_IMG_TAG = '<img src="./assets/images/sharp.png"></img>';
 var MUTED_IMG_PATH="./assets/images/muted.png";
 var UNMUTED_IMG_PATH="./assets/images/unmuted.png";
@@ -128,7 +129,7 @@ $(document).ready(function() {
 	});
 	//////////////////////////////////////////////////
 	*/
-	
+
 	var pausedBeforeSeekPress;//used to let the seeker mouseup function know if it should unpause or not.
 	//Method to seek all parts with the main part. 
 	var seekShouldUpdate = true; // Lock that won't allow seek to update if the mouse is down.
@@ -288,7 +289,7 @@ function createAudios(songName, difficultyLevel) {
 		quizContentAppend += 	'<img id="mute'+i+'" src="' + UNMUTED_IMG_PATH + '" onclick="clicked'+i+'();"></img><span> '+voiceName+'</span>';
 		quizContentAppend += 	'<ul class="choices">';
 		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="-1" id="tone'+i+'flat">' + FLAT_IMG_TAG + '</li>';
-		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked> OK</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="0" id="tone'+i+'inTune" checked>' + OK_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone'+i+'" value="1" id="tone'+i+'sharp">' + SHARP_IMG_TAG + '</li>';
 		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark'+i+'"></li>';
 		quizContentAppend += 	'</ul></div><br>';
