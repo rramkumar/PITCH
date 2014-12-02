@@ -1,9 +1,11 @@
-//globals 
-//Code written by Alex Britt, Jon Medenblik, and Rahul Ramkumar
+/*
+Code written by Alex Britt, Jon Medenblik, and Rahul Ramkumar
+*/
 
-//Creates an Game object that holds information about the song and levels
+//globals 
+//Creates a game object that holds information about the song and levels
 //As well as the path to the json files. 
-var game= {
+var game = {
 	songs: {},
 	levels: {},
 	currentSongTitle: "",
