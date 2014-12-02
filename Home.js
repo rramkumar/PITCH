@@ -165,7 +165,8 @@ function parseJSONFiles() {
 
 		var songsInsert = "";
 		$.each(game.songs, function(index, obj) {
-			songsInsert += '<li><input class="songSelectRadio" type="radio" name="song" value="'+obj.objName+'">' + obj.title + ' </li>';
+			var Title = obj.title.split('--')
+			songsInsert += '<li><input class="songSelectRadio" type="radio" name="song" value="'+obj.objName+'">' + '<strong>' + Title[0] + '</strong>' + '-' + Title[1] + ' </li>';
 			console.log(obj.title);
 		});
 
