@@ -16,6 +16,11 @@ var game= {
 var numVoices;
 
 $(document).ready(function(){
+	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+	var is_opera = navigator.userAgent.toLowerCase().indexOf('opera') > -1; 
+	if(!is_chrome||!opera){
+		alert("Please use Chrome to use this application");
+	}
 	//Button submit to enter the Quiz div
 	//Checks to see if a song is selected
 	//Stores value of level selected
