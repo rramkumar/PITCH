@@ -160,9 +160,11 @@ input {
 #quizDroneComponentsTable td {
   width: 50%;
 }
-
+#quizDroneComponentsTable th {
+  text-align: left;
+}
 #correctIncorrect {
-  padding-top: 0px;
+
 }
 
 

@@ -37,14 +37,14 @@
 				</form>
 				<table id='homeTable'>
 					<tr>
+						<th>Select a Difficulty for Practice</th>
+						<th>Play in the Sandbox (adjust tuning freely)</th>
+					<tr>
 						<td>
-							<h3>Select a Difficulty for Practice</h3>
-							<select id="levels" class="levels">
-							</select>
+							<select id="levels" class="levels"></select>
 							<button class="m-btn blue" id="homeSubmit" name="submit" type="button">Go!</button>
 						</td>
 						<td>
-							<h3>Play in the Sandbox (adjust tuning freely)</h3>
 							<button class="m-btn blue" id="homeSandboxSubmit" name="submit" type="button">Go!</button>
 						</td>
 				</table>
@@ -75,17 +75,17 @@
 				
 				<table id='quizDroneComponentsTable'>
 					<tr>
+    					<th> Drones (reference pitches)</th>
+    					<th id="correctIncorrect">Correct</th>
+  					</tr>
+					<tr>
 						<td>
-							<h3> Drones (reference pitches) </h3>
 							<div id ="quizDroneComponents"></div>
 						</td>
 						<td>
 							<button class="submit m-btn blue" id="quizSubmit" name="submit" type="button">Submit</button>
 							<button class="m-btn blue" id="toggleHints" name="toggle hints" type="button">Show Hints</button>
 							<button class="m-btn blue" id="quizReturnHome" name="quit" type="button">Return Home</button>
-							<br>
-							<br>
-							<div id="correctIncorrect"> Correct </div>
 						</td>
 					</tr>
 				</table>
