@@ -27,7 +27,10 @@ button{
   position: relative;
   top: 18px;
 }
-
+#mainSandboxplaypause{
+  position: relative;
+  top: 18px;
+}
 .content{
   background-color: #FFFCF7;
 
@@ -46,6 +49,9 @@ table {
 #homeTable td{
   width:400px;
   text-align: center;
+}
+#homeTable th{
+  font-size: 150%;
 }
 
 li{
@@ -116,9 +122,13 @@ form{
 #homeSubmit{
   margin-bottom: 10px;
 }
+#homeSandboxSubmit{
+  margin-bottom: 10px;
+}
 
 .songs li{
 text-align: left;
+padding-left:200px;
 }
 
 
