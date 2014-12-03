@@ -21,7 +21,7 @@ $(document).ready(function(){
 	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 	var is_opera = navigator.userAgent.toLowerCase().indexOf('opera') > -1; 
 	if(!is_chrome&&!is_opera){
-		alert('Please use Chrome to use this application');
+		$('#browserWarningDiv').attr('isVisible', true);
 	}
 	//Button submit to enter the Quiz div
 	//Checks to see if a song is selected
