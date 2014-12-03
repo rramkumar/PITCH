@@ -25,20 +25,24 @@
 	<body>
 		<!-- HTML for the Home Page-->
 		<div id="headerDiv">
-			<h1 id="headerDivTitle">PITCH</h1>
-			<h4 id="pageSubtitle">Personal Intonation Training, Computer Heuristics</h4>
+			<div id="headerDivTitle">PITCH</div> <br>
+			<div id="pageSubtitle">Personal Intonation Training, Computer Heuristics</div>
 		</div>
 		<div id="homeDiv" isVisible="true">
 			<div class="content">
 				<form class="songSelection" id="songs">
-					<h2>Select a Song</h2>
+					<div class="customTableHead">Select a Song</div>
 				 	<ul class="songs">
 			 		</ul>
 				</form>
 				<table id='homeTable'>
 					<tr>
-						<th>Select a Difficulty for Practice</th>
-						<th>Play in the Sandbox <br>(adjust tuning freely)</th>
+						<td class="customTableHead">Select a Difficulty for Practice</td>
+						<td class="customTableHead">Play in the Sandbox <br>
+							<div class="customTableSubhead">(adjust tuning freely)</div>
+						</td>
+					</tr>
+
 					<tr>
 						<td>
 							<select id="levels" class="levels"></select>
@@ -55,15 +59,17 @@
 		<div id="quizDiv" isVisible="false">
 			<div class="content">
 				<h2 id="quizTitle"></h2>
-				<audio id="audio0">
+				<audio id="audio0" controls>
 					
 				</audio>
 
+				<!--
 				<div id='customcontrols'>
 					<span id='mainplaypause'><img id='playgray' src="./assets/images/playgray.png" isVisible="true"><img id='playblack' src="./assets/images/playblack.png" isVisible="false"><img id='pausegray' src="./assets/images/pausegray.png" isVisible="false"><img id='pauseblack' src="./assets/images/pauseblack.png" isVisible="false"></span>
 					<span id='mainseeker'><input type='range' id='mainseekerrange' step=".01" value="0" max="1" min="0"></span>
 					<span id='timedisplay'>0:00 / 0:00</span>
 				</div><br>
+				-->
 
 				<div>
 					<span> Volume Controls</span>
@@ -76,7 +82,7 @@
 				<table id='quizDroneComponentsTable'>
 					<tr>
     					<th> Drones (reference pitches)</th>
-    					<th id="correctIncorrect"></th>
+    					<th id="correctIncorrect" class="invisibleThings"></th>
   					</tr>
 					<tr>
 						<td>
@@ -210,6 +216,6 @@
 					</table>
 				</div>
 			</div> <!-- close .content -->
-		</div> <!-- close #sanboxDiv -->
+		</div> <!-- close #sandboxDiv -->
 	</body>
 </html>

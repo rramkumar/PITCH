@@ -8,11 +8,11 @@ Code written by Alex Britt, Jon Medenblik, and Rahul Ramkumar
 var game = {
 	songs: {},
 	levels: {},
-	currentSongTitle: "",
-	currentSongObjName: "",
+	currentSongTitle: '',
+	currentSongObjName: '',
 	currentLevel: 0,
-	LEVEL_SPEC_JSON_PATH: "./levels.json",
-	SONGS_SPEC_JSON_PATH: "./songs.json",
+	LEVEL_SPEC_JSON_PATH: './levels.json',
+	SONGS_SPEC_JSON_PATH: './songs.json',
 	hints: false
 };
 var numVoices;
@@ -21,21 +21,21 @@ $(document).ready(function(){
 	var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 	var is_opera = navigator.userAgent.toLowerCase().indexOf('opera') > -1; 
 	if(!is_chrome&&!is_opera){
-		alert("Please use Chrome to use this application");
+		alert('Please use Chrome to use this application');
 	}
 	//Button submit to enter the Quiz div
 	//Checks to see if a song is selected
 	//Stores value of level selected
 	//Sends info to Quiz.js to create Quiz. 
-	$("#homeSubmit").click(function(event){
+	$('#homeSubmit').click(function(event){
 		var checked=($('input[name=song]:checked').is(':checked'));
 		if(checked==false) {	
-			alert("Song Not Selected");
+			alert('Song Not Selected');
 		}
 		var checked2=($('input[name=level]:checked').is(':checked'));
 		if(checked==true) {
 			game.currentSongObjName = $('input[name=song]:checked').val();
-			var selectElement = document.getElementById("levels");
+			var selectElement = document.getElementById('levels');
 			game.currentLevel = parseInt(selectElement.options[selectElement.selectedIndex].value.substring(5));
 			for (var i = 0; i < game.songs.length; i++) {
 				if (game.songs[i].objName==game.currentSongObjName) {
@@ -104,9 +104,10 @@ function showDiv(which) {
 		}
 
 		$("#toggleHints").hide();
-		$("#toggleHints").html("Show Hints");
+		$("#toggleHints").html('Show Hints');
 		game.hints=false;
-		$("#correctIncorrect").html("");
+		$("#correctIncorrect").html('');
+		$("#correctIncorrect").addClass('invisibleThings');
 	}
 	//Resets the sanbox to defualt start
 	//Called when switching to sandbox

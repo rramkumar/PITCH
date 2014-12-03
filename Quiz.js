@@ -176,14 +176,15 @@ $(document).ready(function() {
 	//Quiz submit button
 	//Goes through and makes sure value of the flat/sharp/intune button
 	//Mathes the tone of the actual piece. 
-	$("#newExample").click(function(event){
-				showDiv("quiz");
+	$('#newExample').click(function(event){
+				showDiv('quiz');
 				setTimeout(function() {
 					tones = createAudios(game.currentSongObjName, game.currentLevel);
 				},1000); 
 				hangInteractions();
 				audio0.pause();
 				audio0.currentTime = 0;
+				$('#correctIncorrect').addClass('invisibleThings');
 	});
 	$("#quizSubmit").click(function(event) {
 			var correct = true;
@@ -210,13 +211,15 @@ $(document).ready(function() {
 			}
 			//Correct result
 			if (correct) {
-				$("#correctIncorrect").html("Correct!");
-				$("#toggleHints").show();
+				$('#correctIncorrect').html('Correct!');
+				$('#correctIncorrect').removeClass('invisibleThings');
+				$('#toggleHints').hide();
 				correct = false;
 			} else {
 				//Incorrect
-				$("#correctIncorrect").html("Try Again!");
-				$("#toggleHints").show();
+				$('#correctIncorrect').html('Try Again!');
+				$('#correctIncorrect').removeClass('invisibleThings');
+				$('#toggleHints').show();
 			}
 	});
 	//Toggle Hints button
