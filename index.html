@@ -36,16 +36,16 @@
 		<br>
 		<div id="homeDiv" isVisible="true">
 			<div class="content">
+				<div class="customHeadBig">Select a Song</div>
 				<form class="songSelection" id="songs">
-					<div class="customTableHeadBig">Select a Song</div>
-				 	<ul class="songs">
+					<ul class="songs">
 			 		</ul>
 				</form>
 				<table id='homeTable'>
 					<tr>
-						<td class="customTableHead">Select a Difficulty for Practice</td>
-						<td class="customTableHead">Play in the Sandbox <br>
-							<div class="customTableSubhead">(adjust tuning freely)</div>
+						<td class="customHead">Select a Difficulty for Practice</td>
+						<td class="customHead">Play in the Sandbox <br>
+							<div class="customSubhead">(adjust tuning freely)</div>
 						</td>
 					</tr>
 
@@ -64,7 +64,8 @@
 		<!--HTML For the QUIZ-->
 		<div id="quizDiv" isVisible="false">
 			<div class="content">
-				<h2 id="quizTitle"></h2>
+				<div id="quizTitle" class="customHeadBig"></div>
+				<br>
 				<audio id="audio0" controls>
 					
 				</audio>
@@ -87,8 +88,8 @@
 				
 				<table id='quizDroneComponentsTable'>
 					<tr>
-    					<th> Drones (reference pitches)</th>
-    					<th id="correctIncorrect" class="invisibleThings"></th>
+    					<th id="quizDroneTh"> Drones (reference pitches)</th>
+    					<th> <div id="correctIncorrect" class="invisibleThings"> </div> </th>
   					</tr>
 					<tr>
 						<td>

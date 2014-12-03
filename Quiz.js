@@ -213,12 +213,14 @@ $(document).ready(function() {
 			if (correct) {
 				$('#correctIncorrect').html('Correct!');
 				$('#correctIncorrect').removeClass('invisibleThings');
+				$('#correctIncorrect').css('background-color', '#3DA54A');
 				$('#toggleHints').hide();
 				correct = false;
 			} else {
 				//Incorrect
 				$('#correctIncorrect').html('Try Again!');
 				$('#correctIncorrect').removeClass('invisibleThings');
+				$('#correctIncorrect').css('background-color', '#E63F3F');
 				$('#toggleHints').show();
 			}
 	});

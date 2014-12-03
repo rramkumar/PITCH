@@ -154,17 +154,19 @@ padding-left:200px;
 padding-top: 5px;
 }
 
-.customTableHeadBig {
+.customHeadBig {
   font-size: 28px;
   font-weight: bold;
   vertical-align: top;
+  text-align: center;
+  padding-top: 8px;
 }
-.customTableHead {
+.customHead {
   font-size: 22px;
   font-weight: bold;
   vertical-align: top;
 }
-.customTableSubhead {
+.customSubhead {
   font-size: 18px;
   font-weight: normal;
 }
@@ -208,7 +210,7 @@ input {
   width: 50%;
 }
 
-#quizDroneComponentsTable th {
+#quizDroneTh {
   text-align: left;
 }
 
@@ -217,7 +219,9 @@ input {
 }
 
 #correctIncorrect {
-  
+  width: 100px;
+  padding: 9px;
+  text-align: center;
   border: 1px solid black;
   border-spacing: 6px;
   border-radius: 5px;
@@ -225,6 +229,10 @@ input {
 
 
 /*rules for sandboxDiv elements*/
+
+#sandboxDiv > .content {
+  width:1000px;
+}
 
 #sandboxTable td {
   text-align: center;
@@ -246,10 +254,6 @@ margin-right: auto;
   width: 60%;
 }
 
-#sandboxMute1 {
-  height: 36px;
-  width: 36px;
-}
 #sandboxDroneComponentsTable{
   padding-bottom: 25px;
 }
