@@ -14,12 +14,12 @@ var drone1;
 
 var MUSIC_RELATIVE_PATH = "assets/music/";
 var IMAGE_RELATIVE_PATH = "assets/images/";
-var FLAT_IMG_TAG = '<img src="./assets/images/flat.png"></img>';
-var OK_IMG_TAG = '<img src="./assets/images/ok.png"></img>';
-var SHARP_IMG_TAG = '<img src="./assets/images/sharp.png"></img>';
-var MUTED_IMG_PATH = "./assets/images/muted.png";
-var UNMUTED_IMG_PATH = "./assets/images/unmuted.png";
-
+var FLAT_IMAGE_TAG = '<img src="' +IMAGE_RELATIVE_PATH+ 'flat.png"></img>';
+var OK_IMAGE_TAG = '<img src="' +IMAGE_RELATIVE_PATH+ 'ok.png"></img>';
+var SHARP_IMAGE_TAG = '<img src="' +IMAGE_RELATIVE_PATH+ 'sharp.png"></img>';
+var MUTED_IMAGE_PATH = IMAGE_RELATIVE_PATH+ 'muted.png';
+var UNMUTED_IMAGE_PATH = IMAGE_RELATIVE_PATH+ 'unmuted.png';
+var CORRECT_MARK_IMAGE_PATH = IMAGE_RELATIVE_PATH+"correctMark.png"
 
 //vars record whether each track is to be muted independent of muting by the master control in the audio tag
 var audio1Muted = false;
@@ -173,9 +173,6 @@ $(document).ready(function() {
 		$("#timedisplay").html(parseInt(currentMinutes, 10)+ ":" +twoDigits(parseInt(currentSeconds, 10)) + " / "+parseInt(totalMinutes, 10) + ":" + twoDigits(parseInt(totalSeconds, 10)) );
 	}
 
-	//Quiz submit button
-	//Goes through and makes sure value of the flat/sharp/intune button
-	//Mathes the tone of the actual piece. 
 	$('#newExample').click(function(event){
 				showDiv('quiz');
 				setTimeout(function() {
@@ -185,7 +182,12 @@ $(document).ready(function() {
 				audio0.pause();
 				audio0.currentTime = 0;
 				$('#correctIncorrect').addClass('invisibleThings');
+				$('.quizAnswerMark').css('visibility', 'hidden');
 	});
+
+	//Quiz submit button
+	//Goes through and makes sure value of the flat/sharp/intune button
+	//Matches the tone of the actual piece. 
 	$("#quizSubmit").click(function(event) {
 			var correct = true;
 			for (var i = 0; i < tones.length; i++) {
@@ -230,12 +232,14 @@ $(document).ready(function() {
 	$("#toggleHints").on("click", function(event) {
 		if (game.hints) {
 			$("#toggleHints").html("Show Hints");
+			$(".quizAnswerMark").css('visibility', 'hidden');
 		} else {
 			$("#toggleHints").html("Hide Hints");
+			$(".quizAnswerMark").css('visibility', 'visible');
 		}
 		game.hints = !game.hints;
-		$(".quizAnswerMark").toggle();
 	});
+
 	$("#toggleHints").hide();
 
 	$("#quizReturnHome").on("click", function(event) {
@@ -247,29 +251,29 @@ $(document).ready(function() {
 //edit val of button for when the master audio element's mute is clicked to unmute
 function redrawMuteButtons() {
 	if (audio1.muted) {
-		$("#mute1").attr("src",MUTED_IMG_PATH);
+		$("#mute1").attr("src",MUTED_IMAGE_PATH);
 	} else {
-		$("#mute1").attr("src",UNMUTED_IMG_PATH);
+		$("#mute1").attr("src",UNMUTED_IMAGE_PATH);
 	}
 	if (audio2.muted) {
-		$("#mute2").attr("src",MUTED_IMG_PATH);
+		$("#mute2").attr("src",MUTED_IMAGE_PATH);
 	} else {
-		$("#mute2").attr("src",UNMUTED_IMG_PATH);
+		$("#mute2").attr("src",UNMUTED_IMAGE_PATH);
 	}
 	if (audio3.muted) {
-		$("#mute3").attr("src",MUTED_IMG_PATH);
+		$("#mute3").attr("src",MUTED_IMAGE_PATH);
 	} else {
-		$("#mute3").attr("src",UNMUTED_IMG_PATH);
+		$("#mute3").attr("src",UNMUTED_IMAGE_PATH);
 	}
 	if (audio4.muted) {
-		$("#mute4").attr("src",MUTED_IMG_PATH);
+		$("#mute4").attr("src",MUTED_IMAGE_PATH);
 	} else {
-		$("#mute4").attr("src",UNMUTED_IMG_PATH);
+		$("#mute4").attr("src",UNMUTED_IMAGE_PATH);
 	}
 	if (audio5.muted) {
-		$("#mute5").attr("src",MUTED_IMG_PATH);
+		$("#mute5").attr("src",MUTED_IMAGE_PATH);
 	} else {
-		$("#mute5").attr("src",UNMUTED_IMG_PATH);
+		$("#mute5").attr("src",UNMUTED_IMAGE_PATH);
 	}
 }
 
@@ -301,12 +305,12 @@ function createAudios(songName, difficultyLevel) {
 		var voiceName = voices[i-1];
 		quizContentAppend += '<div id="quizPartDiv'+i+'" class="quizPartDiv">';
 		quizContentAppend += 	'<input type="range" id="volume' +i+ '" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizContentAppend += 	'<img class="muteButtons" id="mute' +i+ '" src="' +UNMUTED_IMG_PATH+ '" onclick="clicked' +i+ '();"></img><span> ' +voiceName+ '</span>';
+		quizContentAppend += 	'<img class="muteButtons" id="mute' +i+ '" src="' +UNMUTED_IMAGE_PATH+ '" onclick="clicked' +i+ '();"></img><span> ' +voiceName+ '</span>';
 		quizContentAppend += 	'<ul class="choices">';
-		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="-1" id="tone' +i+ 'flat">' +FLAT_IMG_TAG+ '</li>';
-		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="0" id="tone' +i+ 'inTune" checked>' +OK_IMG_TAG+ '</li>';
-		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="1" id="tone' +i+ 'sharp">' +SHARP_IMG_TAG+ '</li>';
-		quizContentAppend += 		'<li><img hidden="true" class="quizAnswerMark" id="quizAnswerMark' +i+ '"></li>';
+		quizContentAppend += 		'<li><img style="visibility: hidden;" class="quizAnswerMark" id="quizAnswerMark' +i+ '"></li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="-1" id="tone' +i+ 'flat">' +FLAT_IMAGE_TAG+ '</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="0" id="tone' +i+ 'inTune" checked>' +OK_IMAGE_TAG+ '</li>';
+		quizContentAppend += 		'<li class="quizAnswerRadio"><input type="radio" name="tone' +i+ '" value="1" id="tone' +i+ 'sharp">' +SHARP_IMAGE_TAG+ '</li>';
 		quizContentAppend += 	'</ul></div><br>';
 	}
 	$("#quizVoiceComponents").empty();
@@ -323,7 +327,7 @@ function createAudios(songName, difficultyLevel) {
 		//Creates the drones player controls
 		quizDroneContent += '<div id="quizDronePartDiv' +q+ '" class="quizDronePartDiv">';
 		quizDroneContent += '<input type="range" id="volumeDrone' +q+ '" class="volumeSlider" min="0" max="1" value="1" step=".01">';
-		quizDroneContent += '<img class="muteButtons" id="muteDrone' +q+ '" src="' +MUTED_IMG_PATH+ '" onclick="clickedDrone' +q+ '();"></img> <span> '+highLow+' Drone</span>';
+		quizDroneContent += '<img class="muteButtons" id="muteDrone' +q+ '" src="' +MUTED_IMAGE_PATH+ '" onclick="clickedDrone' +q+ '();"></img> <span> '+highLow+' Drone</span>';
 	}
 
 	//Appends the drone components
@@ -396,11 +400,11 @@ function clicked1() {
 	if (audio1.muted) {
 		audio1.muted = false;
 		audio1Muted = false;
-		$("#mute1").attr("src",UNMUTED_IMG_PATH);
+		$("#mute1").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio1.muted = true;
 		audio1Muted = true;
-		$("#mute1").attr("src",MUTED_IMG_PATH);
+		$("#mute1").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
@@ -408,11 +412,11 @@ function clicked2() {
 	if (audio2.muted) {
 		audio2.muted = false;
 		audio2Muted = false;
-		$("#mute2").attr("src",UNMUTED_IMG_PATH);
+		$("#mute2").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio2.muted = true;
 		audio2Muted = true;
-		$("#mute2").attr("src",MUTED_IMG_PATH);
+		$("#mute2").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
@@ -420,11 +424,11 @@ function clicked3() {
 	if (audio3.muted) {
 		audio3.muted = false;
 		audio3Muted = false;
-		$("#mute3").attr("src",UNMUTED_IMG_PATH);
+		$("#mute3").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio3.muted = true;
 		audio3Muted = true;
-		$("#mute3").attr("src",MUTED_IMG_PATH);
+		$("#mute3").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
@@ -432,11 +436,11 @@ function clicked4() {
 	if (audio4.muted) {
 		audio4.muted = false;
 		audio4Muted = false;
-		$("#mute4").attr("src",UNMUTED_IMG_PATH);
+		$("#mute4").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio4.muted = true;
 		audio4Muted=true;
-		$("#mute4").attr("src",MUTED_IMG_PATH);
+		$("#mute4").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
@@ -444,31 +448,31 @@ function clicked5() {
 	if (audio5.muted) {
 		audio5.muted = false;
 		audio5Muted = false;
-		$("#mute5").attr("src",UNMUTED_IMG_PATH);
+		$("#mute5").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio5.muted = true;
 		audio5Muted = true;
-		$("#mute5").attr("src",MUTED_IMG_PATH);
+		$("#mute5").attr("src",MUTED_IMAGE_PATH);
 		}
 }
 
 function clickedDrone1() {
 	if (drone1.muted) {
 		drone1.muted = false;
-		$("#muteDrone1").attr("src",UNMUTED_IMG_PATH);
+		$("#muteDrone1").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		drone1.muted = true;
-		$("#muteDrone1").attr("src",MUTED_IMG_PATH);
+		$("#muteDrone1").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
 function clickedDrone2() {
 	if (drone2.muted) {
 		drone2.muted = false;
-		$("#muteDrone2").attr("src",UNMUTED_IMG_PATH);
+		$("#muteDrone2").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		drone2.muted = true;
-		$("#muteDrone2").attr("src",MUTED_IMG_PATH);
+		$("#muteDrone2").attr("src",MUTED_IMAGE_PATH);
 	}
 }
 
@@ -704,7 +708,7 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 //Marks incorrect if they get the intonation wrong
 function markCorrectOrIncorrect(voiceNumber, correct) {
 	if (correct) {
-		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"correctMark.png");
+		$("#quizAnswerMark"+voiceNumber).attr("src", CORRECT_MARK_IMAGE_PATH);
 	} else {
 		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"incorrectMark.png");
 	}
