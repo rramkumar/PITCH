@@ -78,6 +78,9 @@ p {
   padding-left: 5px;
   padding-bottom: 5px;
 }
+audio{
+  padding-bottom: 30px;
+}
 
 .information{
   background-color: #FFFCF7;
@@ -171,7 +174,12 @@ padding-top: 5px;
   font-weight: normal;
 }
 
-
+#volumeControlsTitle{
+  font-weight: bold;
+}
+#answersTitle{
+  font-weight: bold;
+}
 
 
 /*rules for quizDiv elements*/
@@ -239,6 +247,7 @@ input {
 
 
 /*rules for sandboxDiv elements*/
+
 
 #sandboxDiv > .content {
   width:1000px;
