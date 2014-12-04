@@ -10,6 +10,16 @@ body{
   font-family: "Arial", Gadget, sans-serif;
 }
 
+#quizVoiceComponents .muteButtons{
+  padding-left: 6px;
+  padding-right: 5px;
+}
+
+#quizDroneComponentsTable .muteButtons{
+  padding-left: 6px;
+  padding-right: 5px;  
+}
+
 
 [isVisible="false"] {
   display:none;
