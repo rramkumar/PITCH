@@ -276,6 +276,9 @@ margin-right: auto;
 #sandboxDroneComponentsTable{
   padding-bottom: 25px;
 }
+.sandboxInstrumentTitle{
+  width:175px;
+}
 
 /*
 input[type="range"] {
