@@ -23,6 +23,8 @@ $(document).ready(function(){
 	if(!is_chrome&&!is_opera){
 		$('#browserWarningDiv').attr('isVisible', true);
 	}
+
+
 	//Button submit to enter the Quiz div
 	//Checks to see if a song is selected
 	//Stores value of level selected

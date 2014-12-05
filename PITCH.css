@@ -54,6 +54,8 @@ button{
   border-radius: 15px;
 
   padding-left: 45px;
+  padding-right: 45px;
+  padding-bottom: 30px;
 }
 
 table {
@@ -105,19 +107,25 @@ a{
   color:inherit;
 }
 /*rules for headerDiv elements*/
-#aboutButton{
-  border: 2px solid;
-  border-radius: 7px;
-  background-color: #4169E1; 
-}
+
 #aboutProgram{
-  padding-bottom: 5px;
-  padding-top: 5px;
+  background-color: #FFFCF7;
+
+  width: 450px;
+  margin-right: auto;
+  margin-left: auto;
+
+  border-radius: 15px;
+
+  text-align: center;
+  padding-bottom: 7px;
 }
+
 #ReturnHome{
   margin-left: auto;
   margin-right: auto;
 }
+
 #headerDivTitle {
   width:150px;
   height: 25px;
@@ -161,6 +169,19 @@ a{
 
 
 /*rules for homeDiv elements*/
+.homeLinkButton {
+  width: 130px;
+  text-decoration:none;
+}
+
+#aboutPageButton {
+  width:130px;
+}
+
+#teamPageButton {
+  width:130px;
+}
+
 
 form{
   text-align: center;
@@ -523,3 +544,8 @@ input[type=range]:focus::-ms-fill-upper {
   font-weight: normal;
 }
 
+
+/* other pages */
+#homeButtonContainer {
+  text-align: center;
+}
