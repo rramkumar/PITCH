@@ -100,9 +100,9 @@ audio{
   border-radius: 15px;
   padding-left: 5px;
 }
-
-
-
+a{
+  color:inherit;
+}
 /*rules for headerDiv elements*/
 
 
