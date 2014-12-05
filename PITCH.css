@@ -497,6 +497,12 @@ input[type=range]:focus::-ms-fill-upper {
   position: relative;
   cursor: pointer;
 }
-
-
+/*About Tags */
+#aboutInfo{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#aboutInfo h2{
+  text-align: center;
+}
 
