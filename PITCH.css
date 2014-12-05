@@ -206,7 +206,7 @@ padding-top: 5px;
 /*rules for quizDiv elements*/
 
 #quizDiv > .content {
-  width:1000px;
+  width:850px;
 }
 
 #audio0 {
@@ -236,10 +236,12 @@ input {
   list-style-type: none;
 }
 
-#quizDroneComponentsTable td {
-  width: 50%;
+#quizDroneComponentsTable td:nth-child(1) {
+  width: 45%;
 }
-
+#quizDroneComponentsTable td:nth-child(2) {
+  width: 55%;
+}
 #quizDroneTh {
   text-align: left;
 }
@@ -271,7 +273,7 @@ input {
 
 
 #sandboxDiv > .content {
-  width:1000px;
+  width:850px;
 }
 
 #sandboxTable td {
