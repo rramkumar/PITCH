@@ -505,4 +505,7 @@ input[type=range]:focus::-ms-fill-upper {
 #aboutInfo h2{
   text-align: center;
 }
+#aboutInfo li{
+  font-weight: normal;
+}
 
