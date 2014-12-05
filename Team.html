@@ -13,15 +13,21 @@
 
 <html>
 	<head>
+		<meta charset="utf-8">
 		<link href="PITCH.css" rel="stylesheet">
-		<!--PUT NEW LOGO HERE-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+		<script>
+			function goHome(){
+				window.location.href = 'index.html';
+			}
+		</script>
 	</head>
-	<style>
-		body{
-			background-attachment:fixed;
-		}
-	</style>
+	
 	<body>
+		<div id="headerDiv">
+			<div id="headerDivTitle" onclick="goHome()">PITCH</div> <br>
+			<div id="pageSubtitle">Personal Intonation Training, Computer Heuristics</div> <br>
+		</div>
 		<div class="content team">
 			<br>
 			<h2>About the Designers</h2> 
