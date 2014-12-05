@@ -8,6 +8,7 @@ body{
   background-image: url(./assets/images/background.png);
   /*background-color: #56A0D3;*/
   font-family: "Arial", Gadget, sans-serif;
+  background-attachment:fixed;
 }
 
 #quizVoiceComponents .muteButtons{
