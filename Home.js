@@ -154,6 +154,9 @@ function showDiv(which) {
 	}
 	redrawSandboxMuteButtons();
 }
+function returnHome(){
+	location.href="index.html"
+}
 //Mehtod to read in a JSON file and use that to create the home page
 function parseJSONFiles() {
 	//songs
