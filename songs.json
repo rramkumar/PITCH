@@ -8,27 +8,7 @@
         "title":"Bach Fantasia -- Clarinet, Alto Sax, Trombone, Tuba",
         "objName":"bachFantasia2",
         "voices":["Clarinet", "Alto Sax", "Trombone", "Tuba"]
-    },
-    {
-        "title":"Simple Gifts -- Flute, Clarinet, Horn, Tuba",
-        "objName":"simpleGifts1",
-        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
-    },
-    {
-        "title":"Simple Gifts -- Trumpet, Alto Sax, Trombone, Tuba",
-        "objName":"simpleGifts2",
-        "voices":["Trumpet", "Alto Sax", "Trombone", "Tuba"]
-    },
-    {
-        "title":"Simple Gifts -- Trumpet, Horn, Trombone, Tuba",
-        "objName":"simpleGifts3",
-        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
-    },
-    {
-        "title":"Simple Gifts -- 2 Trumpets, Horn, Tuba",
-        "objName":"simpleGifts4",
-        "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
-    },
+    },    
     {
         "title":"Chester -- Flute, Clarinet, Horn, Tuba",
         "objName":"chester1",
@@ -53,5 +33,25 @@
         "title":"Jupiter -- Trumpet, Horn, Trombone, Tuba",
         "objName":"jupiter1",
         "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Flute, Clarinet, Horn, Tuba",
+        "objName":"simpleGifts1",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Trumpet, Alto Sax, Trombone, Tuba",
+        "objName":"simpleGifts2",
+        "voices":["Trumpet", "Alto Sax", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- Trumpet, Horn, Trombone, Tuba",
+        "objName":"simpleGifts3",
+        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Simple Gifts -- 2 Trumpets, Horn, Tuba",
+        "objName":"simpleGifts4",
+        "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
     }
 ]
