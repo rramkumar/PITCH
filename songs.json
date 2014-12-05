@@ -30,8 +30,38 @@
         "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
     },
     {
-        "title":"Metronome Party -- 5 Identical Metronomes",
-        "objName":"metronome1",
-        "voices":["Metronome 1", "Metronome 2", "Metronome 3", "Metronome 4", "Metronome 5"]
+        "title":"Chester -- Flute, Clarinet, Horn, Tuba",
+        "objName":"chester1",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
+    },
+    {
+        "title":"Chester -- Trumpet, Horn, Trombone, Tuba",
+        "objName":"chester2",
+        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Chester -- Clarinet, Alto Sax, Trombone, Tuba",
+        "objName":"chester3",
+        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Eine Kleine -- Flute, Clarinet, Alto Sax, Trombone, Tuba",
+        "objName":"eineKleine1",
+        "voices":["Flute", "Clarinet", "Alto Sax", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Eine Kleine -- Clarinet, Alto Sax, Horn, 2 Tubas",
+        "objName":"eineKleine2",
+        "voices":["Clarinet", "Alto Sax", "Horn", "Tuba 1", "Tuba 2"]
+    },
+    {
+        "title":"Jupiter -- Trumpet, Horn, Trombone, Tuba",
+        "objName":"jupiter1",
+        "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Jupiter -- Flute, Clarinet, Horn, Tuba",
+        "objName":"jupiter2",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
     }
 ]
