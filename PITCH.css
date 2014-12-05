@@ -104,8 +104,15 @@ a{
   color:inherit;
 }
 /*rules for headerDiv elements*/
-
-
+#aboutButton{
+  border: 2px solid;
+  border-radius: 7px;
+  background-color: #4169E1; 
+}
+#aboutProgram{
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 #headerDivTitle {
   width:150px;
   height: 25px;
