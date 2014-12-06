@@ -106,6 +106,9 @@ audio{
 a{
   color:inherit;
 }
+.levelInfo li{
+  text-align: left;
+}
 /*rules for headerDiv elements*/
 
 #aboutProgram{
