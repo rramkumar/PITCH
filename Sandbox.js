@@ -46,7 +46,7 @@ function createSandbox(songName, callback) {
 	// change displayed title in the sandbox
 	currentSong=songName;
 	var insertTitle = game.currentSongTitle.split('--')[0];
-	insertTitle = insertTitle.substring(0, insertTitle.length-1);
+	insertTitle = insertTitle.substring(0, insertTitle.length-1) + ", Sandbox";
 	$("#sandboxTitle").html(insertTitle);
 
 
