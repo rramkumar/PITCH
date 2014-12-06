@@ -111,10 +111,13 @@ a{
 }
 /*rules for headerDiv elements*/
 
+#headerDiv {
+  text-align: center;
+}
 #aboutProgram{
   background-color: #FFFCF7;
 
-  width: 450px;
+  width: 550px;
   margin-right: auto;
   margin-left: auto;
 
@@ -144,12 +147,11 @@ a{
   margin-right: auto;
 }
 
-#headerDivTitle {
+#headerLogo {
+  border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
-  text-align: center;
-  color: #ffffff;
 }
 
 #pageSubtitle {
@@ -162,6 +164,9 @@ a{
 
 /*rules for browserWarningDiv elements*/
 #browserWarningDiv {
+  
+}
+#browserWarningInternalDiv {
   background-color: #E42A2A;
 
   font-size: 18px;
