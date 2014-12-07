@@ -248,7 +248,7 @@ $(document).ready(function() {
 
 });
 
-//edit val of button for when the master audio element's mute is clicked to unmute
+// edit val of button for when the master audio element's mute is clicked to unmute
 function redrawMuteButtons() {
 	if (audio1.muted) {
 		$("#mute1").attr("src",MUTED_IMAGE_PATH);
@@ -298,8 +298,8 @@ function createAudios(songName, difficultyLevel) {
 			voices = game.songs[i].voices;
 		}
 	}
-	//Creates the custom music player system each time the player is needed
-	//Called after each correct quiz answer ect. 
+	// Creates the custom music player system each time the player is needed
+	// Called after each correct quiz answer ect. 
 	var quizContentAppend = "";
 	for (var i = 1; i <= numberOfVoices; i++) {
 		var voiceName = voices[i-1];
@@ -324,7 +324,7 @@ function createAudios(songName, difficultyLevel) {
 		} else if (q == 2) {
 			highLow = "Low";
 		}
-		//Creates the drones player controls
+		// Creates the drones player controls
 		quizDroneContent += '<div id="quizDronePartDiv' +q+ '" class="quizDronePartDiv">';
 		quizDroneContent += '<input type="range" id="volumeDrone' +q+ '" class="volumeSlider" min="0" max="1" value="1" step=".01">';
 		quizDroneContent += '<img class="muteButtons" id="muteDrone' +q+ '" src="' +MUTED_IMAGE_PATH+ '" onclick="clickedDrone' +q+ '();"></img> <span> '+highLow+' Drone</span>';
@@ -335,8 +335,8 @@ function createAudios(songName, difficultyLevel) {
 	drone1 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" +songName+ "Drone1.mp3");
 	drone2 = new Audio(MUSIC_RELATIVE_PATH + songName + "/" +songName+ "Drone2.mp3");
 
-	//loads the drones and mutes them (so constantly playing)
-	//loops the file to ensure always playing
+	// loads the drones and mutes them (so constantly playing)
+	// loops the file to ensure always playing
 	drone1.preload = "auto";
 	drone1.loop = true;
 	drone1.load();
@@ -348,7 +348,7 @@ function createAudios(songName, difficultyLevel) {
 	drone2.muted = true;
 	drone2.play();
 
-	//Volume control
+	// Volume control
 	$("#volume1").mousemove(function(event) {
 		audio1.volume = $("#volume1").val();
 	});
@@ -365,7 +365,7 @@ function createAudios(songName, difficultyLevel) {
 		$("#volume5").mousemove(function(event) {
 			audio5.volume = $("#volume5").val();
 		});
-	//Drone volume control
+	// Drone volume control
 	}
 	$("#volumeDrone2").mousemove(function(event) {
 		drone2.volume = $("#volumeDrone2").val();
@@ -373,10 +373,10 @@ function createAudios(songName, difficultyLevel) {
 	$("#volumeDrone1").mousemove(function(event) {
 		drone1.volume = $("#volumeDrone1").val();
 	});
-	//randomize how many will be out of tune
+	// randomize how many will be out of tune
 	numberOutOfTune = randomizeNumberOutOfTune(numberOutOfTune);
-	//Method used to figure out which part should be out of tune
-	//Returns an array with each value
+	// Method used to figure out which part should be out of tune
+	// Returns an array with each value
 	var outOfTuneArray = randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern);
 	$('#audio0').html('<source src="' +MUSIC_RELATIVE_PATH + songName + '/' +songName+ '0.mp3" type="audio/mpeg">');
 	audio0 = document.getElementById("audio0");
@@ -395,7 +395,7 @@ function createAudios(songName, difficultyLevel) {
 
 }
 
-//Methods that mute individual parts. 
+// Methods that mute individual parts. 
 function clicked1() {
 	if (audio1.muted) {
 		audio1.muted = false;
@@ -439,7 +439,7 @@ function clicked4() {
 		$("#mute4").attr("src",UNMUTED_IMAGE_PATH);
 	} else {
 		audio4.muted = true;
-		audio4Muted=true;
+		audio4Muted = true;
 		$("#mute4").attr("src",MUTED_IMAGE_PATH);
 	}
 }
@@ -476,7 +476,7 @@ function clickedDrone2() {
 	}
 }
 
-//Function to load all music values
+// Function to load all music values
 function hangInteractions() {
 	audio1.load();
 	audio2.load();
@@ -486,9 +486,9 @@ function hangInteractions() {
 		audio5.load();
 	}
 		
-	//play all Audio objects when the master audio element is played
-	//this starts all of them to avoid future startup costs, then pauses them as fast as possible
-	//then it schedules the concurrent setting all of them to the master's current time, and then schedules their concurrent playing
+	// play all Audio objects when the master audio element is played
+	// this starts all of them to avoid future startup costs, then pauses them as fast as possible
+	// then it schedules the concurrent setting all of them to the master's current time, and then schedules their concurrent playing
 	$("#audio0").on('play', function(event) {
 		audio1.play();
 		audio2.play();
@@ -511,7 +511,7 @@ function hangInteractions() {
 		setTimeout(function(){audio3.currentTime = audio0.currentTime;}, 100);
 		setTimeout(function(){audio4.currentTime = audio0.currentTime;}, 100);
 		if(numVoices >= 5){
-			setTimeout(function(){audio5.currentTime=audio0.currentTime;}, 100);
+			setTimeout(function(){audio5.currentTime = audio0.currentTime;}, 100);
 		}	
 		setTimeout(function(){
 			audio1.play();
@@ -524,7 +524,7 @@ function hangInteractions() {
 		}, 100);
 	});
 
-	//pause all Audio objects when the master audio element is paused
+	// pause all Audio objects when the master audio element is paused
 	$("#audio0").on("pause", function(event) {
 		audio1.pause();
 		audio2.pause();
@@ -535,8 +535,8 @@ function hangInteractions() {
 		}
 	});
 
-	//when the master audio element is clicked on, check for muted/unmuted state
-	//(there's no onmuted event for it, so we used onmouseup)
+	// when the master audio element is clicked on, check for muted/unmuted state
+	// (there's no onmuted event for it, so we used onmouseup)
 	$("#audio0").on("mouseup", function(event) {
 		setTimeout(function() {
 			if (audio0.muted) {
@@ -554,14 +554,14 @@ function hangInteractions() {
 				audio3.muted = audio3Muted;
 				audio4.muted = audio4Muted;
 				if (numVoices >= 5) {
-					audio5.muted=audio5Muted;
+					audio5.muted = audio5Muted;
 				}
 				redrawMuteButtons();
 			}
 		}, null);
 	});
 
-	//when the master audio element's volume is changed, it controls all the volumes together
+	// when the master audio element's volume is changed, it controls all the volumes together
 	$("#audio0").on('volumechange', function(event) {
 		$("#volume1").val(audio0.volume);
 		$("#volume2").val(audio0.volume);
@@ -579,7 +579,7 @@ function hangInteractions() {
 		}
 	});	
 }
-//Method to determine which parts are out of tune
+// Method to determine which parts are out of tune
 function randomizeNumberOutOfTune(numberOutOfTune) {
 	//If at most one is out of tune
 	//Then there is a 90% change one is out of tune
@@ -592,10 +592,10 @@ function randomizeNumberOutOfTune(numberOutOfTune) {
 			return 1;
 		}
 	//IF at max two can be out of tune then
-	//10% change 0 out of tune
-	//30% change 1 out of tune
-	//60% change 2 out of tune
-	} else if (numberOutOfTune=2) {
+	//10% chance 0 out of tune
+	//30% chance 1 out of tune
+	//60% chance 2 out of tune
+	} else if (numberOutOfTune = 2) {
 		var rand = Math.floor(Math.random()*10);
 		if (rand == 0) {
 			return 0;
@@ -606,15 +606,15 @@ function randomizeNumberOutOfTune(numberOutOfTune) {
 		}
 	}
 }
-//All the level specifications!!!!
+// creates an array containing the last part of the filenames, 
+// indicating which file will be loaded for each voice
 function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTune, voicePattern) {
 	var outOfTuneArray;
 	var sOrf1 = sharpOrFlat();
 	var sOrf2 = sharpOrFlat();
 	var valueOutOfTune1 = sOrf1 + degreeOutOfTune.toString();
 	var valueOutOfTune2 = sOrf2 + degreeOutOfTune.toString();
-	//IF 0 out of tune just returns all 0's to say all
-	//Should be in tune
+	// If 0 are out of tune just returns all 0's to indicate all should be in tune
 	if (numberOutOfTune == 0) {
 		if (numberOfVoices == 5) {
 			outOfTuneArray = ["0","0","0","0","0"];
@@ -624,8 +624,8 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			return outOfTuneArray;
 		}
 	}
-	//Calculates the out of tune part based on the specifications
-	//From the levels.json file. 
+	// Calculates the out of tune part based on the specifications
+	// From the levels.json file. 
 	if (numberOfVoices == 4) {
 		outOfTuneArray = ["0","0","0","0"];
 		if (numberOutOfTune == 1) {
@@ -640,9 +640,9 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			if (voicePattern == 2) {
 				var temp = Math.floor(Math.random()*2);
 				if (temp == 0) {
-					outOfTuneArray[1]=valueOutOfTune1;
+					outOfTuneArray[1] = valueOutOfTune1;
 				} else {
-					outOfTuneArray[2]=valueOutOfTune1;
+					outOfTuneArray[2] = valueOutOfTune1;
 				}
 
 			}
@@ -678,7 +678,7 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			}
 			if (voicePattern == 2) {
 				var temp=Math.floor(Math.random()*3)+1;
-				outOfTuneArray[temp]=valueOutOfTune1;
+				outOfTuneArray[temp] = valueOutOfTune1;
 			}
 			if (voicePattern == 3) {
 				var temp = Math.floor(Math.random()*numberOfVoices);
@@ -701,11 +701,11 @@ function randomizeOutOfTuneArray(numberOutOfTune, numberOfVoices, degreeOutOfTun
 			}
 		}
 	}
-	return outOfTuneArray
+	return outOfTuneArray;
 }
-//Method called by show hints
-//Marks an instrument as correct if they get the intonation correct
-//Marks incorrect if they get the intonation wrong
+// Method called by show hints
+// Marks an instrument as correct if they get the intonation correct
+// Marks incorrect if they get the intonation wrong
 function markCorrectOrIncorrect(voiceNumber, correct) {
 	if (correct) {
 		$("#quizAnswerMark"+voiceNumber).attr("src", CORRECT_MARK_IMAGE_PATH);
@@ -713,10 +713,10 @@ function markCorrectOrIncorrect(voiceNumber, correct) {
 		$("#quizAnswerMark"+voiceNumber).attr("src", IMAGE_RELATIVE_PATH+"incorrectMark.png");
 	}
 }
-//Method is called by randomizeOutOfTuneArray (method to determine which part is out of tune)
-//Chooses a random num between 0 and 1
-//if 0 the instrument is sharp
-//if 1 the instrument is flat
+// Method is called by randomizeOutOfTuneArray (method to determine which part is out of tune)
+// Chooses a random num between 0 and 1
+// if 0 the instrument is sharp
+// if 1 the instrument is flat
 function sharpOrFlat() {
 	var sharpFlat = Math.floor(Math.random()*2);
 		if (sharpFlat == 0){
