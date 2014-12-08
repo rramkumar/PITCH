@@ -20,6 +20,11 @@
         "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
     },
     {
+        "title":"Chester -- Clarinet, Alto Sax, Trombone, Tuba",
+        "objName":"chester3",
+        "voices":["Clarinet", "Alto Sax", "Trombone", "Tuba"]
+    },
+    {
         "title":"Eine Kleine -- Flute, Clarinet, Alto Sax, Trombone, Tuba",
         "objName":"eineKleine1",
         "voices":["Flute", "Clarinet", "Alto Sax", "Trombone", "Tuba"]
@@ -33,6 +38,16 @@
         "title":"Jupiter -- Trumpet, Horn, Trombone, Tuba",
         "objName":"jupiter1",
         "voices":["Trumpet", "Horn", "Trombone", "Tuba"]
+    },
+    {
+        "title":"Jupiter -- Flute, Clarinet, Horn, Tuba",
+        "objName":"jupiter2",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
+    },
+    {
+        "title":"Jupiter -- 2 Alto Saxes, Horn, Tuba",
+        "objName":"jupiter3",
+        "voices":["Alto Sax 1", "Alto Sax 1", "Horn", "Tuba"]
     },
     {
         "title":"Simple Gifts -- Flute, Clarinet, Horn, Tuba",
