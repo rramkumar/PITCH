@@ -68,5 +68,10 @@
         "title":"Simple Gifts -- 2 Trumpets, Horn, Tuba",
         "objName":"simpleGifts4",
         "voices":["Trumpet 1", "Trumpet 2", "Horn", "Tuba"]
+    },
+    {
+        "title":"Stereo Panning Test -- Flute, Clarinet, Horn, Tuba",
+        "objName":"stereoPanning1",
+        "voices":["Flute", "Clarinet", "Horn", "Tuba"]
     }
 ]

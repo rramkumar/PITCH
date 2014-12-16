@@ -1,36 +1,60 @@
-<head>
+<!DOCTYPE HTML>
+<!-- Code Written BY Alex Britt, Jon Medenblik, and Rahul Ramkumar-->
+<!--
+	88888888ba   88888888  8888888888   ,ad8888ba,   88       88
+	88      "8b  """88"""  """"88""""  d8"'    `"8b  88       88
+	88      ,8P     88         88     d8'            88       88
+	88aaaaaa8P'     88         88     88             88aaaaaaa88
+	88""""""'       88         88     88             88"""""""88
+	88              88         88     Y8,            88       88
+	88              88         88      Y8a.    .a8P  88       88
+	88           88888888      88       `"Y88888P"   88       88
+-->
+
+<html>
+	<head>
 		<meta charset="utf-8">
 		<title>PITCH</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="Home.js"></script>
-		<link href="PITCH.css" rel="stylesheet">
+	    <link href="PITCH.css" rel="stylesheet">
 		<link href="m-buttons.css" rel="stylesheet">
-</head>
-<body>
-	<div class="content" id="aboutInfo">
-		<h2>About this Program </h2>
-		<p> <strong> PITCH </strong> (Personal Intonation Trainer, Computer Heuristics), the <strong>UNC Bands Intonation Trainer, </strong> is designed to help musicians hear pitch discrepancies in real time, as one would need to do while playing in rehearsal or performance.
-		</p>
-		<p>We are grateful to Robert Spradling, Jay Berger, and Carl Fischer Music for granting permission to use the arrangements from the textbook Error Detection:  Exercises for the Instrumental Conductor.
-		</p>
-		<p>All of the performances are acoustic recordings of UNC undergraduate musicians that have been auto-tuned in the studio to be in-tune, sharp, or flat.  We used Pro Tools to record tracks, Antares Auto-Tune Live to adjust their pitch, Logic Pro X to mix and master, and Audacity to create the drones. We recommend using headphones for highest fidelity.
-		</p>
-		<p>On the Home Page, after the user chooses a melody and orchestration the program generates an example with the selected instruments along with a high drone and low drone.  The drones are always in-tune and should be used for reference.  All tracks can be muted or unmuted independently.  
-		</p>
-		<p>Depending on the selected level one or more voices will be out of tune.  There are four gradations of sharp and four gradations of flat in addition to “in-tune.”  The user must make a choice-- flat, sharp, or in-tune-- for all instruments.  The program defaults to “in-tune.”
-		</p>
-		<p>Alternatively, the Sandbox Mode allows the user to experiment with combinations of in-tune and out-of-tune for each voice to practice hearing what each possibility sounds like.  
-		</p>
-		<p> The application uses the following five arrangments </p>
-		<h2> Music </h2>
-		<ul id="musicList">
-			<li> <strong> Eine kleine Nachtmusik </strong>(Movement I)  - W.A. Mozart / arranged by Andrew Balent</li>
-			<li> <strong> Fantasia in G Minor</strong> - J.S. Bach / arranged by Robert Spradling </li>
-			<li> <strong> Jupiter, The Bringer of Jollity</strong> (from The Planets) - Gustav Holst / arranged by Andrew Balent </li>
-			<li> <strong> Chester </strong> (Movement III from New England Triptych) - William Schuman </li>
-			<li> <strong> Simple Gifts </strong> - American Folk Hymn / arranged by Andrew Balent </li>
-		</ul>
-		<div id="homeButtonContainer">
-			<a href="./index.html" class="homeLinkButton"><button id="ReturnHome" class="m-btn blue" >Return Home</button> </a>
+		<link rel="icon" type="image/png" href="./assets/images/favicon.png">
+	</head>
+
+	<body>
+		<div id="aboutProgram">
+			<div id="headerDiv" onclick="goHome()">
+				<a href="./index.html"><img id="headerLogo" src="./assets/images/title.png"></a>
+			</div>
 		</div>
-	</div>
-</body>
+		<br>
+		<div class="content" id="aboutInfo">
+			<div class="customHeadBig">About this Program </div>
+			<p> <strong> PITCH </strong> (Personal Intonation Trainer, Computer Heuristics), the <strong>UNC Bands Intonation Trainer, </strong> is designed to help musicians hear pitch discrepancies in real time, as one would need to do while playing in rehearsal or performance.
+			</p>
+			<p>We are grateful to Robert Spradling, Jay Berger, and Carl Fischer Music for granting permission to use the arrangements from the textbook <em>Error Detection:  Exercises for the Instrumental Conductor</em>.
+			</p>
+			<p>All of the performances are acoustic recordings of UNC undergraduate musicians that have been auto-tuned in the studio to be in-tune, sharp, or flat.  We used Pro Tools to record tracks, Antares Auto-Tune Live to adjust their pitch, Logic Pro X to mix and master, and Audacity to create the drones. We recommend using headphones for highest fidelity.
+			</p>
+			<p>On the Home Page, after the user chooses a melody and orchestration the program generates an example with the selected instruments along with a high drone and low drone.  The drones are always in-tune and should be used for reference.  All tracks can be muted or unmuted independently.  
+			</p>
+			<p>Depending on the selected level one or more voices will be out of tune.  There are four gradations of sharp and four gradations of flat in addition to “in-tune.”  The user must make a choice-- flat, sharp, or in-tune-- for all instruments.  The program defaults to “in-tune.”
+			</p>
+			<p>Alternatively, the Sandbox Mode allows the user to experiment with combinations of in-tune and out-of-tune for each voice to practice hearing what each possibility sounds like.  
+			</p>
+			<h4 class="customHeadSmall"> The application uses the following five arrangements: </h4>
+			<ul id="musicList">
+				<li> <strong> Eine kleine Nachtmusik </strong>(Movement I)  - W.A. Mozart / arranged by Andrew Balent</li>
+				<li> <strong> Fantasia in G Minor</strong> - J.S. Bach / arranged by Robert Spradling </li>
+				<li> <strong> Jupiter, The Bringer of Jollity</strong> (from <em>The Planets</em>) - Gustav Holst / arranged by Andrew Balent </li>
+				<li> <strong> Chester </strong> (Movement III from <em>New England Triptych</em>) - William Schuman </li>
+				<li> <strong> Simple Gifts </strong> - American Folk Hymn / arranged by Andrew Balent </li>
+				<li> <strong> Stereo Panning Test </strong> - a version of Simple Gifts for testing purposes</li>
+			</ul>
+			<div id="homeButtonContainer">
+				<a href="./index.html" class="homeLinkButton"><button id="ReturnHome" class="m-btn blue" >Return Home</button> </a>
+			</div>
+		</div>
+	</body>
+</html>

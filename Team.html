@@ -14,26 +14,25 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link href="PITCH.css" rel="stylesheet">
-		<link href="m-buttons.css" rel="stylesheet">
+		<title>PITCH</title>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-		<script>
-			function goHome(){
-				window.location.href = 'index.html';
-			}
-		</script>
+		<script type="text/javascript" src="Home.js"></script>
+    	<link href="PITCH.css" rel="stylesheet">
+		<link href="m-buttons.css" rel="stylesheet">
+		<link rel="icon" type="image/png" href="./assets/images/favicon.png">
 	</head>
 	
 	<body>
-		<div id="headerDiv">
-			<div id="headerDivTitle" onclick="goHome()">PITCH</div> <br>
-			<div id="pageSubtitle">Personal Intonation Training, Computer Heuristics</div> <br>
+		<div id="aboutProgram">
+			<div id="headerDiv">
+				<a href="./index.html"><img id="headerLogo" src="./assets/images/title.png"></a>
+			</div>
 		</div>
-		<div class="content team">
-			<br>
-			<h2>About the Designers</h2> 
+		<br>
+		<div class="content">
+			<div class="customHeadBig">About the Team</div> 
 			<h3>Dr. Evan Feldman</h3>
-			<img src="./assets/images/Feldman.png" width="600px">
+			<img src="./assets/images/Feldman.png" class="personImage" width="350px" align="left">
 			<p>
 			Dr. Evan Feldman is Associate Professor of Music at the University of North Carolina at Chapel Hill where he conducts the Wind Ensemble and Symphony Band and teaches courses in conducting and music education.  He also directs the Triangle Wind Ensemble and Greensboro Concert Band.  He is an active guest conductor, clinician, and adjudicator.</p>
 
@@ -49,7 +48,7 @@
 
 
 			<h3>Richard Drehoff Jr.</h3>
-			<img src="./assets/images/Drehoff.png">
+			<img src="./assets/images/Drehoff.png" class="personImage" width="200px" align="left">
 			<p>Richard Drehoff Jr. (b. 1991, Chapel Hill, NC) is a composer and performer.</p>
 
 			<p>Richard's works have been performed by an assortment of ensembles and individuals in central North Carolina. His work for wind ensemble, &ldquo;effervescent widgets,&rdquo; was awarded the Thelma Thompson Composition Award in 2013, and his chamber works have gained media attention. Richard actively seeks collaborations with soloists and ensembles to produce new works that are intrinsically unique to the musicians.</p>
@@ -74,11 +73,12 @@
 			Alto Saxophone:  Tyler Beames<br>
 			Trumpet:  Kris Gilmore<br>
 			Horn:  Vance Miller<br>
+			Trombone:  Matt Litzsinger<br>
+			Tuba:  Matthew Wolffe
 
 			<div id="homeButtonContainer">
 				<a href="./index.html" class="homeLinkButton"><button id="ReturnHome" class="m-btn blue" >Return Home</button> </a>
 			</div>
-		</div><br><br><br>
-
+		</div>
 	</body>
 </html>

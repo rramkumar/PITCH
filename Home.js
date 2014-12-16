@@ -73,7 +73,7 @@ $(document).ready(function(){
 	});
 	//Method that allows the user to return to the home page
 	//IF the title Pitch is clicked
-	$("#headerDivTitle").on("click", function(event) {
+	$("#headerDiv").on("click", function(event) {
 		showDiv("home");
 	});
 
