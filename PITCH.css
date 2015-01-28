@@ -91,7 +91,9 @@ p {
   padding-left: 5px;
   padding-bottom: 5px;
 }
-audio{
+
+audio {
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 
@@ -109,6 +111,14 @@ a{
 .levelInfo li{
   text-align: left;
 }
+
+.syncWarningDiv {
+  float: right;
+  font-size: 11px;
+  width: 315px;
+}
+
+
 /*rules for headerDiv elements*/
 
 #headerDiv {

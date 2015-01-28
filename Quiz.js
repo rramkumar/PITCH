@@ -582,7 +582,7 @@ function hangInteractions() {
 // Method to determine which parts are out of tune
 function randomizeNumberOutOfTune(numberOutOfTune) {
 	//If at most one is out of tune
-	//Then there is a 90% change one is out of tune
+	//Then there is a 90% chance one is out of tune
 	//and a 10% chance 0 are out of tune. 
 	if (numberOutOfTune == 1) {
 		var rand = Math.floor(Math.random()*10);
@@ -593,13 +593,13 @@ function randomizeNumberOutOfTune(numberOutOfTune) {
 		}
 	//IF at max two can be out of tune then
 	//10% chance 0 out of tune
-	//30% chance 1 out of tune
-	//60% chance 2 out of tune
+	//65% chance 1 out of tune
+	//25% chance 2 out of tune
 	} else if (numberOutOfTune = 2) {
-		var rand = Math.floor(Math.random()*10);
-		if (rand == 0) {
+		var rand = Math.floor(Math.random()*100);
+		if (rand <= 9) {
 			return 0;
-		} else if (rand <= 3) {
+		} else if (rand <= 74) {
 			return 1;
 		} else {
 			return 2;
